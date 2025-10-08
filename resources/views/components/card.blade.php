@@ -1,4 +1,3 @@
-<link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
 
 <div class="bg-gray-50 border rounded-lg p-3 flex justify-between items-center">
     <!-- Bagian kiri: title + list -->
