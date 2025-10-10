@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Masuk | AsthmaCare</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
+@extends('layout.app')
+
+@section('title', 'Masuk')
+
+@section('content')
   <style>
     body {
       font-family: 'League Spartan', sans-serif;
@@ -56,8 +53,6 @@
       transition: all 0.3s ease;
     }
   </style>
-</head>
-<body class="flex items-center justify-center min-h-screen relative">
 
   <!-- Efek bintang -->
   <div class="stars">
@@ -66,52 +61,57 @@
     @endfor
   </div>
 
-  <div class="flex w-[850px] rounded-2xl overflow-hidden shadow-xl card relative">
-    <!-- Left -->
-    <div class="w-1/2 bg-cyan-100 flex flex-col justify-center items-center p-8 text-center">
-      <img src="{{ asset('images/logoasma.png') }}" alt="Logo" class="w-36 mb-6 drop-shadow-lg">
-      <h2 class="text-2xl font-bold mb-3" style="color: #01E1FF;">
-    Selamat Datang di AsthmaCare
-</h2>
-      <p class="text-gray-600 text-base">Pantau, lindungi, dan atur kesehatan pernapasan Anda dengan lebih mudah </p>
-    </div>
+  <div class="flex items-center justify-center min-h-screen relative">
+    <div class="flex w-[850px] rounded-2xl overflow-hidden shadow-xl card relative">
+      <!-- Left -->
+      <div class="w-1/2 bg-cyan-100 flex flex-col justify-center items-center p-8 text-center">
+        <img src="{{ asset('images/logoasma.png') }}" alt="Logo" class="w-36 mb-6 drop-shadow-lg">
+        <h2 class="text-2xl font-bold mb-3" style="color: #01E1FF;">
+          Selamat Datang di AsthmaCare
+        </h2>
+        <p class="text-gray-600 text-base">
+          Pantau, lindungi, dan atur kesehatan pernapasan Anda dengan lebih mudah
+        </p>
+      </div>
 
-    <!-- Right -->
-    <div class="w-1/2 p-10 flex flex-col justify-center">
-      <h3 class="text-2xl font-semibold text- mb-6 text-center"style="color: #01E1FF;">Masuk ke Akun Anda</h3>
-      <form action="{{ route('login') }}" method="POST" class="space-y-4">
-        @csrf
-        <div>
-          <label class="block text-gray-700 mb-1">Email</label>
-          <input type="email" name="email" required class="w-full border border-cyan-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+      <!-- Right -->
+      <div class="w-1/2 p-10 flex flex-col justify-center">
+        <h3 class="text-2xl font-semibold mb-6 text-center" style="color: #01E1FF;">Masuk ke Akun Anda</h3>
+        <form action="{{ route('login') }}" method="POST" class="space-y-4">
+          @csrf
+          <div>
+            <label class="block text-gray-700 mb-1">Email</label>
+            <input type="email" name="email" required class="w-full border border-cyan-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-gray-700 mb-1">Kata Sandi</label>
+            <input type="password" name="password" required class="w-full border border-cyan-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+          </div>
+
+          <div class="flex items-center justify-between">
+            <label class="text-sm text-gray-600"><input type="checkbox" class="mr-1">Ingat saya</label>
+            <a href="#" class="text-cyan-700 text-sm hover:underline">Lupa sandi?</a>
+          </div>
+
+          <button type="submit"
+            class="w-full text-white py-2 rounded-lg font-semibold btn-glow"
+            style="background-color: #01E1FF;">
+            Masuk
+          </button>
+
+          <a href="{{ route('google.login') }}" class="w-full bg-white border border-gray-300 py-2 rounded-lg font-semibold flex items-center justify-center gap-2 hover:shadow-md transition">
+            <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" class="w-5">
+            <span>Masuk dengan Google</span>
+          </a>
+        </form>
+
+        <div class="text-center mt-5">
+          <p class="text-gray-600">
+            Belum punya akun? 
+            <a href="{{ route('register') }}" class="text-cyan-700 font-semibold hover:underline">Daftar</a>
+          </p>
         </div>
-        <div>
-          <label class="block text-gray-700 mb-1">Kata Sandi</label>
-          <input type="password" name="password" required class="w-full border border-cyan-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
-        </div>
-
-        <div class="flex items-center justify-between">
-          <label class="text-sm text-gray-600"><input type="checkbox" class="mr-1">Ingat saya</label>
-          <a href="#" class="text-cyan-700 text-sm hover:underline">Lupa sandi?</a>
-        </div>
-
-        <button type="submit"
-          class="w-full text-white py-2 rounded-lg font-semibold btn-glow"
-          style="background-color: #01E1FF;">
-          Masuk
-        </button>
-
-
-        <button type="button" class="w-full bg-white border border-gray-300 py-2 rounded-lg font-semibold flex items-center justify-center gap-2 hover:shadow-md transition">
-          <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" class="w-5">
-          <span>Masuk dengan Google</span>
-        </button>
-      </form>
-
-      <div class="text-center mt-5">
-        <p class="text-gray-600">Belum punya akun? <a href="{{ route('register') }}" class="text-cyan-700 font-semibold hover:underline">Daftar</a></p>
       </div>
     </div>
   </div>
-</body>
-</html>
+@endsection

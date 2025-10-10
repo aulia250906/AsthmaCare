@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -64,5 +65,52 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/login');
+    }
+
+    // =====================
+    // LOGIN WITH GOOGLE
+    // =====================
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')
+        ->with(['prompt' => 'select_account'])
+        ->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        try {
+            $googleUser = Socialite::driver('google')->user();
+
+            // Cari user berdasarkan google_id
+            $user = User::where('google_id', $googleUser->getId())->first();
+
+            // Jika belum ada, cari berdasarkan email
+            if (!$user) {
+                $user = User::where('email', $googleUser->getEmail())->first();
+
+                if ($user) {
+                    // Update google_id jika email sudah ada
+                    $user->update(['google_id' => $googleUser->getId()]);
+                } else {
+                    // Buat user baru
+                    $user = User::create([
+                        'name' => $googleUser->getName(),
+                        'email' => $googleUser->getEmail(),
+                        'google_id' => $googleUser->getId(),
+                        'username' => explode('@', $googleUser->getName())[0],
+                        'password' => Hash::make(uniqid()),
+                        'telpon' => null,
+                    ]);
+                }
+            }
+
+            // Login user
+            Auth::login($user);
+
+            return redirect()->intended('/home');
+        } catch (\Exception $e) {
+            return redirect()->route('login')->with('error', 'Gagal login dengan Google: ' . $e->getMessage());
+        }
     }
 }
