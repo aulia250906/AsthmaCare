@@ -114,7 +114,7 @@
 
         <div>
           <label class="block text-gray-700 mb-1">No. Telepon</label>
-          <input type="text" name="phone" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;">
+          <input type="text" name="telpon" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;">
         </div>
 
         <button type="submit" class="w-full text-white py-2 rounded-lg font-semibold btn-glow" style="background-color:#01E1FF;">

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navbar Responsif - AsthmaCare</title>
+  <title>Navbar - AsthmaCare</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/alpinejs" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -20,7 +20,7 @@
 
     <!-- Menu Utama (Desktop) -->
     <ul class="hidden md:flex gap-6 text-gray-700 font-medium">
-      <li><a href="/" class="hover:text-blue-500">Beranda</a></li>
+      <li><a href="/home" class="hover:text-blue-500">Beranda</a></li>
       <li><a href="/artikel" class="hover:text-blue-500">Artikel</a></li>
       <li><a href="/kontak" class="hover:text-blue-500">Kontak</a></li>
       <li><a href="/riwayat" class="hover:text-blue-500">Riwayat</a></li>
@@ -39,10 +39,20 @@
           x-show="userMenu" 
           @click.away="userMenu = false"
           x-transition
-          class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50"
+          class="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50"
         >
-          <a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Profile</a>
-          <a href="/logout" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Logout</a>
+          <a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Profil</a>
+
+          <!-- Logout aman (POST) -->
+          <form method="POST" action="/logout" class="block">
+            @csrf
+            <button 
+              type="submit"
+              class="w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50"
+            >
+              Logout
+            </button>
+          </form>
         </div>
       </div>
 
@@ -59,7 +69,7 @@
       class="absolute top-full left-0 w-full bg-white shadow-md md:hidden"
     >
       <ul class="flex flex-col items-center gap-4 py-4 text-gray-700 font-medium">
-        <li><a href="/" class="hover:text-blue-500">Beranda</a></li>
+        <li><a href="/home" class="hover:text-blue-500">Beranda</a></li>
         <li><a href="/artikel" class="hover:text-blue-500">Artikel</a></li>
         <li><a href="/kontak" class="hover:text-blue-500">Kontak</a></li>
         <li><a href="/riwayat" class="hover:text-blue-500">Riwayat</a></li>

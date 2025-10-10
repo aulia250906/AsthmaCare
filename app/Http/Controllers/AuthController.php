@@ -25,12 +25,17 @@ class AuthController extends Controller
             'name' => 'required|string|max:100',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
+            'username' => 'required|string|max:50|unique:users',
+            'telpon' => 'nullable|string|max:15',
+
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'username' => $request->username,
+            'telpon' => $request->telpon,
         ]);
 
         return redirect()->route('login')->with('success', 'Akun berhasil dibuat, silakan login!');
@@ -45,7 +50,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('/home');
         }
 
         return back()->withErrors([
