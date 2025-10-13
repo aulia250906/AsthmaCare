@@ -6,6 +6,7 @@ use App\Http\Controllers\DokterController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PertanyaanController;
 
 
 //Route::get('/', function () { return view('welcome');});
@@ -33,5 +34,6 @@ Route::get('/saran', function () {
 });
 Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel');
 Route::get('/dokter', [DokterController::class, 'index'])->name('dokter');
+Route::get('/pertanyaan', [PertanyaanController::class, 'index'])->name('pertanyaan');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
