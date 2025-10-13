@@ -81,11 +81,11 @@
           @csrf
           <div>
             <label class="block text-gray-700 mb-1">Email</label>
-            <input type="email" name="email" required class="w-full border border-cyan-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+            <input type="email" name="email" required class="w-full border border-cyan-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none" oninvalid="this.setCustomValidity('Silakan isi email Anda')" oninput="this.setCustomValidity('')">
           </div>
           <div>
             <label class="block text-gray-700 mb-1">Kata Sandi</label>
-            <input type="password" name="password" required class="w-full border border-cyan-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+            <input type="password" name="password" required class="w-full border border-cyan-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none" oninvalid="this.setCustomValidity('Silakan isi kata sandi Anda')" oninput="this.setCustomValidity('')">
           </div>
 
           <div class="flex items-center justify-between">
@@ -105,11 +105,16 @@
           </a>
         </form>
 
-        <div class="text-center mt-5">
+        <div class="text-center mt-6 space-y-2">
           <p class="text-gray-600">
             Belum punya akun? 
             <a href="{{ route('register') }}" class="text-cyan-700 font-semibold hover:underline">Daftar</a>
           </p>
+
+          <!--  Tombol kembali ke beranda -->
+          <a href="/" class="inline-block text-[#01E1FF] font-semibold hover:underline">
+             Kembali ke Beranda
+          </a>
         </div>
       </div>
     </div>
