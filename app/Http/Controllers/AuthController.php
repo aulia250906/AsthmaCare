@@ -10,6 +10,9 @@ use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
+    // =====================
+    // LOGIN & REGISTER FORM
+    // =====================
     public function showLoginForm()
     {
         return view('auth.login');
@@ -20,6 +23,9 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
+    // =====================
+    // REGISTER
+    // =====================
     public function register(Request $request)
     {
         $request->validate([
@@ -28,7 +34,6 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
             'username' => 'required|string|max:50|unique:users',
             'telpon' => 'nullable|string|max:15',
-
         ]);
 
         User::create([
@@ -42,6 +47,9 @@ class AuthController extends Controller
         return redirect()->route('login')->with('success', 'Akun berhasil dibuat, silakan login!');
     }
 
+    // =====================
+    // LOGIN MANUAL
+    // =====================
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -59,6 +67,9 @@ class AuthController extends Controller
         ]);
     }
 
+    // =====================
+    // LOGOUT
+    // =====================
     public function logout(Request $request)
     {
         Auth::logout();
@@ -73,33 +84,37 @@ class AuthController extends Controller
     public function redirectToGoogle()
     {
         return Socialite::driver('google')
-        ->with(['prompt' => 'select_account'])
-        ->redirect();
+            ->with(['prompt' => 'select_account'])
+            ->redirect();
     }
 
     public function handleGoogleCallback()
     {
         try {
+            // Ambil data user dari Google
             $googleUser = Socialite::driver('google')->user();
 
-            // Cari user berdasarkan google_id
+            // Coba cari user berdasarkan google_id
             $user = User::where('google_id', $googleUser->getId())->first();
 
-            // Jika belum ada, cari berdasarkan email
+            // Jika belum ada user dengan google_id ini
             if (!$user) {
+                // Cek apakah emailnya sudah terdaftar
                 $user = User::where('email', $googleUser->getEmail())->first();
 
                 if ($user) {
                     // Update google_id jika email sudah ada
-                    $user->update(['google_id' => $googleUser->getId()]);
+                    $user->update([
+                        'google_id' => $googleUser->getId(),
+                    ]);
                 } else {
                     // Buat user baru
                     $user = User::create([
                         'name' => $googleUser->getName(),
                         'email' => $googleUser->getEmail(),
                         'google_id' => $googleUser->getId(),
-                        'username' => explode('@', $googleUser->getName())[0],
-                        'password' => Hash::make(uniqid()),
+                        'username' => explode('@', $googleUser->getEmail())[0], // ✅ FIXED
+                        'password' => Hash::make(uniqid('google_')),
                         'telpon' => null,
                     ]);
                 }
@@ -109,7 +124,11 @@ class AuthController extends Controller
             Auth::login($user);
 
             return redirect()->intended('/home');
+        } catch (\Laravel\Socialite\Two\InvalidStateException $e) {
+            // Biasanya error ini muncul karena masalah session
+            return redirect()->route('login')->with('error', 'Gagal login (session error), coba lagi.');
         } catch (\Exception $e) {
+            // Tangani error umum
             return redirect()->route('login')->with('error', 'Gagal login dengan Google: ' . $e->getMessage());
         }
     }
