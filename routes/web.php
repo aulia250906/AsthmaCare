@@ -32,6 +32,16 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/saran', function () {
     return view('saran_kesehatan');
 });
+
+Route::get('/hasil', function () {
+    return view('hasil_deteksi');
+});
+
+Route::get('/riwayat', function () {
+    return view('riwayat');
+});
+
+
 Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel');
 Route::get('/dokter', [DokterController::class, 'index'])->name('dokter');
 Route::get('/pertanyaan', [PertanyaanController::class, 'index'])->name('pertanyaan');
