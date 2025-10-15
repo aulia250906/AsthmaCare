@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PertanyaanController;
+use App\Http\Controllers\ProfileController;
 
 
 //Route::get('/', function () { return view('welcome');});
@@ -27,6 +28,9 @@ Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
 });
 
 Route::get('/saran', function () {
