@@ -10,6 +10,9 @@ use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
+    // =====================
+    // LOGIN & REGISTER FORM
+    // =====================
     public function showLoginForm()
     {
         return view('auth.login');
@@ -20,6 +23,9 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
+    // =====================
+    // REGISTER
+    // =====================
     public function register(Request $request)
     {
         $request->validate([
@@ -28,7 +34,6 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
             'username' => 'required|string|max:50|unique:users',
             'telpon' => 'nullable|string|max:15',
-
         ]);
 
         User::create([
@@ -42,6 +47,9 @@ class AuthController extends Controller
         return redirect()->route('login')->with('success', 'Akun berhasil dibuat, silakan login!');
     }
 
+    // =====================
+    // LOGIN MANUAL
+    // =====================
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -59,6 +67,9 @@ class AuthController extends Controller
         ]);
     }
 
+    // =====================
+    // LOGOUT
+    // =====================
     public function logout(Request $request)
     {
         Auth::logout();
@@ -73,44 +84,67 @@ class AuthController extends Controller
     public function redirectToGoogle()
     {
         return Socialite::driver('google')
-        ->with(['prompt' => 'select_account'])
-        ->redirect();
+            ->with(['prompt' => 'select_account'])
+            ->redirect();
     }
 
     public function handleGoogleCallback()
     {
         try {
-            $googleUser = Socialite::driver('google')->user();
+            // Ambil data user dari Google
+            $googleUser = Socialite::driver('google')->stateless()->user();
+
+            // Ambil link foto profil Google (pastikan nilainya tidak null)
+            $googlePhoto = $googleUser->avatar_original
+                ?? $googleUser->avatar
+                ?? ($googleUser->user['picture'] ?? null);
 
             // Cari user berdasarkan google_id
             $user = User::where('google_id', $googleUser->getId())->first();
 
-            // Jika belum ada, cari berdasarkan email
             if (!$user) {
+                // Cek user berdasarkan email
                 $user = User::where('email', $googleUser->getEmail())->first();
 
                 if ($user) {
-                    // Update google_id jika email sudah ada
-                    $user->update(['google_id' => $googleUser->getId()]);
+                    // Update google_id dan photo jika belum ada
+                    $user->update([
+                        'google_id' => $googleUser->getId(),
+                        'photo' => $googlePhoto,
+                    ]);
                 } else {
-                    // Buat user baru
+                    // Jika user belum ada, buat baru
                     $user = User::create([
                         'name' => $googleUser->getName(),
                         'email' => $googleUser->getEmail(),
+                        'username' => explode('@', $googleUser->getEmail())[0],
+                        'password' => Hash::make(uniqid('google_')),
                         'google_id' => $googleUser->getId(),
-                        'username' => explode('@', $googleUser->getName())[0],
-                        'password' => Hash::make(uniqid()),
                         'telpon' => null,
+                        'photo' => $googlePhoto,
                     ]);
+                }
+            } else {
+                // Update foto terbaru jika berubah
+                if ($googlePhoto && $user->photo !== $googlePhoto) {
+                    $user->update(['photo' => $googlePhoto]);
                 }
             }
 
             // Login user
             Auth::login($user);
 
-            return redirect()->intended('/home');
+            return redirect()->intended('/home')
+                ->with('success', 'Berhasil login menggunakan akun Google!');
+
+        } catch (\Laravel\Socialite\Two\InvalidStateException $e) {
+            return redirect()->route('login')
+                ->with('error', 'Sesi login tidak valid. Silakan coba lagi.');
         } catch (\Exception $e) {
-            return redirect()->route('login')->with('error', 'Gagal login dengan Google: ' . $e->getMessage());
+            // Aktifkan ini sementara untuk debug jika masih gagal
+            // dd($e->getMessage());
+            return redirect()->route('login')
+                ->with('error', 'Gagal login dengan Google: ' . $e->getMessage());
         }
     }
 }

@@ -84,33 +84,44 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="block text-gray-700 mb-1">Nama Lengkap</label>
-            <input type="text" name="name" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF; focus:ring-color:#01E1FF;">
+            <input type="text" name="name" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;" oninvalid="this.setCustomValidity('Silakan isi nama lengkap Anda')" oninput="this.setCustomValidity('')">
           </div>
           <div>
             <label class="block text-gray-700 mb-1">Username</label>
-            <input type="text" name="username" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;">
+            <input type="text" name="username" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;" oninvalid="this.setCustomValidity('Silakan isi username Anda')" oninput="this.setCustomValidity('')">
           </div>
         </div>
 
         <div>
           <label class="block text-gray-700 mb-1">Email</label>
-          <input type="email" name="email" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;">
+          <input type="email" name="email" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;" oninvalid="this.setCustomValidity('Silakan isi email Anda')" oninput="this.setCustomValidity('')">
         </div>
 
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="block text-gray-700 mb-1">Kata Sandi</label>
-            <input type="password" name="password" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;">
+            <input type="password" name="password" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;" oninvalid="this.setCustomValidity('Silakan isi kata sandi Anda')" oninput="this.setCustomValidity('')">
           </div>
           <div>
             <label class="block text-gray-700 mb-1">Konfirmasi Kata Sandi</label>
-            <input type="password" name="password_confirmation" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;">
+            <input type="password" name="password_confirmation" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;" oninvalid="this.setCustomValidity('Silakan isi konfirmasi kata sandi Anda')" oninput="this.setCustomValidity('')">
           </div>
         </div>
 
         <div>
           <label class="block text-gray-700 mb-1">No. Telepon</label>
-          <input type="text" name="telpon" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;">
+          <input type="text" name="telpon" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;" oninvalid="this.setCustomValidity('Silakan isi nomor telpon Anda')" oninput="this.setCustomValidity('')">
+        </div>
+
+        <!-- ✅ Checkbox persetujuan -->
+        <div class="flex items-start space-x-2 mt-3">
+          <input type="checkbox" name="terms" required class="mt-1 border-gray-300 rounded" oninvalid="this.setCustomValidity('Silakan setujui ketentuan layanan dan kebijakan privasi terlebih dahulu')" oninput="this.setCustomValidity('')"/>
+          <label class="text-gray-700 text-sm">
+            Saya menyetujui
+            <a href="{{ route('terms') }}" class="text-[#01E1FF] font-semibold hover:underline" target="_blank">Ketentuan Layanan</a>
+            dan
+            <a href="{{ route('privacy') }}" class="text-[#01E1FF] font-semibold hover:underline" target="_blank">Kebijakan Privasi</a>
+          </label>
         </div>
 
         <button type="submit" class="w-full text-white py-2 rounded-lg font-semibold btn-glow" style="background-color:#01E1FF;">
@@ -118,13 +129,19 @@
         </button>
       </form>
 
-      <div class="text-center mt-5">
+      <div class="text-center mt-5 space-y-2">
         <p class="text-gray-600">
           Sudah punya akun?
           <a href="{{ route('login') }}" class="font-semibold hover:underline" style="color:#01E1FF;">Masuk</a>
         </p>
+
+        <!--  Tombol kembali ke beranda -->
+        <a href="/" class="inline-block text-[#01E1FF] font-semibold hover:underline">
+          Kembali ke Beranda
+        </a>
       </div>
     </div>
   </div>
 </body>
 </html>
+@endsection
