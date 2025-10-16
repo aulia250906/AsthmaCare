@@ -20,7 +20,6 @@
         </script>
     @endif
 
-
     {{-- HEADER --}}
     <div class="flex justify-between items-center w-11/12 md:w-3/4 mx-auto mb-8">
         <h1 class="text-2xl font-semibold text-gray-800">
@@ -33,75 +32,74 @@
         </a>
     </div>
 
-
-    {{-- CARD INFORMASI PROFIL --}}
-    <div class="bg-white shadow-lg rounded-2xl w-11/12 md:w-3/4 mx-auto p-8 flex flex-col md:flex-row justify-between items-start border border-gray-100">
+    {{-- FORM PROFIL (SATU FORM UNTUK SEMUA DATA) --}}
+    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" 
+          class="bg-white shadow-lg rounded-2xl w-11/12 md:w-3/4 mx-auto p-8 flex flex-col md:flex-row justify-between items-start border border-gray-100">
+        @csrf
 
         {{-- FORM INFORMASI --}}
-        <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" 
-              class="w-full md:w-2/3 pr-0 md:pr-10">
-            @csrf
-
+        <div class="w-full md:w-2/3 pr-0 md:pr-10">
             <h2 class="text-lg font-semibold text-gray-800 mb-4">Informasi Akun</h2>
 
             <div class="mb-4">
                 <label class="block text-gray-700 font-medium mb-1">Nama Lengkap</label>
-                <input type="text" name="name" value="{{ Auth::user()->name ?? '' }}" 
+                <input type="text" name="name" value="{{ $user->name }}" 
                        class="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-cyan-300">
             </div>
 
             <div class="mb-4">
                 <label class="block text-gray-700 font-medium mb-1">Username</label>
-                <input type="text" name="username" value="{{ Auth::user()->username ?? '' }}" 
+                <input type="text" name="username" value="{{ $user->username }}" 
                        class="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-cyan-300">
             </div>
 
             <div class="mb-4">
                 <label class="block text-gray-700 font-medium mb-1">Email</label>
-                <input type="email" name="email" value="{{ Auth::user()->email ?? '' }}" 
+                <input type="email" name="email" value="{{ $user->email }}" 
                        class="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-cyan-300">
             </div>
 
             <div class="mb-4">
                 <label class="block text-gray-700 font-medium mb-1">No. Telepon</label>
-                <input type="text" name="phone" value="{{ Auth::user()->phone ?? '' }}" 
+                <input type="text" name="telpon" value="{{ $user->telpon }}" 
                        class="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-cyan-300">
             </div>
 
             <button type="submit" 
                     class="mt-4 bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-6 py-2 rounded-full shadow hover:opacity-90 transition">
-                Simpan
+                Simpan Perubahan
             </button>
-        </form>
-
+        </div>
 
         {{-- FOTO PROFIL --}}
         <div class="flex flex-col items-center mt-8 md:mt-0 md:w-1/3">
             <h2 class="text-sm font-semibold text-gray-800 mb-2">Foto Profil</h2>
-            
-            {{-- PREVIEW FOTO --}}
-            <img id="preview-image" 
-                 src="{{ Auth::user()->profile_photo ? asset('storage/' . Auth::user()->profile_photo) : asset('images/default-user.png') }}" 
-                 class="w-32 h-32 rounded-full object-cover border-4 border-[#00bcd4] shadow mb-3">
 
-            {{-- INPUT FILE --}}
-            <label for="profile_photo" 
-                   class="cursor-pointer bg-white border border-gray-300 px-4 py-1 rounded-full text-sm text-gray-700 font-medium hover:bg-gray-100 transition">
-                Ubah Profil
+            @php
+                // Cek apakah foto dari Google atau dari storage
+                $photo = $user->photo;
+                $isGooglePhoto = Str::startsWith($photo, 'http');
+            @endphp
+
+            <img id="preview-image"
+                src="{{ $photo 
+                        ? ($isGooglePhoto 
+                            ? $photo 
+                            : asset('storage/' . $photo)) 
+                        : asset('images/default-user.png') }}"
+                class="w-32 h-32 rounded-full object-cover border-4 border-[#00bcd4] shadow mb-3">
+
+            <label for="photo"
+                class="cursor-pointer bg-white border border-gray-300 px-4 py-1 rounded-full text-sm text-gray-700 font-medium hover:bg-gray-100 transition">
+                Ubah Foto
             </label>
 
-            <input type="file" id="profile_photo" name="profile_photo" class="hidden" accept="image/*"
-                   onchange="previewImage(event)">
-
-            <button type="submit" 
-                    class="mt-4 bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-6 py-2 rounded-full shadow hover:opacity-90 transition">
-                Simpan
-            </button>
+            <input type="file" id="photo" name="photo" class="hidden" accept="image/*"
+                onchange="previewImage(event)">
         </div>
-    </div>
+    </form>
 
-
-{{-- CARD GANTI PASSWORD --}}
+    {{-- CARD GANTI PASSWORD --}}
     <div class="bg-white shadow-xl rounded-2xl w-11/12 md:w-3/4 mx-auto p-8 mt-10 border border-gray-100 hover:shadow-2xl transition">
         <h2 class="text-lg font-semibold text-gray-800 mb-4">Ganti Kata Sandi</h2>
 
@@ -134,7 +132,6 @@
             </form>
         </div>
     </div>
-
 
     {{-- SCRIPT PREVIEW FOTO --}}
     <script>
