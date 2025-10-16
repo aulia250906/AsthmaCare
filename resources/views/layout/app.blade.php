@@ -30,4 +30,7 @@
 
     <!-- Tambahkan JS tambahan jika perlu -->
  </body>
+ 
+<script src="node_modules/flowbite/dist/flowbite.js"></script>
+
  </html>
