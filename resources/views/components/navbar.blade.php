@@ -1,81 +1,96 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navbar - AsthmaCare</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/alpinejs" defer></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body class="bg-gray-50">
+<!-- Navbar -->
+<nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center relative">
+  <!-- Logo -->
+  <div class="flex items-center space-x-2">
+    <img src="images/logoasma.png" class="w-8" alt="Logo" />
+    <span class="font-bold text-xl text-gray-800">AsthmaCare</span>
+  </div>
 
-  <!-- Navbar -->
-  <nav x-data="{ open: false, userMenu: false }" class="bg-white shadow-md px-6 py-4 flex justify-between items-center relative">
-    <!-- Logo -->
-    <div class="flex items-center space-x-2">
-      <img src="images/logoasma.png" alt="Logo" class="w-8">
-      <span class="font-bold text-xl text-black-600">AsthmaCare</span>
-    </div>
+  <!-- Menu Desktop -->
+  <ul class="hidden md:flex gap-6 text-gray-700 font-medium">
+    <li><a href="/home" class="hover:text-blue-500 transition-colors">Beranda</a></li>
+    <li><a href="/artikel" class="hover:text-blue-500 transition-colors">Artikel</a></li>
+    <li><a href="/kontak" class="hover:text-blue-500 transition-colors">Kontak</a></li>
+    <li><a href="/riwayat" class="hover:text-blue-500 transition-colors">Riwayat</a></li>
+  </ul>
 
-    <!-- Menu Utama (Desktop) -->
-    <ul class="hidden md:flex gap-6 text-gray-700 font-medium">
-      <li><a href="/home" class="hover:text-blue-500">Beranda</a></li>
-      <li><a href="/artikel" class="hover:text-blue-500">Artikel</a></li>
-      <li><a href="/kontak" class="hover:text-blue-500">Kontak</a></li>
-      <li><a href="/riwayat" class="hover:text-blue-500">Riwayat</a></li>
-    </ul>
-
-    <!-- Bagian Kanan -->
-    <div class="flex items-center gap-4">
-      <!-- Ikon Profil -->
-      <div class="relative">
-        <button @click="userMenu = !userMenu" class="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-300">
-          <i class="fas fa-user text-blue-500"></i>
-        </button>
-
-        <!-- Dropdown Profil -->
-        <div 
-          x-show="userMenu" 
-          @click.away="userMenu = false"
-          x-transition
-          class="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50"
-        >
-          <a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Profil</a>
-
-          <!-- Logout aman (POST) -->
-          <form method="POST" action="/logout" class="block">
-            @csrf
-            <button 
-              type="submit"
-              class="w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50"
-            >
-              Logout
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <!-- Tombol Hamburger (Mobile) -->
-      <button @click="open = !open" class="md:hidden focus:outline-none text-gray-700">
-        <i :class="open ? 'fas fa-times' : 'fas fa-bars'"></i>
+  <!-- Bagian kanan -->
+  <div class="flex items-center gap-4">
+    <!-- Dropdown Profil -->
+    <div class="relative">
+      <button id="profile-btn" class="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition">
+        <i class="fas fa-user text-blue-500"></i>
       </button>
+
+      <div id="profile-menu"
+           class="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg py-2 transform scale-95 opacity-0 transition-all duration-300 ease-out origin-top hidden">
+        <a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Profil</a>
+         <form method="POST" action="/logout" class="block">
+          @csrf
+          <button
+            type="submit"
+            class="w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50">Logout</button>
+          </form>
+      </div>
     </div>
 
-    <!-- Menu Mobile -->
-    <div 
-      x-show="open"
-      x-transition
-      class="absolute top-full left-0 w-full bg-white shadow-md md:hidden"
-    >
-      <ul class="flex flex-col items-center gap-4 py-4 text-gray-700 font-medium">
-        <li><a href="/home" class="hover:text-blue-500">Beranda</a></li>
-        <li><a href="/artikel" class="hover:text-blue-500">Artikel</a></li>
-        <li><a href="/kontak" class="hover:text-blue-500">Kontak</a></li>
-        <li><a href="/riwayat" class="hover:text-blue-500">Riwayat</a></li>
-      </ul>
-    </div>
-  </nav>
+    <!-- Tombol Hamburger -->
+    <button id="menu-btn" class="md:hidden text-gray-700 text-xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
 
-</body>
-</html>
+<!-- Menu Mobile -->
+<div id="menu-mobile"
+     class="hidden md:hidden bg-white shadow-md overflow-hidden transform scale-95 opacity-0 transition-all duration-300 ease-out">
+  <ul class="flex flex-col items-center gap-4 py-4 text-gray-700 font-medium">
+    <li><a href="/home" class="hover:text-blue-500 transition-colors">Beranda</a></li>
+    <li><a href="/artikel" class="hover:text-blue-500 transition-colors">Artikel</a></li>
+    <li><a href="/kontak" class="hover:text-blue-500 transition-colors">Kontak</a></li>
+    <li><a href="/riwayat" class="hover:text-blue-500 transition-colors">Riwayat</a></li>
+  </ul>
+</div>
+
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const menuMobile = document.getElementById("menu-mobile");
+  const profileBtn = document.getElementById("profile-btn");
+  const profileMenu = document.getElementById("profile-menu");
+
+  // Toggle menu mobile
+  menuBtn.onclick = () => {
+    const isHidden = menuMobile.classList.contains("hidden");
+    if (isHidden) {
+      menuMobile.classList.remove("hidden");
+      setTimeout(() => {
+        menuMobile.classList.remove("scale-95", "opacity-0");
+      }, 10);
+    } else {
+      menuMobile.classList.add("scale-95", "opacity-0");
+      setTimeout(() => menuMobile.classList.add("hidden"), 300);
+    }
+  };
+
+  // Toggle dropdown profil
+  profileBtn.onclick = () => {
+    const isHidden = profileMenu.classList.contains("hidden");
+    if (isHidden) {
+      profileMenu.classList.remove("hidden");
+      setTimeout(() => {
+        profileMenu.classList.remove("scale-95", "opacity-0");
+      }, 10);
+    } else {
+      profileMenu.classList.add("scale-95", "opacity-0");
+      setTimeout(() => profileMenu.classList.add("hidden"), 300);
+    }
+  };
+
+  // Tutup dropdown kalau klik di luar
+  document.addEventListener("click", (e) => {
+    if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
+      profileMenu.classList.add("scale-95", "opacity-0");
+      setTimeout(() => profileMenu.classList.add("hidden"), 300);
+    }
+  });
+</script>

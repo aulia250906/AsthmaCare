@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="id">
- <head>
+<head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>@yield('title', 'Laravel App')</title>
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="{{ asset('images/logoasma.png') }}">
+
+  <!-- Font & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=sticky_note_2" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Vite -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+  * {
+      font-family: 'League Spartan', sans-serif !important;
+    }
     html {
       scroll-behavior: smooth;
     }
     body {
-      font-family: 'League Spartan';
+      font-family: 'League Spartan', sans-serif;
     }
-    
   </style>
- </head>
- <body>
-    <!-- Konten utama akan ditampilkan di sini -->
-    @yield('content')
+</head>
+<body class="bg-white antialiased">
+  
+  {{-- Konten utama --}}
+  @yield('content')
 
-    <!-- Tambahkan JS tambahan jika perlu -->
- </body>
- 
-<script src="node_modules/flowbite/dist/flowbite.js"></script>
-
- </html>
+  {{-- Tambahkan JS tambahan jika diperlukan --}}
+  <script src="node_modules/flowbite/dist/flowbite.js"></script>
+</body>
+</html>
