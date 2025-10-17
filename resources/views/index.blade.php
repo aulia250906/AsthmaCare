@@ -1,5 +1,7 @@
 @extends('layout.app')
 
+@section('title', 'Landing Page')
+
 <!-- Navbar Index -->
 @include('components.navbar_index')
 

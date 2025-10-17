@@ -10,6 +10,11 @@
       background-size: 400% 400%;
       animation: gradientMove 8s ease infinite;
       overflow: hidden;
+      display: flex;                 /* ✅ Tambahan */
+      justify-content: center;       /* ✅ Tengah horizontal */
+      align-items: center;           /* ✅ Tengah vertikal */
+      min-height: 100vh;             /* ✅ Pastikan selalu penuh layar */
+      margin: 0;
     }
 
     @keyframes gradientMove {
@@ -55,10 +60,65 @@
       transform: scale(1.05);
       transition: all 0.3s ease;
     }
+
+    /* ✅ Responsif tanpa ubah struktur */
+    @media (max-width: 900px) {
+      .card {
+        flex-direction: column;
+        width: 95%;
+        margin: 20px auto;
+      }
+
+      .card > div {
+        width: 100% !important;
+      }
+
+      .card img {
+        width: 100px;
+      }
+
+      .card h2, .card h3 {
+        font-size: 1.3rem;
+      }
+
+      form {
+        font-size: 0.95rem;
+      }
+
+      .grid.grid-cols-2 {
+        grid-template-columns: 1fr !important;
+      }
+
+      .text-center.mt-5.space-y-2 {
+        margin-top: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        overflow-y: auto;
+        align-items: flex-start;
+        padding: 20px 0;
+      }
+
+      .card {
+        border-radius: 1rem;
+      }
+
+      form input {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+      }
+
+      button {
+        font-size: 0.95rem;
+        padding: 0.6rem;
+      }
+    }
   </style>
 </head>
 
-<body class="flex items-center justify-center min-h-screen relative">
+<body class="relative">
 
   <!-- Efek bintang -->
   <div class="stars">
@@ -67,7 +127,7 @@
     @endfor
   </div>
 
-  <div class="flex w-[850px] rounded-2xl overflow-hidden shadow-xl card relative">
+  <div class="flex w-[850px] rounded-2xl overflow-hidden shadow-xl card relative flex-col md:flex-row">
     <!-- Left -->
     <div class="w-1/2 flex flex-col justify-center items-center p-8 text-center" style="background-color: #C3F7FF;">
       <img src="{{ asset('images/logoasma.png') }}" alt="Logo" class="w-36 mb-6 drop-shadow-lg">

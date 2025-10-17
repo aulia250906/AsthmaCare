@@ -9,8 +9,8 @@
 
     <!-- Menu Tengah (desktop) -->
     <ul class="hidden md:flex space-x-6 font-medium mx-auto">
-      <li><a href="#beranda" class="text-gray-900 hover:text-blue-700 transition-colors">Beranda</a></li>
-      <li><a href="#fitur" class="text-gray-900 hover:text-blue-700 transition-colors">Fitur</a></li>
+      <li><a href="/#beranda" class="text-gray-900 hover:text-blue-700 transition-colors">Beranda</a></li>
+      <li><a href="/#fitur" class="text-gray-900 hover:text-blue-700 transition-colors">Fitur</a></li>
       <li><a href="/artikel" class="text-gray-900 hover:text-blue-700 transition-colors">Artikel</a></li>
       <li><a href="#kontak" class="text-gray-900 hover:text-blue-700 transition-colors">Kontak</a></li>
     </ul>

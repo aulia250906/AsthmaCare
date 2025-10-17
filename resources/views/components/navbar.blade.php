@@ -2,7 +2,7 @@
 <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center relative">
   <!-- Logo -->
   <div class="flex items-center space-x-2">
-    <img src="images/logoasma.png" class="w-8" alt="Logo" />
+    <img src="{{ asset('images/logoasma.png') }}" class="w-8" alt="Logo" />
     <span class="font-bold text-xl text-gray-800">AsthmaCare</span>
   </div>
 
@@ -16,23 +16,47 @@
 
   <!-- Bagian kanan -->
   <div class="flex items-center gap-4">
-    <!-- Dropdown Profil -->
+    @auth
     <div class="relative">
-      <button id="profile-btn" class="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition">
-        <i class="fas fa-user text-blue-500"></i>
+      <button id="profile-btn"
+              class="w-9 h-9 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center hover:ring-2 hover:ring-blue-400 transition">
+        @php
+          $user = Auth::user();
+          $photoUrl = null;
+
+          if ($user->photo) {
+              // Cek apakah 'photo' adalah URL (Google) atau path lokal (storage)
+              if (Str::startsWith($user->photo, ['http://', 'https://'])) {
+                  $photoUrl = $user->photo; // URL dari Google
+              } else {
+                  $photoUrl = asset('storage/' . $user->photo); // Dari storage
+              }
+          }
+        @endphp
+
+        @if($photoUrl)
+          <img src="{{ $photoUrl }}" alt="Profile Photo" class="w-full h-full object-cover">
+        @else
+          <i class="fas fa-user text-blue-500 text-lg"></i>
+        @endif
       </button>
 
+      <!-- Dropdown -->
       <div id="profile-menu"
            class="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg py-2 transform scale-95 opacity-0 transition-all duration-300 ease-out origin-top hidden">
         <a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Profil</a>
-         <form method="POST" action="/logout" class="block">
+        <form method="POST" action="/logout" class="block">
           @csrf
-          <button
-            type="submit"
-            class="w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50">Logout</button>
-          </form>
+          <button type="submit" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50">Logout</button>
+        </form>
       </div>
     </div>
+    @else
+      <div class="flex items-center gap-3">
+        <a href="/login" class="text-gray-700 hover:text-blue-500 font-medium">Login</a>
+        <a href="/register" class="bg-blue-500 text-white px-4 py-1.5 rounded-lg hover:bg-blue-600 transition">Daftar</a>
+      </div>
+    @endauth
 
     <!-- Tombol Hamburger -->
     <button id="menu-btn" class="md:hidden text-gray-700 text-xl focus:outline-none">
@@ -59,36 +83,40 @@
   const profileMenu = document.getElementById("profile-menu");
 
   // Toggle menu mobile
-  menuBtn.onclick = () => {
-    const isHidden = menuMobile.classList.contains("hidden");
-    if (isHidden) {
-      menuMobile.classList.remove("hidden");
-      setTimeout(() => {
-        menuMobile.classList.remove("scale-95", "opacity-0");
-      }, 10);
-    } else {
-      menuMobile.classList.add("scale-95", "opacity-0");
-      setTimeout(() => menuMobile.classList.add("hidden"), 300);
-    }
-  };
+  if (menuBtn) {
+    menuBtn.onclick = () => {
+      const isHidden = menuMobile.classList.contains("hidden");
+      if (isHidden) {
+        menuMobile.classList.remove("hidden");
+        setTimeout(() => {
+          menuMobile.classList.remove("scale-95", "opacity-0");
+        }, 10);
+      } else {
+        menuMobile.classList.add("scale-95", "opacity-0");
+        setTimeout(() => menuMobile.classList.add("hidden"), 300);
+      }
+    };
+  }
 
   // Toggle dropdown profil
-  profileBtn.onclick = () => {
-    const isHidden = profileMenu.classList.contains("hidden");
-    if (isHidden) {
-      profileMenu.classList.remove("hidden");
-      setTimeout(() => {
-        profileMenu.classList.remove("scale-95", "opacity-0");
-      }, 10);
-    } else {
-      profileMenu.classList.add("scale-95", "opacity-0");
-      setTimeout(() => profileMenu.classList.add("hidden"), 300);
-    }
-  };
+  if (profileBtn) {
+    profileBtn.onclick = () => {
+      const isHidden = profileMenu.classList.contains("hidden");
+      if (isHidden) {
+        profileMenu.classList.remove("hidden");
+        setTimeout(() => {
+          profileMenu.classList.remove("scale-95", "opacity-0");
+        }, 10);
+      } else {
+        profileMenu.classList.add("scale-95", "opacity-0");
+        setTimeout(() => profileMenu.classList.add("hidden"), 300);
+      }
+    };
+  }
 
   // Tutup dropdown kalau klik di luar
   document.addEventListener("click", (e) => {
-    if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
+    if (profileMenu && !profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
       profileMenu.classList.add("scale-95", "opacity-0");
       setTimeout(() => profileMenu.classList.add("hidden"), 300);
     }
