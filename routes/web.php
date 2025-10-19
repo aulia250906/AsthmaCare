@@ -8,7 +8,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\ReviewController;
 
 //Route::get('/', function () { return view('welcome');});
 
@@ -51,3 +51,6 @@ Route::get('/dokter', [DokterController::class, 'index'])->name('dokter');
 Route::get('/pertanyaan', [PertanyaanController::class, 'index'])->name('pertanyaan');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/ulasan', [ReviewController::class, 'index'])->name('reviews.index');
+Route::post('/ulasan', [ReviewController::class, 'store'])->name('reviews.store');
