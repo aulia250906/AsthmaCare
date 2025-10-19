@@ -3,118 +3,33 @@
 @section('title', 'Masuk')
 
 @section('content')
-<style>
-  body {
-    font-family: 'League Spartan', sans-serif;
-    background: linear-gradient(-45deg, #00bcd4, #7fdbff, #a7ffeb, #e0f7fa);
-    background-size: 400% 400%;
-    animation: gradientMove 8s ease infinite;
-    overflow: hidden;
-  }
+<div class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-cyan-400 via-sky-200 to-cyan-100 animate-[gradientMove_8s_ease_infinite] overflow-x-hidden overflow-y-auto font-['League_Spartan']">
 
-  @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+  <!-- Efek bintang -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    @for ($i = 0; $i < 30; $i++)
+      <span class="absolute block w-[3px] h-[3px] bg-white opacity-70 rounded-full animate-[sparkle_5s_linear_infinite]"
+        style="top:{{ rand(0,100) }}%; left:{{ rand(0,100) }}%; animation-delay:{{ rand(0,5) }}s;"></span>
+    @endfor
+  </div>
 
-  /* Efek bintang */
-  .stars {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
-  }
-
-  .stars span {
-    position: absolute;
-    display: block;
-    width: 3px;
-    height: 3px;
-    background: white;
-    opacity: 0.7;
-    animation: sparkle 5s linear infinite;
-    border-radius: 50%;
-  }
-
-  @keyframes sparkle {
-    0% { transform: translateY(0px) scale(1); opacity: 0.6; }
-    50% { transform: translateY(-10px) scale(1.3); opacity: 1; }
-    100% { transform: translateY(0px) scale(1); opacity: 0.6; }
-  }
-
-  .card {
-    backdrop-filter: blur(12px);
-    background-color: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 8px 30px rgba(0, 200, 255, 0.25);
-    z-index: 10;
-  }
-
-  .btn-glow:hover {
-    box-shadow: 0 0 15px rgba(0, 200, 255, 0.6);
-    transform: scale(1.05);
-    transition: all 0.3s ease;
-  }
-
-  /* Responsif untuk tampilan kecil */
-  @media (max-width: 768px) {
-    .login-container {
-      flex-direction: column;
-      width: 90%;
-      margin: 0 auto;
-    }
-
-    .login-left {
-      width: 100%;
-      padding: 2rem 1rem;
-    }
-
-    .login-right {
-      width: 100%;
-      padding: 2rem 1.5rem;
-    }
-
-    .login-left img {
-      width: 100px;
-      margin-bottom: 1rem;
-    }
-
-    .login-left h2 {
-      font-size: 1.5rem;
-    }
-
-    .login-right h3 {
-      font-size: 1.3rem;
-    }
-  }
-</style>
-
-<!-- Efek bintang -->
-<div class="stars">
-  @for ($i = 0; $i < 30; $i++)
-    <span style="top:{{ rand(0,100) }}%; left:{{ rand(0,100) }}%; animation-delay:{{ rand(0,5) }}s;"></span>
-  @endfor
-</div>
-
-<!-- Konten utama -->
-<div class="flex items-center justify-center min-h-screen relative px-4">
-  <div class="flex login-container w-[850px] rounded-2xl overflow-hidden shadow-xl card relative">
+  <!-- Kontainer utama -->
+  <div class="relative z-10 flex flex-col md:flex-row w-[90%] md:w-[850px] rounded-2xl overflow-hidden shadow-xl backdrop-blur-lg bg-white/85 border border-cyan-100">
 
     <!-- Kiri -->
-    <div class="w-1/2 login-left bg-cyan-100 flex flex-col justify-center items-center text-center p-8">
-      <img src="{{ asset('images/logoasma.png') }}" alt="Logo" class="w-36 mb-6 drop-shadow-lg">
-      <h2 class="text-2xl font-bold mb-3" style="color: #01E1FF;">
+    <div class="w-full md:w-1/2 bg-cyan-100 flex flex-col justify-center items-center text-center p-6 md:p-8">
+      <img src="{{ asset('images/logoasma.png') }}" alt="Logo" class="w-28 md:w-36 mb-4 md:mb-6 drop-shadow-lg">
+      <h2 class="text-xl md:text-2xl font-bold mb-2 md:mb-3 text-[#01E1FF]">
         Selamat Datang di AsthmaCare
       </h2>
-      <p class="text-gray-600 text-base">
+      <p class="text-gray-600 text-sm md:text-base">
         Pantau, lindungi, dan atur kesehatan pernapasan Anda dengan lebih mudah
       </p>
     </div>
 
     <!-- Kanan -->
-    <div class="w-1/2 login-right p-10 flex flex-col justify-center">
-      <h3 class="text-2xl font-semibold mb-6 text-center" style="color: #01E1FF;">Masuk ke Akun Anda</h3>
+    <div class="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center">
+      <h3 class="text-xl md:text-2xl font-semibold mb-6 text-center text-[#01E1FF]">Masuk ke Akun Anda</h3>
       <form action="{{ route('login') }}" method="POST" class="space-y-4">
         @csrf
         <div>
@@ -133,16 +48,15 @@
             oninput="this.setCustomValidity('')">
         </div>
 
-        <div class="flex items-center justify-between">
-          <label class="text-sm text-gray-600">
+        <div class="flex items-center justify-between text-sm">
+          <label class="text-gray-600 flex items-center">
             <input type="checkbox" class="mr-1"> Ingat saya
           </label>
-          <a href="#" class="text-cyan-700 text-sm hover:underline">Lupa sandi?</a>
+          <a href="#" class="text-cyan-700 hover:underline">Lupa sandi?</a>
         </div>
 
         <button type="submit"
-          class="w-full text-white py-2 rounded-lg font-semibold btn-glow"
-          style="background-color: #01E1FF;">
+          class="w-full py-2 rounded-lg font-semibold text-white bg-[#01E1FF] hover:shadow-[0_0_15px_rgba(0,200,255,0.6)] hover:scale-105 transition-all duration-300 ease-in-out">
           Masuk
         </button>
 
@@ -166,4 +80,18 @@
     </div>
   </div>
 </div>
+
+<!-- Animasi gradient & bintang -->
+<style>
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes sparkle {
+  0% { transform: translateY(0px) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-10px) scale(1.3); opacity: 1; }
+  100% { transform: translateY(0px) scale(1); opacity: 0.6; }
+}
+</style>
 @endsection

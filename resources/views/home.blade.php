@@ -5,10 +5,10 @@
 @section('content')
 
   <!-- Navbar -->
-  <x-navbar />
+@include('components.navbar')
 
   <!-- Hero Section -->
-  <section class="max-w-6xl mx-auto mt-16 p-8 bg-white rounded-3xl shadow-lg flex flex-col md:flex-row items-center justify-between">
+  <section class="max-w-6xl mx-auto mt-8 p-8 bg-white rounded-3xl shadow-lg flex flex-col md:flex-row items-center justify-between">
     <div class="text-left max-w-lg">
       <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
         Halo, {{ Auth::user()->username }} 👋 <br>

@@ -6,7 +6,7 @@
 @include('components.navbar_index')
 
 <!-- Hero Section -->
-<section id="beranda" class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between mt-12 px-6 md:px-0">
+<section id="beranda" class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between mt-28 md:mt-12 px-6 md:px-0">
   <div class="text-left max-w-lg">
     <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
       Kelola Asma <br> Lebih Mudah <br> dengan <span class="text-black">AsthmaCare</span>

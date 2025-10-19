@@ -3,179 +3,101 @@
 @section('title', 'Daftar')
 
 @section('content')
-  <style>
-    body {
-      font-family: 'League Spartan', sans-serif;
-      background: linear-gradient(45deg, #01E1FF, #7fdbff, #a7ffeb, #e0f7fa);
-      background-size: 400% 400%;
-      animation: gradientMove 8s ease infinite;
-      overflow: hidden;
-      display: flex;                 /* ✅ Tambahan */
-      justify-content: center;       /* ✅ Tengah horizontal */
-      align-items: center;           /* ✅ Tengah vertikal */
-      min-height: 100vh;             /* ✅ Pastikan selalu penuh layar */
-      margin: 0;
-    }
+<style>
+  /* 🌈 Animasi background gradasi (tidak bisa dengan Tailwind) */
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+  /* 🌟 Efek bintang */
+  .stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .stars span {
+    position: absolute;
+    display: block;
+    width: 3px;
+    height: 3px;
+    background: white;
+    opacity: 0.7;
+    border-radius: 50%;
+    animation: sparkle 5s linear infinite;
+  }
+  @keyframes sparkle {
+    0% { transform: translateY(0) scale(1); opacity: 0.6; }
+    50% { transform: translateY(-10px) scale(1.3); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  }
+</style>
 
-    .stars {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 0;
-    }
+<!-- 🌈 Background animasi -->
+<div class="relative min-h-screen w-full bg-gradient-to-r from-[#01E1FF] via-[#7fdbff] to-[#e0f7fa] bg-[length:400%_400%] animate-[gradientMove_8s_ease_infinite] overflow-x-hidden overflow-y-auto">
 
-    .stars span {
-      position: absolute;
-      display: block;
-      width: 3px;
-      height: 3px;
-      background: white;
-      opacity: 0.7;
-      animation: sparkle 5s linear infinite;
-      border-radius: 50%;
-    }
-
-    @keyframes sparkle {
-      0% { transform: translateY(0px) scale(1); opacity: 0.6; }
-      50% { transform: translateY(-10px) scale(1.3); opacity: 1; }
-      100% { transform: translateY(0px) scale(1); opacity: 0.6; }
-    }
-
-    .card {
-      backdrop-filter: blur(12px);
-      background-color: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 8px 30px rgba(1, 225, 255, 0.25);
-      z-index: 10;
-    }
-
-    .btn-glow:hover {
-      box-shadow: 0 0 15px rgba(1, 225, 255, 0.6);
-      transform: scale(1.05);
-      transition: all 0.3s ease;
-    }
-
-    /* ✅ Responsif tanpa ubah struktur */
-    @media (max-width: 900px) {
-      .card {
-        flex-direction: column;
-        width: 95%;
-        margin: 20px auto;
-      }
-
-      .card > div {
-        width: 100% !important;
-      }
-
-      .card img {
-        width: 100px;
-      }
-
-      .card h2, .card h3 {
-        font-size: 1.3rem;
-      }
-
-      form {
-        font-size: 0.95rem;
-      }
-
-      .grid.grid-cols-2 {
-        grid-template-columns: 1fr !important;
-      }
-
-      .text-center.mt-5.space-y-2 {
-        margin-top: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        overflow-y: auto;
-        align-items: flex-start;
-        padding: 20px 0;
-      }
-
-      .card {
-        border-radius: 1rem;
-      }
-
-      form input {
-        font-size: 0.9rem;
-        padding: 0.5rem;
-      }
-
-      button {
-        font-size: 0.95rem;
-        padding: 0.6rem;
-      }
-    }
-  </style>
-</head>
-
-<body class="relative">
-
-  <!-- Efek bintang -->
+  <!-- ✨ Efek bintang -->
   <div class="stars">
     @for ($i = 0; $i < 30; $i++)
       <span style="top:{{ rand(0,100) }}%; left:{{ rand(0,100) }}%; animation-delay:{{ rand(0,5) }}s;"></span>
     @endfor
   </div>
 
-  <div class="flex w-[850px] rounded-2xl overflow-hidden shadow-xl card relative flex-col md:flex-row">
+  <!-- 🌟 Kartu utama -->
+  <div class="relative z-10 flex flex-col md:flex-row max-w-5xl mx-auto my-10 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-lg bg-white/80">
+    
     <!-- Left -->
-    <div class="w-1/2 flex flex-col justify-center items-center p-8 text-center" style="background-color: #C3F7FF;">
+    <div class="md:w-1/2 flex flex-col justify-center items-center p-8 text-center bg-[#C3F7FF]">
       <img src="{{ asset('images/logoasma.png') }}" alt="Logo" class="w-36 mb-6 drop-shadow-lg">
-      <h2 class="text-2xl font-bold mb-3" style="color: #01E1FF;">Daftar di AsthmaCare</h2>
-      <p class="text-gray-600 text-base">Mulai hidup sehat dengan pemantauan asma yang lebih cerdas dan mudah</p>
+      <h2 class="text-2xl font-bold mb-3 text-[#01E1FF]">Daftar di AsthmaCare</h2>
+      <p class="text-gray-700">Mulai hidup sehat dengan pemantauan asma yang lebih cerdas dan mudah.</p>
     </div>
 
     <!-- Right -->
-    <div class="w-1/2 p-10 flex flex-col justify-center">
-      <h3 class="text-2xl font-semibold mb-6 text-center" style="color: #01E1FF;">Buat Akun Baru</h3>
-      
+    <div class="md:w-1/2 p-10 flex flex-col justify-center">
+      <h3 class="text-2xl font-semibold mb-6 text-center text-[#01E1FF]">Buat Akun Baru</h3>
+
       <form action="{{ route('register') }}" method="POST" class="space-y-4">
         @csrf
-        <div class="grid grid-cols-2 gap-4">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-gray-700 mb-1">Nama Lengkap</label>
-            <input type="text" name="name" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;" oninvalid="this.setCustomValidity('Silakan isi nama lengkap Anda')" oninput="this.setCustomValidity('')">
+            <input type="text" name="name" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none">
           </div>
           <div>
             <label class="block text-gray-700 mb-1">Username</label>
-            <input type="text" name="username" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;" oninvalid="this.setCustomValidity('Silakan isi username Anda')" oninput="this.setCustomValidity('')">
+            <input type="text" name="username" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none">
           </div>
         </div>
 
         <div>
           <label class="block text-gray-700 mb-1">Email</label>
-          <input type="email" name="email" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;" oninvalid="this.setCustomValidity('Silakan isi email Anda')" oninput="this.setCustomValidity('')">
+          <input type="email" name="email" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none">
         </div>
 
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-gray-700 mb-1">Kata Sandi</label>
-            <input type="password" name="password" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;" oninvalid="this.setCustomValidity('Silakan isi kata sandi Anda')" oninput="this.setCustomValidity('')">
+            <input type="password" name="password" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none">
           </div>
           <div>
             <label class="block text-gray-700 mb-1">Konfirmasi Kata Sandi</label>
-            <input type="password" name="password_confirmation" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;" oninvalid="this.setCustomValidity('Silakan isi konfirmasi kata sandi Anda')" oninput="this.setCustomValidity('')">
+            <input type="password" name="password_confirmation" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none">
           </div>
         </div>
 
         <div>
           <label class="block text-gray-700 mb-1">No. Telepon</label>
-          <input type="text" name="telpon" required class="w-full border rounded-lg p-2 focus:ring-2 focus:outline-none" style="border-color:#01E1FF;" oninvalid="this.setCustomValidity('Silakan isi nomor telpon Anda')" oninput="this.setCustomValidity('')">
+          <input type="text" name="telpon" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none">
         </div>
 
-        <!-- ✅ Checkbox persetujuan -->
+        <!-- Checkbox -->
         <div class="flex items-start space-x-2 mt-3">
-          <input type="checkbox" name="terms" required class="mt-1 border-gray-300 rounded" oninvalid="this.setCustomValidity('Silakan setujui ketentuan layanan dan kebijakan privasi terlebih dahulu')" oninput="this.setCustomValidity('')"/>
+          <input type="checkbox" name="terms" required class="mt-1 border-gray-300 rounded focus:ring-[#01E1FF]">
           <label class="text-gray-700 text-sm">
             Saya menyetujui
             <a href="{{ route('terms') }}" class="text-[#01E1FF] font-semibold hover:underline" target="_blank">Ketentuan Layanan</a>
@@ -184,7 +106,7 @@
           </label>
         </div>
 
-        <button type="submit" class="w-full text-white py-2 rounded-lg font-semibold btn-glow" style="background-color:#01E1FF;">
+        <button type="submit" class="w-full text-white py-2 rounded-lg font-semibold transition-transform hover:scale-105 shadow-md" style="background-color:#01E1FF;">
           Daftar
         </button>
       </form>
@@ -192,16 +114,11 @@
       <div class="text-center mt-5 space-y-2">
         <p class="text-gray-600">
           Sudah punya akun?
-          <a href="{{ route('login') }}" class="font-semibold hover:underline" style="color:#01E1FF;">Masuk</a>
+          <a href="{{ route('login') }}" class="font-semibold hover:underline text-[#01E1FF]">Masuk</a>
         </p>
-
-        <!--  Tombol kembali ke beranda -->
-        <a href="/" class="inline-block text-[#01E1FF] font-semibold hover:underline">
-          Kembali ke Beranda
-        </a>
+        <a href="/" class="inline-block text-[#01E1FF] font-semibold hover:underline">Kembali ke Beranda</a>
       </div>
     </div>
   </div>
-</body>
-</html>
+</div>
 @endsection
