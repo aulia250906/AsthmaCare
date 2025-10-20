@@ -66,38 +66,43 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-gray-700 mb-1">Nama Lengkap</label>
-            <input type="text" name="name" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none">
+            <input type="text" name="name" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none "oninvalid="this.setCustomValidity('Silakan isi nama lengkap Anda')" oninput="this.setCustomValidity('')">
           </div>
           <div>
             <label class="block text-gray-700 mb-1">Username</label>
-            <input type="text" name="username" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none">
+            <input type="text" name="username" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none" oninvalid="this.setCustomValidity('Silakan isi username Anda')"
+            oninput="this.setCustomValidity('')">
           </div>
         </div>
 
         <div>
           <label class="block text-gray-700 mb-1">Email</label>
-          <input type="email" name="email" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none">
+          <input type="email" name="email" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none" oninvalid="this.setCustomValidity('Silakan isi email Anda')"
+            oninput="this.setCustomValidity('')">
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-gray-700 mb-1">Kata Sandi</label>
-            <input type="password" name="password" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none">
+            <input type="password" name="password" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none" oninvalid="this.setCustomValidity('Silakan isi kata sandi Anda')"
+            oninput="this.setCustomValidity('')">
           </div>
           <div>
             <label class="block text-gray-700 mb-1">Konfirmasi Kata Sandi</label>
-            <input type="password" name="password_confirmation" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none">
+            <input type="password" name="password_confirmation" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none" oninvalid="this.setCustomValidity('Silakan isi konfirmasi kata sandi Anda')"
+            oninput="this.setCustomValidity('')">
           </div>
         </div>
 
         <div>
           <label class="block text-gray-700 mb-1">No. Telepon</label>
-          <input type="text" name="telpon" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none">
+          <input type="text" name="telpon" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none" oninvalid="this.setCustomValidity('Silakan isi no telepon Anda')"
+            oninput="this.setCustomValidity('')">
         </div>
 
         <!-- Checkbox -->
         <div class="flex items-start space-x-2 mt-3">
-          <input type="checkbox" name="terms" required class="mt-1 border-gray-300 rounded focus:ring-[#01E1FF]">
+          <input type="checkbox" name="terms" required class="mt-1 border-gray-300 rounded focus:ring-[#01E1FF]" oninvalid="this.setCustomValidity('Silakan setujui ketentuan layanan dan kebijakan privasi terlebih dahulu')" oninput="this.setCustomValidity('')" >
           <label class="text-gray-700 text-sm">
             Saya menyetujui
             <a href="{{ route('terms') }}" class="text-[#01E1FF] font-semibold hover:underline" target="_blank">Ketentuan Layanan</a>

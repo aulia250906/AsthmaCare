@@ -42,6 +42,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'username' => $request->username,
             'telpon' => $request->telpon,
+            'role' => 'pengguna', // ✅ role default
         ]);
 
         return redirect()->route('login')->with('success', 'Akun berhasil dibuat, silakan login!');
@@ -59,7 +60,16 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/home');
+
+            $user = Auth::user();
+
+            // ✅ Arahkan sesuai role
+            if ($user->role === 'admin') {
+                return redirect()->intended('/admin');
+            }
+
+            return redirect()->intended('/home')
+                ->with('success', 'Selamat datang, Pengguna!');
         }
 
         return back()->withErrors([
@@ -91,49 +101,48 @@ class AuthController extends Controller
     public function handleGoogleCallback()
     {
         try {
-            // Ambil data user dari Google
             $googleUser = Socialite::driver('google')->stateless()->user();
 
-            // Ambil link foto profil Google (pastikan nilainya tidak null)
             $googlePhoto = $googleUser->avatar_original
                 ?? $googleUser->avatar
                 ?? ($googleUser->user['picture'] ?? null);
 
-            // Cari user berdasarkan google_id
             $user = User::where('google_id', $googleUser->getId())->first();
 
             if (!$user) {
-                // Cek user berdasarkan email
                 $user = User::where('email', $googleUser->getEmail())->first();
 
                 if ($user) {
-                    // Update google_id dan photo jika belum ada
                     $user->update([
                         'google_id' => $googleUser->getId(),
                         'photo' => $googlePhoto,
                     ]);
                 } else {
-                    // Jika user belum ada, buat baru
                     $user = User::create([
                         'name' => $googleUser->getName(),
                         'email' => $googleUser->getEmail(),
-                        'username' => explode('@', $googleUser->getEmail())[0],
+                        'username' => explode('@', $googleUser->getEmail())[0], // ✅ perbaikan kecil juga
                         'password' => Hash::make(uniqid('google_')),
                         'google_id' => $googleUser->getId(),
                         'telpon' => null,
                         'photo' => $googlePhoto,
+                        'role' => 'pengguna', // ✅ hanya pengguna
                     ]);
                 }
             } else {
-                // Update foto terbaru jika berubah
                 if ($googlePhoto && $user->photo !== $googlePhoto) {
                     $user->update(['photo' => $googlePhoto]);
                 }
             }
 
-            // Login user
+            // Pastikan user Google tetap role pengguna
+            if ($user->role !== 'pengguna') {
+                $user->update(['role' => 'pengguna']);
+            }
+
             Auth::login($user);
 
+            // ✅ Semua login Google diarahkan ke /home
             return redirect()->intended('/home')
                 ->with('success', 'Berhasil login menggunakan akun Google!');
 
@@ -141,8 +150,6 @@ class AuthController extends Controller
             return redirect()->route('login')
                 ->with('error', 'Sesi login tidak valid. Silakan coba lagi.');
         } catch (\Exception $e) {
-            // Aktifkan ini sementara untuk debug jika masih gagal
-            // dd($e->getMessage());
             return redirect()->route('login')
                 ->with('error', 'Gagal login dengan Google: ' . $e->getMessage());
         }
