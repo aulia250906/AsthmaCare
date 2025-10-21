@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -22,6 +23,7 @@ class ReviewController extends Controller
         ]);
 
         Review::create([
+            'id_user' => Auth::id(), // otomatis ambil ID user yang login
             'name' => $request->name,
             'rating' => $request->rating,
             'comment' => $request->comment,
