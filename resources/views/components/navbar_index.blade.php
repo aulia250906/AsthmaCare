@@ -1,5 +1,5 @@
 <nav class="bg-white fixed w-full top-0 left-0 z-50 border-b border-gray-200 shadow-sm">
-  <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
+  <div class="flex items-center justify-between px-6 md:px-6 py-4">
 
     <!-- Logo -->
     <a href="/index" class="flex items-center space-x-3">
@@ -8,7 +8,7 @@
     </a>
 
     <!-- Menu Tengah (desktop) -->
-    <ul class="hidden md:flex space-x-6 font-medium mx-auto">
+    <ul class="hidden md:flex space-x-8 font-medium">
       <li><a href="/#beranda" class="text-gray-900 hover:text-blue-700 transition-colors">Beranda</a></li>
       <li><a href="/#fitur" class="text-gray-900 hover:text-blue-700 transition-colors">Fitur</a></li>
       <li><a href="/artikel" class="text-gray-900 hover:text-blue-700 transition-colors">Artikel</a></li>
