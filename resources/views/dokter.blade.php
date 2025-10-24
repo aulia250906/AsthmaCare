@@ -16,12 +16,19 @@
             Cari dokter spesialis paru untuk konsultasi asma dan kesehatan pernapasan Anda
         </p>
 
-        <!-- Pencarian -->
+       <!-- Pencarian -->
         <div class="flex justify-center mb-12">
-            <div class="w-full md:w-2/3 lg:w-1/2 flex items-center border-2 border-gray-300 rounded-full bg-white px-5 py-3 shadow-md">
-                <input type="text" placeholder="Cari dokter atau nama rumah sakit" class="flex-1 outline-none text-gray-700 text-lg">
-                <i class="fas fa-search text-gray-500 text-xl"></i>
-            </div>
+            <form action="{{ route('dokter.index') }}" method="GET" class="w-full md:w-2/3 lg:w-1/2 flex items-center border-2 border-gray-300 rounded-full bg-white px-5 py-3 shadow-md">
+                <input 
+                    type="text" 
+                    name="search" 
+                    value="{{ request('search') }}" 
+                    placeholder="Cari dokter atau nama rumah sakit" 
+                    class="flex-1 outline-none text-gray-700 text-lg">
+                <button type="submit">
+                    <i class="fas fa-search text-gray-500 text-xl"></i>
+                </button>
+            </form>
         </div>
 
         <!-- Grid Dokter -->
@@ -48,12 +55,6 @@
                 </p>
             @endforelse
         </div>
-
-        <!-- Footer -->
-        <p class="text-center text-gray-600 mt-20 text-lg">
-            Butuh pertolongan darurat? Hubungi RS terdekat 
-            <a href="#" class="text-red-500 font-semibold hover:underline">Klik Disini</a>
-        </p>
     </div>
 
     <x-footer />
