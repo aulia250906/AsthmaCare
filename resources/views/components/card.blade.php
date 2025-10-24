@@ -13,7 +13,7 @@
                     <img src="/images/centang.png" alt="Centang" class="h-4 w-4 object-contain mt-1">
                     <span>{{ $item }}</span>
                 </li>
-            @endforeach
+            @endforeaczh
         </ul>
     </div>
 

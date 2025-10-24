@@ -26,21 +26,27 @@
 
         <!-- Grid Dokter -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            @for ($i = 0; $i < 6; $i++)
+            @forelse ($doctors as $doctor)
                 <div class="bg-white shadow-lg rounded-2xl p-8 flex items-center space-x-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <img src="{{ asset('images/dokter.jpg') }}" alt="Foto Dokter" class="w-28 h-28 rounded-full object-cover border-4 border-blue-100">
+                    <img src="{{ asset('storage/' . $doctor->photo) }}" alt="{{ $doctor->name }}" class="w-28 h-28 rounded-full object-cover border-4 border-blue-100">
                     <div>
-                        <h3 class="text-xl font-semibold text-gray-800">dr. Abdul Malik, Sp.P</h3>
-                        <p class="text-gray-600 text-base">RS Awal Bros Batam</p>
+                        <h3 class="text-xl font-semibold text-gray-800">{{ $doctor->name }}</h3>
+                        <p class="text-gray-600 text-base">{{ $doctor->hospital }}</p>
                         <p class="text-gray-500 text-sm mt-1">
-                            <i class="fas fa-map-marker-alt text-blue-500"></i> Jl. Gajah Mada, Baloi, Batam
+                            <i class="fas fa-map-marker-alt text-blue-500"></i> {{ $doctor->address }}
                         </p>
-                        <button class="mt-4 px-5 py-2 border border-gray-400 rounded-lg text-sm hover:bg-blue-100 transition">
-                            Lihat di Maps
-                        </button>
+                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($doctor->address) }}" target="_blank">
+                            <button class="mt-4 px-5 py-2 border border-gray-400 rounded-lg text-sm hover:bg-blue-100 transition">
+                                Lihat di Maps
+                            </button>
+                        </a>
                     </div>
                 </div>
-            @endfor
+            @empty
+                <p class="text-center text-gray-500 text-lg col-span-3">
+                    Belum ada data dokter yang tersedia.
+                </p>
+            @endforelse
         </div>
 
         <!-- Footer -->
