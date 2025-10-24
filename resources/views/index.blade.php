@@ -33,17 +33,17 @@
   <div class="max-w-6xl mx-auto px-6 text-center">
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-10">Fitur Utama</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <a href="#" class="bg-white shadow-md rounded-2xl p-6 flex flex-col items-center hover:shadow-lg transition">
+      <a href="#" class="bg-white shadow-md rounded-2xl p-6 flex flex-col items-center hover:shadow-lg transition" data-aos="fade-right">
         <img src="{{ asset('images/inhaler.png') }}" class="w-12 mb-4" alt="Tes Asma">
         <h3 class="font-semibold text-lg mb-2">Tes Kontrol Asma</h3>
         <p class="text-gray-600 text-sm">Ukur kontrol asma Anda secara praktis.</p>
       </a>
-      <a href="/saran" class="bg-white shadow-md rounded-2xl p-6 flex flex-col items-center hover:shadow-lg transition">
+      <a href="/saran" class="bg-white shadow-md rounded-2xl p-6 flex flex-col items-center hover:shadow-lg transition"  data-aos="zoom-in">
         <img src="{{ asset('images/perisai.png') }}" class="w-12 mb-4" alt="Saran Kesehatan">
         <h3 class="font-semibold text-lg mb-2">Saran Kesehatan</h3>
         <p class="text-gray-600 text-sm">Dapatkan tips menjaga kesehatan paru-paru.</p>
       </a>
-      <a href="/artikel" class="bg-white shadow-md rounded-2xl p-6 flex flex-col items-center hover:shadow-lg transition">
+      <a href="/artikel" class="bg-white shadow-md rounded-2xl p-6 flex flex-col items-center hover:shadow-lg transition" data-aos="fade-left">
         <img src="{{ asset('images/dokter.png') }}" class="w-12 mb-4" alt="Artikel Edukasi">
         <h3 class="font-semibold text-lg mb-2">Artikel & Edukasi</h3>
         <p class="text-gray-600 text-sm">Pelajari informasi terbaru tentang asma.</p>
@@ -54,7 +54,7 @@
 
 <!-- Tentang Kami -->
 <section class="max-w-6xl mx-auto px-6 md:px-0 mt-16 flex flex-col md:flex-row items-center justify-between">
-  <div class="max-w-md md:mr-12">
+  <div class="max-w-md md:mr-12" data-aos="zoom-in-up">
     <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4">Tentang Kami</h2>
     <p class="text-2xl text-gray-700 mb-4">
       AsthmaCare hadir untuk membantu Anda mengenali risiko asma lebih dini, mengambil keputusan tepat, dan hidup lebih sehat.
@@ -64,7 +64,7 @@
     </p>
     <a href="#" class="inline-block bg-sky-400 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-sky-500 transition">Pelajari Lebih Lanjut</a>
   </div>
-  <div class="mt-10 md:mt-0 md:w-1/2 flex justify-center md:justify-end">
+  <div class="mt-10 md:mt-0 md:w-1/2 flex justify-center md:justify-end" data-aos="zoom-in-up">
     <img src="{{ asset('images/asmaorang.png') }}" alt="Tentang Kami" class="w-72 md:w-80">
   </div>
 </section>
@@ -74,19 +74,19 @@
   <div class="max-w-6xl mx-auto px-6 text-center">
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-10">Kenapa Memilih AsthmaCare?</h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
-      <div class="flex items-center bg-[#F3FDFF] rounded-xl shadow-sm p-5">
+      <div class="flex items-center bg-[#F3FDFF] rounded-xl shadow-sm p-5" data-aos="fade-right">
         <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8 mr-3" alt="UI Icon">
         <h3 class="font-bold">Antarmuka Ramah Pengguna</h3>
       </div>
-      <div class="flex items-center bg-[#F3FDFF] rounded-xl shadow-sm p-5">
+      <div class="flex items-center bg-[#F3FDFF] rounded-xl shadow-sm p-5" data-aos="fade-down-right">
         <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8 mr-3" alt="Medis Icon">
         <h3 class="font-bold">Tes yang Didukung Medis</h3>
       </div>
-      <div class="flex items-center bg-[#F3FDFF] rounded-xl shadow-sm p-5">
+      <div class="flex items-center bg-[#F3FDFF] rounded-xl shadow-sm p-5" data-aos="fade-down-left">
         <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8 mr-3" alt="Akses Icon">
         <h3 class="font-bold">Akses Kapan Saja</h3>
       </div>
-      <div class="flex items-center bg-[#F3FDFF] rounded-xl shadow-sm p-5">
+      <div class="flex items-center bg-[#F3FDFF] rounded-xl shadow-sm p-5" data-aos="fade-left">
         <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8 mr-3" alt="Privasi Icon">
         <h3 class="font-bold">Privasi Data Terjamin</h3>
       </div>
@@ -96,7 +96,7 @@
 
 <!-- Kata Pengguna -->
 <section class="bg-blue-50 mt-16 py-20">
-  <div class="max-w-6xl mx-auto px-6">
+  <div class="max-w-6xl mx-auto px-6" data-aos="zoom-in-up">
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-12 text-center">
       Apa Kata Pengguna Kami
     </h2>
