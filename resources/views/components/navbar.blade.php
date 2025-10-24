@@ -1,17 +1,19 @@
+<!-- Home -->
+
 <!-- ✅ NAVBAR FIXED RESPONSIVE -->
 <nav class="fixed top-0 left-0 w-full bg-white shadow-md px-6 py-4 flex justify-between items-center z-50">
   <!-- Logo -->
-  <div class="flex items-center space-x-2">
-    <img src="{{ asset('images/logoasma.png') }}" class="w-8" alt="Logo" />
-    <span class="font-bold text-xl text-gray-800">AsthmaCare</span>
+  <div class="flex items-center space-x-3">
+    <img src="{{ asset('images/logoasma.png') }}" class="h-10" alt="Logo" />
+    <span class="font-bold text-2xl text-gray-800">AsthmaCare</span>
   </div>
 
   <!-- Menu Desktop -->
-  <ul class="hidden md:flex gap-6 text-gray-700 font-medium">
-    <li><a href="/home" class="hover:text-blue-500 transition-colors">Beranda</a></li>
-    <li><a href="/artikel" class="hover:text-blue-500 transition-colors">Artikel</a></li>
-    <li><a href="/kontak" class="hover:text-blue-500 transition-colors">Kontak</a></li>
-    <li><a href="/riwayat" class="hover:text-blue-500 transition-colors">Riwayat</a></li>
+  <ul class="hidden md:flex space-x-8 text-gray-900 font-medium">
+    <li><a href="/home" class="hover:text-blue-700 transition-colors">Beranda</a></li>
+    <li><a href="/artikel" class="hover:text-blue-700 transition-colors">Artikel</a></li>
+    <li><a href="/ulasan" class="hover:text-blue-700 transition-colors">Ulasan</a></li>
+    <li><a href="/riwayat" class="hover:text-blue-700 transition-colors">Riwayat</a></li>
   </ul>
 
   <!-- Bagian kanan -->
@@ -80,7 +82,7 @@
   <ul class="flex flex-col items-center gap-4 py-4 text-gray-700 font-medium">
     <li><a href="/home" class="hover:text-blue-500 transition-colors">Beranda</a></li>
     <li><a href="/artikel" class="hover:text-blue-500 transition-colors">Artikel</a></li>
-    <li><a href="/kontak" class="hover:text-blue-500 transition-colors">Kontak</a></li>
+    <li><a href="/ulasan" class="hover:text-blue-500 transition-colors">Ulasan</a></li>
     <li><a href="/riwayat" class="hover:text-blue-500 transition-colors">Riwayat</a></li>
 
     @guest

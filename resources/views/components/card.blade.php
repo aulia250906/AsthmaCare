@@ -1,17 +1,26 @@
-<div class="flex justify-between items-center gap-4">
-    <div class="bg-[#F6FFFC] rounded-lg p-3 w-3/4">
-        <h3 class="flex items-center font-semibold text-gray-800 mb-2"><img src="/images/orglingkar.png" alt="Keshatan" class="h-7 w-7 sm:h-8 sm:w-8 object-contain"> {{ $title }}</h3>
-        <ul class="pl-5 text-lg text-gray-700 space-y-1">
-        @foreach($list as $item)
-            <li class="flex items-center gap-2">
-                <img src="/images/centang.png" alt="Centang" class="h-4 w-4 object-contain">
-                <span>{{ $item }}</span>
-            </li>
-        @endforeach
+<div class="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-10">
+    
+    {{-- Bagian teks --}}
+    <div class="bg-[#F6FFFC] rounded-lg p-4 md:p-6 w-full md:w-3/4">
+        <h3 class="flex items-center font-semibold text-gray-800 mb-3 text-lg md:text-xl">
+            <img src="/images/orglingkar.png" alt="Kesehatan" class="h-7 w-7 sm:h-8 sm:w-8 object-contain mr-2">
+            {{ $title }}
+        </h3>
+
+        <ul class="pl-5 text-base text-gray-700 space-y-2">
+            @foreach($list as $item)
+                <li class="flex items-start gap-2">
+                    <img src="/images/centang.png" alt="Centang" class="h-4 w-4 object-contain mt-1">
+                    <span>{{ $item }}</span>
+                </li>
+            @endforeach
         </ul>
     </div>
 
-    <div class="w-24 sm:w-30 md:w-36 lg:w-42 flex-shrink-0 flex justify-center mx-8">
-        <img src="{{ $image }}" alt="{{ $title }}" class="w-full h-auto rounded-lg">
+    {{-- Gambar --}}
+    <div class="w-full md:w-1/4 flex justify-center md:justify-end">
+        <img src="{{ $image }}" alt="{{ $title }}" 
+             class="w-40 sm:w-52 md:w-60 lg:w-72 h-auto rounded-lg object-contain">
     </div>
+
 </div>

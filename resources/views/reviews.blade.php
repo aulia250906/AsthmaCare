@@ -1,12 +1,15 @@
 @extends('layout.app')
 
 @section('title', 'Ulasan Pengguna')
+{{-- Navbar tampil sesuai status login --}}
+    @auth
+        <x-navbar /> {{-- Navbar setelah login --}}
+    @else
+        <x-navbar_index /> {{-- Navbar sebelum login --}}
+    @endauth
 
 @section('content')
 <body class="bg-gradient-to-b from-[#e0f7fa] via-white to-[#f5ffff] min-h-screen py-12">
-
-  {{-- Navbar --}}
-  <x-navbar />
 
   {{-- ALERT SUKSES --}}
   @if(session('success'))
@@ -23,7 +26,7 @@
   @endif
 
 {{-- HEADER --}}
-<header class="text-center w-11/12 md:w-3/4 mx-auto mt-16 mb-10">
+<header class="text-center w-11/12 md:w-3/4 mx-auto mt-24 mb-10">
     <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-3 tracking-wide">
         ✨ Ulasan Pengguna
     </h1>

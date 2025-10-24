@@ -40,12 +40,12 @@
         <h3 class="font-semibold text-lg mb-2">Tes Kontrol Asma</h3>
         <p class="text-gray-600 text-sm">Ukur kontrol asma Anda secara praktis.</p>
       </a>
-      <a href="#" class="bg-white shadow-md rounded-2xl p-6 flex flex-col items-center hover:shadow-lg transition">
+      <a href="/saran" class="bg-white shadow-md rounded-2xl p-6 flex flex-col items-center hover:shadow-lg transition">
         <img src="{{ asset('images/perisai.png') }}" class="w-12 mb-4" alt="Saran Kesehatan">
         <h3 class="font-semibold text-lg mb-2">Saran Kesehatan</h3>
         <p class="text-gray-600 text-sm">Dapatkan tips menjaga kesehatan paru-paru.</p>
       </a>
-      <a href="#" class="bg-white shadow-md rounded-2xl p-6 flex flex-col items-center hover:shadow-lg transition">
+      <a href="/artikel" class="bg-white shadow-md rounded-2xl p-6 flex flex-col items-center hover:shadow-lg transition">
         <img src="{{ asset('images/dokter.png') }}" class="w-12 mb-4" alt="Artikel Edukasi">
         <h3 class="font-semibold text-lg mb-2">Artikel & Edukasi</h3>
         <p class="text-gray-600 text-sm">Pelajari informasi terbaru tentang asma.</p>
