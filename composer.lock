@@ -3380,14 +3380,9 @@
         {
             "name": "livewire/livewire",
             "version": "v3.6.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/livewire/livewire.git",
-                "reference": "ef04be759da41b14d2d129e670533180a44987dc"
-            },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/ef04be759da41b14d2d129e670533180a44987dc",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/livewire/livewire/v3.6.4/livewire-livewire-v3.6.4.zip",
                 "reference": "ef04be759da41b14d2d129e670533180a44987dc",
                 "shasum": ""
             },
@@ -3430,7 +3425,6 @@
                     "Livewire\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3445,12 +3439,6 @@
                 "issues": "https://github.com/livewire/livewire/issues",
                 "source": "https://github.com/livewire/livewire/tree/v3.6.4"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/livewire",
-                    "type": "github"
-                }
-            ],
             "time": "2025-07-17T05:12:15+00:00"
         },
         {

@@ -3,7 +3,7 @@
 @section('title', 'Profil Saya')
 
 @section('content')
-<body class="bg-gray-50 min-h-screen py-10">
+<div class="bg-gray-50 min-h-screen py-10">
 
     {{-- ALERT SUKSES --}}
     @if(session('success'))
@@ -145,5 +145,5 @@
         }
     </script>
 
-</body>
+</div>
 @endsection
