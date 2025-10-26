@@ -62,14 +62,26 @@
         </div>
 
         <!-- Buttons -->
-        <div class="flex justify-between mt-10">
-            <button type="button" class="px-6 py-3 border border-gray-300 rounded-xl text-gray-700 hover:bg-gray-100 text-base">
-                Kembali
-            </button>
-            <button type="submit" class="px-8 py-3 bg-sky-500 text-white rounded-xl hover:bg-sky-600 text-base">
-                Selanjutnya
-            </button>
-        </div>
+        <div class="flex justify-end mt-10 gap-3">
+  <button type="button"
+          class="py-2 px-6 text-gray-900 font-semibold border border-gray-500 rounded-xl 
+                 shadow-[-4px_4px_0px_rgba(150,150,150,1)] 
+                 hover:translate-x-[-2px] hover:translate-y-[2px] 
+                 hover:shadow-[-2px_2px_0px_rgba(150,150,150,1)] 
+                 hover:bg-gray-100 transition duration-200 ease-in-out">
+    Kembali
+  </button>
+  
+  <button type="submit"
+          class="py-2 px-6 text-white font-semibold bg-[#01E1FF] border border-white rounded-xl 
+                 shadow-[-4px_4px_0px_rgba(150,150,150,1)] 
+                 hover:translate-x-[-2px] hover:translate-y-[2px] 
+                 hover:shadow-[-2px_2px_0px_rgba(150,150,150,1)] 
+                 hover:bg-[#0BBAD1] transition duration-200 ease-in-out">
+    Selanjutnya
+  </button>
+</div>
+
     </form>
 </section>
 
