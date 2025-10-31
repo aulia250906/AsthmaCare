@@ -48,8 +48,8 @@
       <h3 class="font-bold text-lg mb-2">Ikuti Kami</h3>
       <ul class="space-y-3 text-sm">
         <li class="flex items-center space-x-3">
-          <i class="fas fa-envelope text-[#00C9E1]"></i>
-          <span>Gmail</span>
+          <i class="fab fa-twitter text-[#00C9E1]"></i>
+          <span>Twitter</span>
         </li>
         <li class="flex items-center space-x-3">
           <i class="fab fa-instagram text-[#00C9E1]"></i>

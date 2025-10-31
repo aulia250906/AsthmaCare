@@ -37,7 +37,7 @@
 </style>
 
 <!-- 🌈 Background animasi -->
-<div class="relative min-h-screen w-full bg-gradient-to-r from-[#01E1FF] via-[#7fdbff] to-[#e0f7fa] bg-[length:400%_400%] animate-[gradientMove_8s_ease_infinite] overflow-x-hidden overflow-y-auto">
+<div class="relative min-h-screen w-full bg-gradient-to-r from-[#01E1FF] via-[#7fdbff] to-[#e0f7fa] bg-[length:400%_400%] animate-[gradientMove_8s_ease_infinite] px-4 overflow-x-hidden overflow-y-auto">
 
   <!-- ✨ Efek bintang -->
   <div class="stars">

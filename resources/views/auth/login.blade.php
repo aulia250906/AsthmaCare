@@ -3,7 +3,7 @@
 @section('title', 'Masuk')
 
 @section('content')
-<div class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-cyan-400 via-sky-200 to-cyan-100 animate-[gradientMove_8s_ease_infinite] overflow-x-hidden overflow-y-auto font-['League_Spartan']">
+<div class="py-8 relative min-h-screen flex items-center justify-center bg-gradient-to-br from-cyan-400 via-sky-200 to-cyan-100 animate-[gradientMove_8s_ease_infinite] overflow-x-hidden overflow-y-auto font-['League_Spartan']">
 
   <!-- Efek bintang -->
   <div class="absolute inset-0 z-0 overflow-hidden">

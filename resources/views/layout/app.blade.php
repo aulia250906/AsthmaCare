@@ -22,13 +22,13 @@
 
   <style>
   * {
-      font-family: 'League Spartan', sans-serif !important;
+      font-family: 'League Spartan';
     }
     html {
       scroll-behavior: smooth;
     }
     body {
-      font-family: 'League Spartan', sans-serif;
+      font-family: 'League Spartan';
     }
   </style>
 </head>
