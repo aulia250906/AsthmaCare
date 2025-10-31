@@ -12,107 +12,151 @@
     @endauth
 
     <!-- Konten -->
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-26"> <!-- responsif padding -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <!-- Header -->
-        <div class="bg-white rounded-2xl shadow-md p-6 sm:p-8 flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
-            <div class="text-center md:text-left">
-                <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Daftar Artikel</h1>
+        <div class="bg-white rounded-3xl shadow-sm p-8 sm:p-10 flex flex-col md:flex-row justify-between items-center gap-6 mb-10">
+            <div class="text-center md:text-left max-w-xl">
+                <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">Daftar Artikel</h1>
                 <p class="text-gray-600 mt-3 text-base sm:text-lg leading-relaxed">
                     Kumpulan artikel seputar asma seperti gejala, penanganan, tips bepergian, diet dan lainnya.
                 </p>
             </div>
-            <img src="{{ asset('images/ilustrasiartikel.png') }}" alt="Ilustrasi Artikel" class="w-32 sm:w-40">
+            <img src="{{ asset('images/ilustrasiartikel.png') }}" alt="Ilustrasi Artikel" class="w-40 sm:w-48 flex-shrink-0">
         </div>
 
         <!-- Pencarian dan Filter -->
-        <div class="mt-4 flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4 sm:gap-6">
-            <div class="w-full md:w-2/3 flex items-center border rounded-xl px-4 py-2 sm:py-3 bg-white shadow-sm">
-                <input type="text" placeholder="Cari artikel, judul, topik" class="flex-1 outline-none text-gray-700 text-base sm:text-lg">
-                <button class="text-gray-500 text-lg sm:text-xl"><i class="fas fa-search"></i></button>
+        <div class="mt-6 flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4">
+            <div class="w-full md:flex-1 flex items-center border border-gray-200 rounded-2xl px-5 py-3 bg-white shadow-sm">
+                <input type="text" placeholder="Cari artikel, judul, topik" class="flex-1 outline-none text-gray-700 text-base placeholder-gray-400">
+                <button class="text-gray-400 text-xl ml-2"><i class="fas fa-search"></i></button>
             </div>
-            <select class="w-full md:w-auto border rounded-xl px-4 py-2 sm:py-3 bg-white shadow-sm text-gray-700 text-base sm:text-lg">
+            <select class="w-full md:w-auto border border-gray-200 rounded-2xl px-5 py-3 bg-white shadow-sm text-gray-700 text-base min-w-[140px]">
                 <option>Terbaru</option>
                 <option>Terlama</option>
             </select>
         </div>
 
         <!-- List Artikel -->
-        <div class="grid grid-cols-1 gap-8 sm:gap-10 mt-12 sm:mt-14">
+        <div class="mt-10 space-y-8 max-w-6xl mx-auto">
 
-            <!-- Artikel 1 -->
-            <div class="bg-white rounded-2xl shadow-md flex flex-col md:flex-row p-6 sm:p-8 transform transition duration-300 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 w-full">
-                <div class="flex-1">
-                    <h2 class="font-semibold text-xl sm:text-2xl text-gray-800">
-                        Gejala Asma atau Flu Biasa? Begini Cara Membedakannya
-                    </h2>
-                    <p class="text-gray-600 mt-3 sm:mt-4 text-base sm:text-lg leading-relaxed">
-                        Artikel yang membahas bagaimana membedakan gejala asma dengan flu biasa, durasi gejala, dan respons terhadap obat.
-                    </p>
-                    <a href="#" class="text-blue-500 mt-4 sm:mt-5 inline-block font-medium text-base sm:text-lg">Baca Selengkapnya →</a>
-                </div>
-                <div class="mt-5 sm:mt-6 md:mt-0 md:ml-8 w-full md:w-64 h-44 sm:h-52 bg-gray-100 flex items-center justify-center text-gray-400 rounded-xl">
-                    <span class="text-2xl sm:text-3xl">🖼️</span>
+            <!-- Artikel 1 - Image Kiri -->
+            <div class="group bg-white rounded-3xl shadow-md hover:shadow-2xl overflow-hidden transform transition-all duration-500 hover:-translate-y-2 border-2 border-transparent hover:border-cyan-300">
+                <div class="flex flex-col md:flex-row md:h-72">
+                    <div class="relative w-full md:w-1/2 bg-gradient-to-br from-cyan-100 to-blue-100 h-64 md:h-full flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 group-hover:scale-110 transition-transform duration-500"></div>
+                        <span class="text-5xl relative z-10 group-hover:scale-110 transition-transform duration-500">🖼️</span>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold text-cyan-600 shadow-sm">
+                            5 min read
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 p-8 flex flex-col justify-center">
+                        <h2 class="font-bold text-2xl text-gray-900 leading-tight group-hover:text-cyan-600 transition-colors duration-300">
+                            Gejala Asma atau Flu Biasa? Begini Cara Membedakannya
+                        </h2>
+                        <p class="text-gray-600 mt-3 text-base leading-relaxed line-clamp-3">
+                            Artikel yang membahas bagaimana membedakan gejala asma dan flu atau demam dengan pola batuk, adanya mengi, durasi gejala, dan respons terhadap obat.
+                        </p>
+                        <a href="#" class="text-cyan-500 mt-4 inline-flex items-center gap-2 font-semibold text-base hover:text-cyan-600 group/link">
+                            Baca Selengkapnya 
+                            <svg class="w-5 h-5 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Artikel 2 -->
-            <div class="bg-white rounded-2xl shadow-md flex flex-col md:flex-row p-6 sm:p-8 transform transition duration-300 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 w-full">
-                <div class="flex-1">
-                    <h2 class="font-semibold text-xl sm:text-2xl text-gray-800">
-                        Pertolongan Pertama pada Asma: Langkah-Langkah Penting
-                    </h2>
-                    <p class="text-gray-600 mt-3 sm:mt-4 text-base sm:text-lg leading-relaxed">
-                        Panduan singkat langkah pertolongan pertama pada serangan asma yang bisa membantu mengurangi risiko.
-                    </p>
-                    <a href="#" class="text-blue-500 mt-4 sm:mt-5 inline-block font-medium text-base sm:text-lg">Baca Selengkapnya →</a>
-                </div>
-                <div class="mt-5 sm:mt-6 md:mt-0 md:ml-8 w-full md:w-64 h-44 sm:h-52 bg-gray-100 flex items-center justify-center text-gray-400 rounded-xl">
-                    <span class="text-2xl sm:text-3xl">🖼️</span>
-                </div>
-            </div>
-
-            <!-- Artikel 3 -->
-            <div class="bg-white rounded-2xl shadow-md flex flex-col md:flex-row p-6 sm:p-8 transform transition duration-300 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 w-full">
-                <div class="flex-1">
-                    <h2 class="font-semibold text-xl sm:text-2xl text-gray-800">
-                        Tips Bepergian Aman dan Nyaman untuk Penderita Asma
-                    </h2>
-                    <p class="text-gray-600 mt-3 sm:mt-4 text-base sm:text-lg leading-relaxed">
-                        Tips penting untuk menjaga kondisi tetap stabil saat bepergian jauh bagi penderita asma.
-                    </p>
-                    <a href="#" class="text-blue-500 mt-4 sm:mt-5 inline-block font-medium text-base sm:text-lg">Baca Selengkapnya →</a>
-                </div>
-                <div class="mt-5 sm:mt-6 md:mt-0 md:ml-8 w-full md:w-64 h-44 sm:h-52 bg-gray-100 flex items-center justify-center text-gray-400 rounded-xl">
-                    <span class="text-2xl sm:text-3xl">🖼️</span>
+            <!-- Artikel 2 - Image Kanan -->
+            <div class="group bg-white rounded-3xl shadow-md hover:shadow-2xl overflow-hidden transform transition-all duration-500 hover:-translate-y-2 border-2 border-transparent hover:border-cyan-300">
+                <div class="flex flex-col md:flex-row-reverse md:h-72">
+                    <div class="relative w-full md:w-1/2 bg-gradient-to-br from-cyan-100 to-blue-100 h-64 md:h-full flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 group-hover:scale-110 transition-transform duration-500"></div>
+                        <span class="text-5xl relative z-10 group-hover:scale-110 transition-transform duration-500">🖼️</span>
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold text-cyan-600 shadow-sm">
+                            3 min read
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 p-8 flex flex-col justify-center">
+                        <h2 class="font-bold text-2xl text-gray-900 leading-tight group-hover:text-cyan-600 transition-colors duration-300">
+                            Pertolongan Pertama pada Asma: Langkah-Langkah Penting
+                        </h2>
+                        <p class="text-gray-600 mt-3 text-base leading-relaxed line-clamp-3">
+                            Panduan singkat langkah pertolongan pertama saat serangan asma: tetap tenang, posisi yang benar, dan penggunaan inhaler segera.
+                        </p>
+                        <a href="#" class="text-cyan-500 mt-4 inline-flex items-center gap-2 font-semibold text-base hover:text-cyan-600 group/link">
+                            Baca Selengkapnya 
+                            <svg class="w-5 h-5 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Artikel 4 -->
-            <div class="bg-white rounded-2xl shadow-md flex flex-col md:flex-row p-6 sm:p-8 transform transition duration-300 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 w-full">
-                <div class="flex-1">
-                    <h2 class="font-semibold text-xl sm:text-2xl text-gray-800">
-                        Asma: Penjelasan, Gejala, Faktor, Pengobatan dan Pencegahan
-                    </h2>
-                    <p class="text-gray-600 mt-3 sm:mt-4 text-base sm:text-lg leading-relaxed">
-                        Ulasan lengkap seputar penyebab, faktor risiko, hingga cara pengobatan dan pencegahan serangan asma.
-                    </p>
-                    <a href="#" class="text-blue-500 mt-4 sm:mt-5 inline-block font-medium text-base sm:text-lg">Baca Selengkapnya →</a>
+            <!-- Artikel 3 - Image Kiri -->
+            <div class="group bg-white rounded-3xl shadow-md hover:shadow-2xl overflow-hidden transform transition-all duration-500 hover:-translate-y-2 border-2 border-transparent hover:border-cyan-300">
+                <div class="flex flex-col md:flex-row md:h-72">
+                    <div class="relative w-full md:w-1/2 bg-gradient-to-br from-cyan-100 to-blue-100 h-64 md:h-full flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 group-hover:scale-110 transition-transform duration-500"></div>
+                        <span class="text-5xl relative z-10 group-hover:scale-110 transition-transform duration-500">🖼️</span>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold text-cyan-600 shadow-sm">
+                            4 min read
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 p-8 flex flex-col justify-center">
+                        <h2 class="font-bold text-2xl text-gray-900 leading-tight group-hover:text-cyan-600 transition-colors duration-300">
+                            Tips Bepergian Aman dan Nyaman untuk Penderita Asma
+                        </h2>
+                        <p class="text-gray-600 mt-3 text-base leading-relaxed line-clamp-3">
+                            Tips praktis untuk mengelola asma saat bepergian antara lain bawa obat cadangan, cek cuaca, dan pilih tempat duduk yang sesuai.
+                        </p>
+                        <a href="#" class="text-cyan-500 mt-4 inline-flex items-center gap-2 font-semibold text-base hover:text-cyan-600 group/link">
+                            Baca Selengkapnya 
+                            <svg class="w-5 h-5 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <div class="mt-5 sm:mt-6 md:mt-0 md:ml-8 w-full md:w-64 h-44 sm:h-52 bg-gray-100 flex items-center justify-center text-gray-400 rounded-xl">
-                    <span class="text-2xl sm:text-3xl">🖼️</span>
+            </div>
+
+            <!-- Artikel 4 - Image Kanan -->
+            <div class="group bg-white rounded-3xl shadow-md hover:shadow-2xl overflow-hidden transform transition-all duration-500 hover:-translate-y-2 border-2 border-transparent hover:border-cyan-300">
+                <div class="flex flex-col md:flex-row-reverse md:h-72">
+                    <div class="relative w-full md:w-1/2 bg-gradient-to-br from-cyan-100 to-blue-100 h-64 md:h-full flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 group-hover:scale-110 transition-transform duration-500"></div>
+                        <span class="text-5xl relative z-10 group-hover:scale-110 transition-transform duration-500">🖼️</span>
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold text-cyan-600 shadow-sm">
+                            7 min read
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 p-8 flex flex-col justify-center">
+                        <h2 class="font-bold text-2xl text-gray-900 leading-tight group-hover:text-cyan-600 transition-colors duration-300">
+                            Asma: Penjelasan, Gejala, Faktor, Pengobatan dan Pencegahan
+                        </h2>
+                        <p class="text-gray-600 mt-3 text-base leading-relaxed line-clamp-3">
+                            Tujuh langkah pencegahan penting yang direkomendasikan oleh rumah sakit/ahli untuk mengurangi risiko serangan asma.
+                        </p>
+                        <a href="#" class="text-cyan-500 mt-4 inline-flex items-center gap-2 font-semibold text-base hover:text-cyan-600 group/link">
+                            Baca Selengkapnya 
+                            <svg class="w-5 h-5 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Pagination -->
-        <div class="mt-14 sm:mt-16 flex flex-wrap justify-center items-center gap-2 sm:space-x-3 text-gray-600 text-base sm:text-lg">
-            <a href="#" class="px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-100">← Sebelumnya</a>
-            <a href="#" class="px-3 sm:px-4 py-2 bg-blue-500 text-white rounded-lg">1</a>
-            <a href="#" class="px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-100">2</a>
-            <a href="#" class="px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-100">3</a>
-            <a href="#" class="px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-100">4</a>
-            <a href="#" class="px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-100">5</a>
-            <a href="#" class="px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-100">Selanjutnya →</a>
+        <div class="mt-12 flex flex-wrap justify-center items-center gap-2 text-gray-600">
+            <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-100 text-sm sm:text-base transition-colors">Sebelumnya</a>
+            <a href="#" class="w-10 h-10 flex items-center justify-center bg-cyan-500 text-white rounded-lg font-medium text-sm sm:text-base shadow-md hover:shadow-lg transition-all">1</a>
+            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 text-sm sm:text-base transition-colors">2</a>
+            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 text-sm sm:text-base transition-colors">3</a>
+            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 text-sm sm:text-base transition-colors">4</a>
+            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 text-sm sm:text-base transition-colors">5</a>
+            <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-100 text-sm sm:text-base transition-colors">Selanjutnya</a>
         </div>
     </div>
 
