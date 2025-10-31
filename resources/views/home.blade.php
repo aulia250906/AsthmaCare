@@ -1,75 +1,67 @@
-@extends('layout.app')
+@extends('layout.app') 
 
-@section('title', 'Home')
+@section('title', 'Landing Page')
 
-@section('content')
-
-<!-- Navbar -->
-@include('components.navbar')
+<!-- Navbar Index -->
+@include('components.navbar_index')
 
 <!-- Hero Section - IMPROVED -->
-<section class="relative max-w-7xl mx-auto mt-12 mb-20 px-8 md:px-12 overflow-hidden">
-  <div class="bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 rounded-3xl shadow-2xl p-10 md:p-16 relative overflow-hidden">
+<section id="beranda" class="relative max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between mt-32 md:mt-20 px-8 md:px-12 mb-20 overflow-hidden">
+  
+  <!-- Decorative Background Elements -->
+  <div class="absolute top-0 left-0 w-72 h-72 bg-sky-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style="animation-delay: 1s;"></div>
+  
+  <div class="relative z-10 text-left max-w-xl">
+    <!-- Trust Badge -->
+    <div class="inline-flex items-center gap-2 bg-sky-50 border border-sky-200 rounded-full px-4 py-2 mb-6">
+      <span class="text-sky-600 text-2xl">✓</span>
+      <span class="text-sky-700 font-semibold text-sm">Sahabat Pernafasan Anda</span>
+    </div>
     
-    <!-- Decorative Background Elements -->
-    <div class="absolute top-0 right-0 w-96 h-96 bg-sky-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
-    <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style="animation-delay: 1s;"></div>
+    <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+      Kelola Asma <br> Lebih Mudah <br> dengan <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-[#12E4FF]">AsthmaCare</span>
+    </h1>
     
-    <div class="flex flex-col md:flex-row items-center justify-between relative z-10">
-      <!-- Text Content -->
-      <div class="text-left max-w-xl mb-10 md:mb-0">
-        <!-- Welcome Badge -->
-        <div class="inline-flex items-center gap-2 bg-white border border-sky-200 rounded-full px-4 py-2 mb-6 shadow-md">
-          <span class="text-2xl">👋</span>
-          <span class="text-sky-700 font-semibold text-sm">Selamat Datang Kembali!</span>
-        </div>
-        
-        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
-          Halo, <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00bcd4] to-[#7fdbff]">{{ Auth::user()->username }}</span>! 
-        </h1>
-        
-        <p class="text-gray-700 text-lg leading-relaxed mb-8">
-          "Kenali gejala lebih awal, dapatkan analisis cerdas, dan hidup lebih sehat bersama <span class="font-semibold text-sky-600">AsthmaCare</span>."
-        </p>
-        
-        <!-- Quick Stats -->
-        <div class="grid grid-cols-3 gap-4 mb-8 p-6 bg-white rounded-2xl shadow-lg">
-          <div class="text-center">
-            <p class="text-2xl font-bold text-sky-600">5+</p>
-            <p class="text-xs text-gray-600">Fitur Utama</p>
-          </div>
-          <div class="text-center border-x border-gray-200">
-            <p class="text-2xl font-bold text-emerald-600">24/7</p>
-            <p class="text-xs text-gray-600">Akses Mudah</p>
-          </div>
-          <div class="text-center">
-            <p class="text-2xl font-bold text-violet-600">100%</p>
-            <p class="text-xs text-gray-600">Gratis</p>
-          </div>
-        </div>
-        
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#" class="group bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 text-center inline-flex items-center justify-center">
-            Mulai Tes Sekarang
-            <svg class="w-5 h-5 ml-2 group-hover:ml-3 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-            </svg>
-          </a>
-          <a href="#fitur" class="border-2 border-gray-300 text-gray-800 font-semibold px-8 py-4 rounded-xl hover:bg-white hover:border-gray-400 transition-all duration-300 text-center">
-            Lihat Fitur
-          </a>
-        </div>
+    <p class="text-gray-600 text-lg mt-6 leading-relaxed mb-4">
+      Dapatkan tes kontrol asma, pemantauan gejala, dan panduan perawatan dalam satu aplikasi.
+    </p>
+    
+    <!-- Key Benefits Icons -->
+    <div class="flex flex-wrap gap-4 mb-8">
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        </svg>
+        <span class="text-sm text-gray-600 font-medium">Gratis & Mudah</span>
       </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        </svg>
+        <span class="text-sm text-gray-600 font-medium">24/7 Akses</span>
+      </div>
+    </div>
+    
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="#" class="group relative bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 text-center overflow-hidden">
+        <span class="relative z-10">Mulai Tes Sekarang</span>
+        <span class="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </a>
+      <a href="#fitur" class="border-2 border-gray-300 text-gray-800 font-semibold px-8 py-4 rounded-xl hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 text-center">Lihat Fitur</a>
+    </div>
+  </div>
 
-      <!-- Image -->
-      <div class="md:w-5/12 flex justify-center md:justify-end relative">
-        <div class="relative animate-float">
-          <img src="{{ asset('images/asmaorang.png') }}" alt="Pengguna Inhaler" class="w-80 md:w-96 drop-shadow-2xl">
-          <!-- Decorative elements -->
-          <div class="absolute -top-6 -right-6 w-20 h-20 bg-sky-400 rounded-full opacity-20 animate-ping"></div>
-          <div class="absolute -bottom-6 -left-6 w-16 h-16 bg-blue-400 rounded-full opacity-20 animate-ping" style="animation-delay: 0.5s;"></div>
-        </div>
+  <div class="relative z-10 mt-12 md:mt-0 md:w-1/2 flex justify-center">
+    <div class="relative">
+      <!-- Floating animation -->
+      <div class="animate-float">
+        <img src="{{ asset('images/dokterindex.png') }}" alt="Dokter AsthmaCare" class="w-96 md:w-[450px] drop-shadow-2xl">
       </div>
+      <!-- Decorative elements around image -->
+      <div class="absolute -top-6 -right-6 w-20 h-20 bg-sky-400 rounded-full opacity-20 animate-ping"></div>
+      <div class="absolute -bottom-6 -left-6 w-16 h-16 bg-blue-400 rounded-full opacity-20 animate-ping" style="animation-delay: 0.5s;"></div>
     </div>
   </div>
 </section>
@@ -86,13 +78,16 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
       
       <!-- Card 1 -->
-      <a href="#" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 overflow-hidden">
+      <a href="#" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-sky-400/50">
+        <!-- Badge Number -->
         <div class="absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
           01
         </div>
         
+        <!-- Gradient background on hover -->
         <div class="absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
         
+        <!-- Content -->
         <div class="relative z-10">
           <div class="bg-sky-50 group-hover:bg-white/20 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
             <img src="{{ asset('images/inhaler.png') }}" class="w-16 h-16 transition-transform duration-500 group-hover:rotate-12" alt="Tes Asma">
@@ -100,6 +95,7 @@
           <h3 class="font-bold text-xl mb-3 text-gray-900 group-hover:text-white transition-colors duration-300">Tes Kontrol Asma</h3>
           <p class="text-gray-600 group-hover:text-white/90 text-base leading-relaxed transition-colors duration-300 mb-4">Ukur tingkat kontrol asma Anda dengan kuesioner ACT (Asthma Control Test).</p>
           
+          <!-- Features list -->
           <ul class="space-y-2 mb-6">
             <li class="flex items-center text-sm text-gray-600 group-hover:text-white/80 transition-colors">
               <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -130,7 +126,7 @@
       </a>
 
       <!-- Card 2 -->
-      <a href="#" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 overflow-hidden">
+      <a href="#" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-emerald-400/50">
         <div class="absolute top-6 right-6 w-10 h-10 bg-emerald-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-emerald-600 transition-all duration-300">
           02
         </div>
@@ -174,7 +170,7 @@
       </a>
 
       <!-- Card 3 -->
-      <a href="#" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 overflow-hidden">
+      <a href="#" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-violet-400/50">
         <div class="absolute top-6 right-6 w-10 h-10 bg-violet-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-violet-600 transition-all duration-300">
           03
         </div>
@@ -221,260 +217,74 @@
   </div>
 </section>
 
-<!-- Tahukah Kamu - NEW CAROUSEL WITH ALTERNATING LAYOUT -->
-<section id="tahukah-kamu" class="bg-white py-20">
+<!-- Tentang Kami -->
+<section class="max-w-6xl mx-auto px-6 md:px-0 mt-16 flex flex-col md:flex-row items-center justify-between">
+  <div class="max-w-md md:mr-12" data-aos="zoom-in-up">
+    <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4">Tentang Kami</h2>
+    <p class="text-xl text-gray-700 mb-6">
+      AsthmaCare hadir untuk membantu Anda mengenali risiko asma lebih dini, mengambil keputusan tepat, dan hidup lebih sehat.
+    </p>
+    <p class="text-xl text-gray-700 mb-6">
+      Tujuan kami adalah menyediakan alat dan sumber daya yang mudah digunakan untuk meningkatkan kualitas hidup pengguna.
+    </p>
+    <a href="#" class="inline-block bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-sky-500 transition">Pelajari Lebih Lanjut</a>
+  </div>
+  <div class="mt-10 md:mt-0 md:w-1/2 flex justify-center md:justify-end" data-aos="zoom-in-up">
+    <img src="{{ asset('images/asmaorang.png') }}" alt="Tentang Kami" class="w-72 md:w-80">
+  </div>
+</section>
+
+
+<!-- Kenapa Memilih Kami - IMPROVED -->
+<section class="bg-white py-20">
   <div class="max-w-7xl mx-auto px-8 md:px-12">
-    
-    <!-- Header -->
-    <div class="mb-12">
-      <div class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-orange-100 px-5 py-3 rounded-full">
-        <span class="text-3xl">💡</span>
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Tahukah Kamu?</h2>
-      </div>
-      <p class="text-gray-600 mt-4 text-lg">Fakta menarik seputar asma yang perlu kamu ketahui</p>
+    <div class="text-center mb-16">
+      <span class="inline-block bg-sky-100 text-sky-700 font-semibold px-4 py-2 rounded-full text-sm mb-4">KEUNGGULAN</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Kenapa Memilih AsthmaCare?</h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">Platform terpercaya untuk pengelolaan asma modern</p>
     </div>
-
-    <!-- Carousel Container -->
-    <div class="relative">
-      <!-- Slides Container -->
-      <div id="carousel-container" class="overflow-hidden">
-        <div id="carousel-slides" class="transition-transform duration-700 ease-in-out">
-          
-          <!-- Slide 1 - Text Left, Image Right -->
-          <div class="carousel-slide min-w-full">
-            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl p-8 md:p-12 shadow-xl">
-              <!-- Text Content -->
-              <div class="flex-1 order-2 md:order-1">
-                <div class="inline-block bg-cyan-500 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                  Fakta #1
-                </div>
-                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                  Gejala Asma atau Flu Biasa? Begini Cara Membedakannya
-                </h3>
-                <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
-                  Banyak orang sulit membedakan gejala asma dengan flu biasa. Gejala asma biasanya berlangsung lebih lama dan memburuk pada malam hari atau saat beraktivitas. Sementara flu biasa cenderung membaik dalam 7-10 hari.
-                </p>
-                <ul class="space-y-3 mb-6">
-                  <li class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-cyan-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="text-gray-700">Asma: Mengi, sesak napas berulang, memburuk malam hari</span>
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-cyan-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="text-gray-700">Flu: Demam, nyeri tubuh, membaik dalam seminggu</span>
-                  </li>
-                </ul>
-                <a href="#" class="inline-flex items-center text-cyan-600 font-semibold hover:text-cyan-700 transition-colors">
-                  Baca Selengkapnya 
-                  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>
-                </a>
-              </div>
-              
-              <!-- Image -->
-              <div class="flex-1 order-1 md:order-2">
-                <div class="relative">
-                  <div class="absolute inset-0 bg-cyan-400 rounded-3xl opacity-20 blur-2xl"></div>
-                  <div class="relative bg-white rounded-3xl p-6 shadow-2xl">
-                    <div class="w-full h-80 bg-gradient-to-br from-cyan-100 to-blue-200 rounded-2xl flex items-center justify-center">
-                      <img src="{{ asset('images/artikel1.png') }}" alt="Gejala Asma" class="w-full h-full object-cover rounded-2xl">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 2 - Image Left, Text Right -->
-          <div class="carousel-slide min-w-full">
-            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 bg-gradient-to-br from-rose-50 to-pink-50 rounded-3xl p-8 md:p-12 shadow-xl">
-              <!-- Image -->
-              <div class="flex-1">
-                <div class="relative">
-                  <div class="absolute inset-0 bg-rose-400 rounded-3xl opacity-20 blur-2xl"></div>
-                  <div class="relative bg-white rounded-3xl p-6 shadow-2xl">
-                    <div class="w-full h-80 bg-gradient-to-br from-rose-100 to-pink-200 rounded-2xl flex items-center justify-center">
-                      <img src="{{ asset('images/artikel2.png') }}" alt="Pertolongan Pertama" class="w-full h-full object-cover rounded-2xl">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Text Content -->
-              <div class="flex-1">
-                <div class="inline-block bg-rose-500 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                  Fakta #2
-                </div>
-                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                  5 Tanda Awal Asma yang Sering Disepelekan
-                </h3>
-                <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
-                  Banyak penderita asma tidak menyadari gejala awal yang mereka alami. Mengenali tanda-tanda ini sejak dini dapat membantu penanganan yang lebih cepat dan efektif.
-                </p>
-                <ul class="space-y-3 mb-6">
-                  <li class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-rose-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="text-gray-700">Napas berbunyi (mengi) saat bernapas</span>
-                  </li>
-                </ul>
-                <a href="#" class="inline-flex items-center text-rose-600 font-semibold hover:text-rose-700 transition-colors">
-                  Baca Selengkapnya 
-                  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 3 - Text Left, Image Right -->
-          <div class="carousel-slide min-w-full">
-            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl p-8 md:p-12 shadow-xl">
-              <!-- Text Content -->
-              <div class="flex-1 order-2 md:order-1">
-                <div class="inline-block bg-emerald-500 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                  Fakta #3
-                </div>
-                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                  Olahraga yang Aman untuk Penderita Asma
-                </h3>
-                <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
-                  Memiliki asma bukan berarti tidak bisa berolahraga! Dengan pilihan olahraga yang tepat dan persiapan yang baik, penderita asma tetap bisa aktif dan sehat.
-                </p>
-                <ul class="space-y-3 mb-6">
-                  <li class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="text-gray-700">Berenang: olahraga paling direkomendasikan</span>
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="text-gray-700">Yoga: melatih pernapasan dengan lembut</span>
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="text-gray-700">Jalan santai: aktivitas ringan yang efektif</span>
-                  </li>
-                </ul>
-                <a href="#" class="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors">
-                  Baca Selengkapnya 
-                  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>
-                </a>
-              </div>
-              
-              <!-- Image -->
-              <div class="flex-1 order-1 md:order-2">
-                <div class="relative">
-                  <div class="absolute inset-0 bg-emerald-400 rounded-3xl opacity-20 blur-2xl"></div>
-                  <div class="relative bg-white rounded-3xl p-6 shadow-2xl">
-                    <div class="w-full h-80 bg-gradient-to-br from-emerald-100 to-teal-200 rounded-2xl flex items-center justify-center">
-                      <img src="{{ asset('images/artikel3.png') }}" alt="Olahraga" class="w-full h-full object-cover rounded-2xl">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 4 - Image Left, Text Right -->
-          <div class="carousel-slide min-w-full">
-            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 bg-gradient-to-br from-violet-50 to-purple-50 rounded-3xl p-8 md:p-12 shadow-xl">
-              <!-- Image -->
-              <div class="flex-1">
-                <div class="relative">
-                  <div class="absolute inset-0 bg-violet-400 rounded-3xl opacity-20 blur-2xl"></div>
-                  <div class="relative bg-white rounded-3xl p-6 shadow-2xl">
-                    <div class="w-full h-80 bg-gradient-to-br from-violet-100 to-purple-200 rounded-2xl flex items-center justify-center">
-                      <img src="{{ asset('images/artikel3.png') }}" alt="makanan" class="w-full h-full object-cover rounded-2xl">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Text Content -->
-              <div class="flex-1">
-                <div class="inline-block bg-violet-500 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                  Fakta #4
-                </div>
-                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                  Makanan yang Baik dan Buruk untuk Asma
-                </h3>
-                <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
-                  Pola makan yang tepat dapat membantu mengontrol gejala asma. Beberapa makanan dapat membantu mengurangi inflamasi, sementara yang lain justru dapat memicu serangan.
-                </p>
-                <ul class="space-y-3 mb-6">
-                  <li class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-violet-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="text-gray-700">Baik: Buah-buahan, sayuran hijau, ikan omega-3</span>
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-violet-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="text-gray-700">Hindari: Makanan olahan, MSG, pengawet</span>
-                  </li>
-                  <li class="flex items-start gap-3">
-                    <svg class="w-6 h-6 text-violet-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span class="text-gray-700">Vitamin D membantu fungsi paru-paru</span>
-                  </li>
-                </ul>
-                <a href="#" class="inline-flex items-center text-violet-600 font-semibold hover:text-violet-700 transition-colors">
-                  Baca Selengkapnya 
-                  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Navigation Buttons -->
-      <button id="prev-btn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-4 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 z-10">
-        <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-        </svg>
-      </button>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
-      <button id="next-btn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-4 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 z-10">
-        <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
-      </button>
-
-      <!-- Indicators -->
-      <div class="flex justify-center gap-3 mt-8">
-        <button class="indicator w-3 h-3 rounded-full bg-sky-600 transition-all duration-300" data-slide="0"></button>
-        <button class="indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="1"></button>
-        <button class="indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="2"></button>
-        <button class="indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="3"></button>
+      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300">
+        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+          <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="UI Icon">
+        </div>
+        <h3 class="font-bold text-lg text-gray-800 mb-2">Antarmuka Ramah Pengguna</h3>
+        <p class="text-gray-600 text-sm">Desain intuitif dan mudah digunakan untuk semua usia</p>
       </div>
+      
+      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300">
+        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+          <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="Medis Icon">
+        </div>
+        <h3 class="font-bold text-lg text-gray-800 mb-2">Tes yang Didukung Medis</h3>
+        <p class="text-gray-600 text-sm">Berbasis standar ACT yang diakui secara internasional</p>
+      </div>
+      
+      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300">
+        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+          <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="Akses Icon">
+        </div>
+        <h3 class="font-bold text-lg text-gray-800 mb-2">Akses Kapan Saja</h3>
+        <p class="text-gray-600 text-sm">Tersedia 24/7 di semua perangkat Anda</p>
+      </div>
+      
+      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300">
+        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+          <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="Privasi Icon">
+        </div>
+        <h3 class="font-bold text-lg text-gray-800 mb-2">Privasi Data Terjamin</h3>
+        <p class="text-gray-600 text-sm">Enkripsi end-to-end untuk keamanan maksimal</p>
+      </div>
+      
     </div>
   </div>
 </section>
 
+
 <!-- Testimonials - IMPROVED -->
-<section class="py-24 bg-white">
+<section class="py-24">
   <div class="max-w-7xl mx-auto px-8 md:px-12">
     <div class="text-center mb-16">
       <span class="inline-block bg-sky-100 text-sky-700 font-semibold px-4 py-2 rounded-full text-sm mb-4">TESTIMONI</span>
@@ -505,7 +315,7 @@
           <div class="flex items-center gap-4">
             <div>
               <p class="text-gray-900 font-bold text-lg">Siti Nurhaliza</p>
-              <p class="text-gray-500 text-sm">Pengguna Aktif</p>
+              <p class="text-gray-500 text-sm">Pengguna Aktif </p>
             </div>
             <div class="flex-1 border-l-2 border-sky-200 pl-4">
               <p class="text-sky-600 font-semibold text-sm">✓ Verified User</p>
@@ -519,7 +329,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       
       <!-- Testimonial 1 -->
-      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 font-bold text-lg">
             AR
@@ -533,7 +343,7 @@
       </div>
 
       <!-- Testimonial 2 -->
-      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 font-bold text-lg">
             DP
@@ -547,7 +357,7 @@
       </div>
 
       <!-- Testimonial 3 -->
-      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-12 h-12 bg-violet-100 rounded-full flex items-center justify-center text-violet-600 font-bold text-lg">
             BW
@@ -563,7 +373,35 @@
   </div>
 </section>
 
-<!-- Floating Animation CSS -->
+<!-- CTA Section - NEW -->
+<section class="bg-gradient-to-br from-cyan-400 via-sky-200 to-cyan-100 py-20 relative overflow-hidden">
+  <!-- Decorative Elements -->
+  <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full mix-blend-overlay opacity-10 -translate-x-1/2 -translate-y-1/2"></div>
+  <div class="absolute bottom-0 right-0 w-80 h-80 bg-white rounded-full mix-blend-overlay opacity-10 translate-x-1/2 translate-y-1/2"></div>
+  
+  <div class="max-w-5xl mx-auto px-8 md:px-12 text-center relative z-10">
+    <h2 class="text-3xl md:text-5xl font-bold text-sky-600 mb-6">
+      Siap Mengelola Asma dengan Lebih Baik?
+    </h2>
+    <p class="text-sky-600/90 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+      Bergabunglah dengan ribuan pengguna yang telah merasakan manfaat AsthmaCare. Mulai tes gratis Anda sekarang!
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a href="#" class="group bg-white text-sky-600 font-bold px-10 py-5 rounded-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center">
+        Mulai Tes Gratis
+        <svg class="w-5 h-5 ml-2 group-hover:ml-3 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+        </svg>
+      </a>
+      <a href="#fitur" class="border-2 border-sky-60 text-sky-600 font-semibold px-10 py-5 rounded-xl hover:bg-white/10 transition-all duration-300">
+        Pelajari Fitur
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Custom Animations -->
 <style>
 @keyframes float {
   0%, 100% {
@@ -578,84 +416,3 @@
   animation: float 3s ease-in-out infinite;
 }
 </style>
-
-<!-- Carousel JavaScript -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const slidesContainer = document.getElementById('carousel-slides');
-  const slides = document.querySelectorAll('.carousel-slide');
-  const prevBtn = document.getElementById('prev-btn');
-  const nextBtn = document.getElementById('next-btn');
-  const indicators = document.querySelectorAll('.indicator');
-  
-  let currentSlide = 0;
-  const totalSlides = slides.length;
-  let autoPlayInterval;
-
-  function goToSlide(n) {
-    currentSlide = (n + totalSlides) % totalSlides;
-    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-    
-    // Update indicators
-    indicators.forEach((indicator, index) => {
-      if (index === currentSlide) {
-        indicator.classList.remove('bg-gray-300');
-        indicator.classList.add('bg-sky-600', 'w-8');
-      } else {
-        indicator.classList.remove('bg-sky-600', 'w-8');
-        indicator.classList.add('bg-gray-300');
-      }
-    });
-  }
-
-  function nextSlide() {
-    goToSlide(currentSlide + 1);
-  }
-
-  function prevSlide() {
-    goToSlide(currentSlide - 1);
-  }
-
-  function startAutoPlay() {
-    autoPlayInterval = setInterval(nextSlide, 5000); // Auto slide every 5 seconds
-  }
-
-  function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
-  }
-
-  // Event Listeners
-  nextBtn.addEventListener('click', () => {
-    nextSlide();
-    stopAutoPlay();
-    startAutoPlay(); // Restart auto play after manual control
-  });
-
-  prevBtn.addEventListener('click', () => {
-    prevSlide();
-    stopAutoPlay();
-    startAutoPlay();
-  });
-
-  // Indicator clicks
-  indicators.forEach((indicator, index) => {
-    indicator.addEventListener('click', () => {
-      goToSlide(index);
-      stopAutoPlay();
-      startAutoPlay();
-    });
-  });
-
-  // Pause auto play on hover
-  slidesContainer.addEventListener('mouseenter', stopAutoPlay);
-  slidesContainer.addEventListener('mouseleave', startAutoPlay);
-
-  // Start auto play
-  startAutoPlay();
-
-  // Make slides display flex
-  slidesContainer.style.display = 'flex';
-});
-</script>
-
-@endsection 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>

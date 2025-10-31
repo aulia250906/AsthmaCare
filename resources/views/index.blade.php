@@ -24,7 +24,6 @@
     </h1>
     
     <p class="text-gray-600 text-lg mt-6 leading-relaxed mb-4">
-      Dapatkan tes kontrol asma, pemantauan gejala, dan panduan perawatan dalam satu aplikasi.
     </p>
     
     <!-- Key Benefits Icons -->
