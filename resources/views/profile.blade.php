@@ -27,7 +27,7 @@
         </h1>
 
         <a href="{{ route('home') }}" 
-           class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-5 py-2 rounded-xl shadow hover:opacity-90 transition">
+           class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-5 py-2 rounded-xl shadow hover:from-[#0097a7] hover:to-[#55c6ff] transition">
             Kembali ke Beranda
         </a>
     </div>
@@ -44,29 +44,29 @@
             <div class="mb-4">
                 <label class="block text-gray-700 font-medium mb-1">Nama Lengkap</label>
                 <input type="text" name="name" value="{{ $user->name }}" 
-                       class="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-cyan-300">
+                       class="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-cyan-300 focus:outline-none">
             </div>
 
             <div class="mb-4">
                 <label class="block text-gray-700 font-medium mb-1">Username</label>
                 <input type="text" name="username" value="{{ $user->username }}" 
-                       class="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-cyan-300">
+                       class="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-cyan-300 focus:outline-none">
             </div>
 
             <div class="mb-4">
                 <label class="block text-gray-700 font-medium mb-1">Email</label>
                 <input type="email" name="email" value="{{ $user->email }}" 
-                       class="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-cyan-300">
+                       class="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-cyan-300 focus:outline-none">
             </div>
 
             <div class="mb-4">
                 <label class="block text-gray-700 font-medium mb-1">No. Telepon</label>
                 <input type="text" name="telpon" value="{{ $user->telpon }}" 
-                       class="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-cyan-300">
+                       class="w-full border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-cyan-300 focus:outline-none">
             </div>
 
             <button type="submit" 
-                    class="mt-4 bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-6 py-2 rounded-full shadow hover:opacity-90 transition">
+                    class="mt-4 bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-6 py-2 rounded-full shadow hover:from-[#0097a7] hover:to-[#55c6ff] transition">
                 Simpan Perubahan
             </button>
         </div>
@@ -90,7 +90,7 @@
                 class="w-32 h-32 rounded-full object-cover border-4 border-[#00bcd4] shadow mb-3">
 
             <label for="photo"
-                class="cursor-pointer bg-white border border-gray-300 px-4 py-1 rounded-full text-sm text-gray-700 font-medium hover:bg-gray-100 transition">
+                class="cursor-pointer bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] border border-gray-300 px-4 py-1 rounded-full text-sm text-white font-medium hover:from-[#0097a7] hover:to-[#55c6ff] transition">
                 Ubah Foto
             </label>
 
@@ -110,23 +110,23 @@
                 <div>
                     <label class="block text-gray-700 font-medium mb-1">Password Lama</label>
                     <input type="password" name="old_password" 
-                           class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-300">
+                           class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-300 focus:outline-none">
                 </div>
 
                 <div>
                     <label class="block text-gray-700 font-medium mb-1">Password Baru</label>
                     <input type="password" name="new_password" 
-                           class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-300">
+                           class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-300 focus:outline-none">
                 </div>
 
                 <div>
                     <label class="block text-gray-700 font-medium mb-1">Konfirmasi Password Baru</label>
                     <input type="password" name="confirm_password" 
-                           class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-300">
+                           class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-cyan-300 focus:outline-none">
                 </div>
 
                 <button type="submit" 
-                        class="w-full bg-gradient-to-r from-[#00bcd4] to-[#a7ffeb] text-white font-semibold py-2 rounded-lg shadow hover:opacity-90 transition">
+                        class="w-full bg-gradient-to-r from-[#00bcd4] to-[#01E1FF] text-white font-semibold py-2 rounded-lg shadow hover:from-[#0097a7] hover:to-[#55c6ff] transition">
                     Perbarui Password
                 </button>
             </form>

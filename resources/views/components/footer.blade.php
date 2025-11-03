@@ -20,7 +20,7 @@
         <li><a href="/beranda" class="hover:text-[#00C9E1] transition">Beranda</a></li>
         <li><a href="/tes-asma" class="hover:text-[#00C9E1] transition">Tes Asma</a></li>
         <li><a href="/artikel" class="hover:text-[#00C9E1] transition">Artikel</a></li>
-        <li><a href="/kontak" class="hover:text-[#00C9E1] transition">Kontak</a></li>
+        <li><a href="/ulasan" class="hover:text-[#00C9E1] transition">Ulasan</a></li>
       </ul>
     </div>
 

@@ -26,15 +26,55 @@
 
         <!-- Pencarian dan Filter -->
         <div class="mt-6 flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4">
-            <div class="w-full md:flex-1 flex items-center border border-gray-200 rounded-2xl px-5 py-3 bg-white shadow-sm">
-                <input type="text" placeholder="Cari artikel, judul, topik" class="flex-1 outline-none text-gray-700 text-base placeholder-gray-400">
-                <button class="text-gray-400 text-xl ml-2"><i class="fas fa-search"></i></button>
-            </div>
-            <select class="w-full md:w-auto border border-gray-200 rounded-2xl px-5 py-3 bg-white shadow-sm text-gray-700 text-base min-w-[140px]">
-                <option>Terbaru</option>
-                <option>Terlama</option>
-            </select>
-        </div>
+    
+    <!-- search -->
+    <div class="w-full md:flex-1 flex items-center border border-gray-200 rounded-2xl px-5 py-3 bg-white shadow-sm 
+        focus-within:ring-2 focus-within:ring-cyan-400 focus-within:border-transparent transition">
+        <input type="text" placeholder="Cari artikel, judul, topik" 
+               class="flex-1 outline-none text-gray-700 text-base placeholder-gray-400">
+        <button class="text-gray-400 text-xl ml-2"><i class="fas fa-search"></i></button>
+    </div>
+
+    <!-- filter -->
+   <div class="relative md:w-auto w-full" id="sort-wrapper">
+
+  <!-- Button -->
+  <button id="sort-btn"
+    class="relative w-full border border-gray-200 rounded-2xl pl-5 pr-5 py-3 bg-white shadow-sm 
+    text-gray-700 text-base min-w-[140px] h-[52px] flex items-center justify-start
+    focus:outline-none focus:ring-2 focus:ring-cyan-400 transition">
+
+    <span id="sort-value">Terbaru</span>
+
+    <!-- icon di pojok kanan -->
+    <svg id="sort-icon" class="absolute right-5 w-4 h-4 text-gray-500 transition-transform duration-200"
+      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M19 9l-7 7-7-7" />
+    </svg>
+
+  </button>
+
+  <!-- Dropdown -->
+  <div id="sort-menu"
+    class="absolute right-0 mt-2 w-full bg-white border border-gray-200 rounded-lg shadow-lg py-2 transform scale-95 opacity-0 transition-all duration-200 ease-out origin-top hidden z-50">
+
+    <div class="block px-4 py-2 text-gray-700 hover:bg-gray-50 cursor-pointer"
+      onclick="setSort('Terbaru')">
+      Terbaru
+    </div>
+
+    <div class="block px-4 py-2 text-gray-700 hover:bg-gray-50 cursor-pointer"
+      onclick="setSort('Terlama')">
+      Terlama
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
 
         <!-- List Artikel -->
         <div class="mt-10 space-y-8 max-w-6xl mx-auto">
@@ -159,6 +199,48 @@
             <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-100 text-sm sm:text-base transition-colors">Selanjutnya</a>
         </div>
     </div>
+
+
+    <script>
+  const sortBtn   = document.getElementById("sort-btn");
+  const sortMenu  = document.getElementById("sort-menu");
+  const sortValue = document.getElementById("sort-value");
+  const sortIcon  = document.getElementById("sort-icon");
+
+  sortBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isHidden = sortMenu.classList.contains("hidden");
+
+    if (isHidden) {
+      sortMenu.classList.remove("hidden");
+      setTimeout(() => {
+        sortMenu.classList.remove("scale-95", "opacity-0");
+        sortIcon.classList.add("rotate-180");
+      }, 10);
+    } else {
+      sortMenu.classList.add("scale-95", "opacity-0");
+      sortIcon.classList.remove("rotate-180");
+      setTimeout(() => sortMenu.classList.add("hidden"), 200);
+    }
+  });
+
+  // klik luar → hide
+  document.addEventListener("click", () => {
+    if (!sortMenu.classList.contains("hidden")) {
+      sortMenu.classList.add("scale-95", "opacity-0");
+      sortIcon.classList.remove("rotate-180");
+      setTimeout(() => sortMenu.classList.add("hidden"), 200);
+    }
+  });
+
+  function setSort(val) {
+    sortValue.innerText = val;
+    sortMenu.classList.add("scale-95", "opacity-0");
+    sortIcon.classList.remove("rotate-180");
+    setTimeout(() => sortMenu.classList.add("hidden"), 200);
+  }
+</script>
+
 
     <!-- Footer -->
     <x-footer />

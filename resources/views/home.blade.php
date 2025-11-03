@@ -3,7 +3,7 @@
 @section('title', 'Landing Page')
 
 <!-- Navbar Index -->
-@include('components.navbar_index')
+@include('components.navbar')
 
 <!-- Hero Section - IMPROVED -->
 <section id="beranda" class="relative max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between mt-32 md:mt-20 px-8 md:px-12 mb-20 overflow-hidden">
@@ -236,7 +236,7 @@
 
 
 <!-- Kenapa Memilih Kami - IMPROVED -->
-<section class="bg-white py-20">
+<section class="bg-white py-20 overflow-hidden">
   <div class="max-w-7xl mx-auto px-8 md:px-12">
     <div class="text-center mb-16">
       <span class="inline-block bg-sky-100 text-sky-700 font-semibold px-4 py-2 rounded-full text-sm mb-4">KEUNGGULAN</span>
@@ -246,7 +246,7 @@
     
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
-      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300">
+      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300" data-aos="fade-right">
         <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
           <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="UI Icon">
         </div>
@@ -254,7 +254,7 @@
         <p class="text-gray-600 text-sm">Desain intuitif dan mudah digunakan untuk semua usia</p>
       </div>
       
-      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300">
+      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300" data-aos="fade-down-right">
         <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
           <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="Medis Icon">
         </div>
@@ -262,7 +262,7 @@
         <p class="text-gray-600 text-sm">Berbasis standar ACT yang diakui secara internasional</p>
       </div>
       
-      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300">
+      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300" data-aos="fade-down-left">
         <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
           <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="Akses Icon">
         </div>
@@ -270,7 +270,7 @@
         <p class="text-gray-600 text-sm">Tersedia 24/7 di semua perangkat Anda</p>
       </div>
       
-      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300">
+      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300" data-aos="fade-left">
         <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
           <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="Privasi Icon">
         </div>
@@ -373,33 +373,7 @@
   </div>
 </section>
 
-<!-- CTA Section - NEW -->
-<section class="bg-gradient-to-br from-cyan-400 via-sky-200 to-cyan-100 py-20 relative overflow-hidden">
-  <!-- Decorative Elements -->
-  <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full mix-blend-overlay opacity-10 -translate-x-1/2 -translate-y-1/2"></div>
-  <div class="absolute bottom-0 right-0 w-80 h-80 bg-white rounded-full mix-blend-overlay opacity-10 translate-x-1/2 translate-y-1/2"></div>
-  
-  <div class="max-w-5xl mx-auto px-8 md:px-12 text-center relative z-10">
-    <h2 class="text-3xl md:text-5xl font-bold text-sky-600 mb-6">
-      Siap Mengelola Asma dengan Lebih Baik?
-    </h2>
-    <p class="text-sky-600/90 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-      Bergabunglah dengan ribuan pengguna yang telah merasakan manfaat AsthmaCare. Mulai tes gratis Anda sekarang!
-    </p>
-    
-    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-      <a href="#" class="group bg-white text-sky-600 font-bold px-10 py-5 rounded-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center">
-        Mulai Tes Gratis
-        <svg class="w-5 h-5 ml-2 group-hover:ml-3 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-        </svg>
-      </a>
-      <a href="#fitur" class="border-2 border-sky-60 text-sky-600 font-semibold px-10 py-5 rounded-xl hover:bg-white/10 transition-all duration-300">
-        Pelajari Fitur
-      </a>
-    </div>
-  </div>
-</section>
+@include('components.footer')
 
 <!-- Custom Animations -->
 <style>
