@@ -9,6 +9,7 @@ use App\Filament\Resources\Doctors\Schemas\DoctorForm;
 use App\Filament\Resources\Doctors\Tables\DoctorsTable;
 use App\Models\Doctor;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -19,6 +20,8 @@ class DoctorResource extends Resource
     protected static ?string $model = Doctor::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-user-circle';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Daftar Dokter';
 
     protected static ?string $label = 'Dokter';
     
