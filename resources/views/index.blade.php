@@ -43,7 +43,7 @@
     </div>
     
     <div class="flex flex-col sm:flex-row gap-4">
-      <a href="#" class="group relative bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 text-center overflow-hidden">
+      <a href="/pertanyaan" class="group relative bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 text-center overflow-hidden">
         <span class="relative z-10">Mulai Tes Sekarang</span>
         <span class="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
         <div class="absolute inset-0 bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -77,7 +77,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
       
       <!-- Card 1 -->
-      <a href="#" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 overflow-hidden">
+      <a href="/pertanyaan" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-sky-400/50">
         <!-- Badge Number -->
         <div class="absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
           01
@@ -125,15 +125,15 @@
       </a>
 
       <!-- Card 2 -->
-      <a href="#" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 overflow-hidden">
-        <div class="absolute top-6 right-6 w-10 h-10 bg-emerald-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-emerald-600 transition-all duration-300">
+      <a href="/saran" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-emerald-400/50">
+        <div class="absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
           02
         </div>
         
-        <div class="absolute inset-0 bg-gradient-to-br from-emerald-400 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
         
         <div class="relative z-10">
-          <div class="bg-emerald-50 group-hover:bg-white/20 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
+          <div class="bg-sky-50 group-hover:bg-white/20 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
             <img src="{{ asset('images/perisai.png') }}" class="w-16 h-16 transition-transform duration-500 group-hover:rotate-12" alt="Saran Kesehatan">
           </div>
           <h3 class="font-bold text-xl mb-3 text-gray-900 group-hover:text-white transition-colors duration-300">Saran Kesehatan</h3>
@@ -160,7 +160,7 @@
             </li>
           </ul>
           
-          <div class="flex items-center text-emerald-600 group-hover:text-white font-semibold text-sm">
+                  <div class="flex items-center text-sky-600 group-hover:text-white font-semibold text-sm">
             Lihat Saran <span class="ml-2 group-hover:ml-3 transition-all">→</span>
           </div>
         </div>
@@ -169,15 +169,15 @@
       </a>
 
       <!-- Card 3 -->
-      <a href="#" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 overflow-hidden">
-        <div class="absolute top-6 right-6 w-10 h-10 bg-violet-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-violet-600 transition-all duration-300">
+      <a href="/artikel" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-violet-400/50">
+        <div class="absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
           03
         </div>
         
-        <div class="absolute inset-0 bg-gradient-to-br from-violet-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
-        
+        <div class="absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+            
         <div class="relative z-10">
-          <div class="bg-violet-50 group-hover:bg-white/20 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
+          <div class="bg-sky-50 group-hover:bg-white/20 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
             <img src="{{ asset('images/dokter.png') }}" class="w-16 h-16 transition-transform duration-500 group-hover:rotate-12" alt="Artikel Edukasi">
           </div>
           <h3 class="font-bold text-xl mb-3 text-gray-900 group-hover:text-white transition-colors duration-300">Artikel & Edukasi</h3>
@@ -204,7 +204,7 @@
             </li>
           </ul>
           
-          <div class="flex items-center text-violet-600 group-hover:text-white font-semibold text-sm">
+          <div class="flex items-center text-sky-600 group-hover:text-white font-semibold text-sm">
             Baca Artikel <span class="ml-2 group-hover:ml-3 transition-all">→</span>
           </div>
         </div>
