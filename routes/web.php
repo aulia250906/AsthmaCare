@@ -46,7 +46,9 @@ Route::get('/riwayat', function () {
 });
 
 
-Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel');
+Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel.index');
+Route::get('/artikel/{artikel:slug}', [ArtikelController::class, 'show'])->name('artikel.show');
+
 Route::get('/dokter', [DokterController::class, 'index'])->name('dokter.index');
 Route::get('/pertanyaan', [PertanyaanController::class, 'index'])->name('pertanyaan');
 
