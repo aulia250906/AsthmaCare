@@ -38,7 +38,7 @@
         </li>
         <li class="flex items-center space-x-3">
           <i class="fas fa-envelope text-[#00C9E1]"></i>
-          <span>asthmacare@gmail.com</span>
+          <span><a href="">asthmacare@gmail.com</a></span>
         </li>
       </ul>
     </div>
@@ -49,15 +49,15 @@
       <ul class="space-y-3 text-sm">
         <li class="flex items-center space-x-3">
           <i class="fab fa-twitter text-[#00C9E1]"></i>
-          <span>Twitter</span>
+          <span><a href="">Twitter</a></span>
         </li>
         <li class="flex items-center space-x-3">
           <i class="fab fa-instagram text-[#00C9E1]"></i>
-          <span>Instagram</span>
+          <span><a href="">Instagram</a></span>
         </li>
         <li class="flex items-center space-x-3">
           <i class="fab fa-youtube text-[#00C9E1]"></i>
-          <span>Youtube</span>
+          <span><a href="">Youtube</a></span>
         </li>
       </ul>
     </div>

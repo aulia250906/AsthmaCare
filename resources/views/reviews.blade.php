@@ -70,7 +70,7 @@
           {{-- Tombol Submit --}}
           <div class="text-center">
               <button type="submit" 
-                      class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-8 py-2 rounded-full shadow hover:scale-105 hover:opacity-90 transition">
+                      class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-8 py-2 rounded-full shadow hover:scale-105 hover:from-[#0097a7] hover:to-[#55c6ff] transition">
                   Kirim Ulasan
               </button>
           </div>

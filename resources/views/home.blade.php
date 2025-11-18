@@ -42,15 +42,10 @@
         <span class="text-sm text-gray-600 font-medium">24/7 Akses</span>
       </div>
     </div>
-    
-    <div class="flex flex-col sm:flex-row gap-4">
-      <a href="#" class="group relative bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 text-center overflow-hidden">
-        <span class="relative z-10">Mulai Tes Sekarang</span>
-        <span class="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-        <div class="absolute inset-0 bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      </a>
-      <a href="#fitur" class="border-2 border-gray-300 text-gray-800 font-semibold px-8 py-4 rounded-xl hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 text-center">Lihat Fitur</a>
-    </div>
+    <div>
+    <a href="#" class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:from-[#0097a7] hover:to-[#55c6ff] hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 text-center">Mulai Tes Sekarang</a>
+    <a href="#fitur" class="border-2 border-gray-300 text-gray-800 font-semibold px-8 py-4 rounded-xl hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 text-center">Lihat Fitur</a>
+    </div>  
   </div>
 
   <div class="relative z-10 mt-12 md:mt-0 md:w-1/2 flex justify-center">
@@ -78,7 +73,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
       
       <!-- Card 1 -->
-      <a href="/pertanyaan" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-sky-400/50">
+      <a href="/pertanyaan" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-cyan-400">
         <!-- Badge Number -->
         <div class="absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
           01
@@ -126,7 +121,7 @@
       </a>
 
       <!-- Card 2 -->
-      <a href="/saran" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-emerald-400/50">
+      <a href="/saran" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-cyan-400">
         <div class="absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
           02
         </div>
@@ -170,7 +165,7 @@
       </a>
 
       <!-- Card 3 -->
-      <a href="/artikel" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-violet-400/50">
+      <a href="/artikel" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-cyan-400">
         <div class="absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
           03
         </div>
@@ -227,7 +222,7 @@
     <p class="text-xl text-gray-700 mb-6">
       Tujuan kami adalah menyediakan alat dan sumber daya yang mudah digunakan untuk meningkatkan kualitas hidup pengguna.
     </p>
-    <a href="#" class="inline-block bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-sky-500 transition">Pelajari Lebih Lanjut</a>
+    <a href="#" class="inline-block bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-6 py-3 rounded-lg shadow hover:from-[#0097a7] hover:to-[#55c6ff] transition">Pelajari Lebih Lanjut</a>
   </div>
   <div class="mt-10 md:mt-0 md:w-1/2 flex justify-center md:justify-end" data-aos="zoom-in-up">
     <img src="{{ asset('images/asmaorang.png') }}" alt="Tentang Kami" class="w-72 md:w-80">
@@ -246,32 +241,32 @@
     
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       
-      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300" data-aos="fade-right">
-        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 transition-all duration-300 text-center border-2 border-transparent" data-aos="fade-right">
+        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300">
           <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="UI Icon">
         </div>
         <h3 class="font-bold text-lg text-gray-800 mb-2">Antarmuka Ramah Pengguna</h3>
         <p class="text-gray-600 text-sm">Desain intuitif dan mudah digunakan untuk semua usia</p>
       </div>
       
-      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300" data-aos="fade-down-right">
-        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 transition-all duration-300 text-center border-2 border-transparent" data-aos="fade-down-right">
+        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300">
           <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="Medis Icon">
         </div>
         <h3 class="font-bold text-lg text-gray-800 mb-2">Tes yang Didukung Medis</h3>
         <p class="text-gray-600 text-sm">Berbasis standar ACT yang diakui secara internasional</p>
       </div>
       
-      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300" data-aos="fade-down-left">
-        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 transition-all duration-300 text-center border-2 border-transparent" data-aos="fade-down-left">
+        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300">
           <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="Akses Icon">
         </div>
         <h3 class="font-bold text-lg text-gray-800 mb-2">Akses Kapan Saja</h3>
         <p class="text-gray-600 text-sm">Tersedia 24/7 di semua perangkat Anda</p>
       </div>
       
-      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 hover:scale-105 transition-all duration-300 text-center border-2 border-transparent hover:border-sky-300" data-aos="fade-left">
-        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 transition-all duration-300 text-center border-2 border-transparent" data-aos="fade-left">
+        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300">
           <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="Privasi Icon">
         </div>
         <h3 class="font-bold text-lg text-gray-800 mb-2">Privasi Data Terjamin</h3>

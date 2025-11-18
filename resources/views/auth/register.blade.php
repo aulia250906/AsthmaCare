@@ -37,7 +37,7 @@
 </style>
 
 <!-- 🌈 Background animasi -->
-<div class="relative min-h-screen w-full bg-gradient-to-r from-[#01E1FF] via-[#7fdbff] to-[#e0f7fa] bg-[length:400%_400%] animate-[gradientMove_8s_ease_infinite] px-4 overflow-x-hidden overflow-y-auto">
+<div class="relative min-h-screen w-full bg-gradient-to-r from-[#01E1FF] via-[#7fdbff] to-[#e0f7fa] px-4 overflow-x-hidden overflow-y-auto">
 
   <!-- ✨ Efek bintang -->
   <div class="stars">
@@ -47,7 +47,7 @@
   </div>
 
   <!-- 🌟 Kartu utama -->
-  <div class="relative z-10 flex flex-col md:flex-row max-w-5xl mx-auto my-10 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-lg bg-white/80">
+  <div class="relative z-10 flex flex-col md:flex-row max-w-5xl mx-auto my-10 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-lg bg-white/85">
     
     <!-- Left -->
     <div class="md:w-1/2 flex flex-col justify-center items-center p-8 text-center bg-[#C3F7FF]">

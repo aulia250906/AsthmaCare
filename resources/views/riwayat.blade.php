@@ -19,10 +19,26 @@
           <input type="text" placeholder="Cari" class="bg-transparent focus:outline-none w-full text-sm">
         </div>
         <div class="flex items-center gap-3">
-          <select class="bg-gray-100 rounded-full px-3 py-2 text-sm text-gray-600 focus:outline-none">
-            <option>Tanggal</option>
-          </select>
-          <button class="bg-sky-500 text-white px-4 py-2 rounded-full hover:bg-sky-600 transition text-sm font-medium">
+          <div class="relative w-40" id="dropdown">
+  <!-- Trigger -->
+  <button id="dropdownBtn"
+    class="bg-gray-100 rounded-full px-3 py-2 text-sm text-gray-600 w-full flex items-center justify-between border border-transparent transition-all duration-300">
+    <span id="dropdownLabel">Tanggal</span>
+    <span id="dropdownArrow" class="transition-transform duration-300">▼</span>
+  </button>
+
+  <!-- Menu -->
+  <div id="dropdownMenu"
+    class="absolute left-0 mt-2 w-full bg-white rounded-xl shadow-lg border border-cyan-300 
+           opacity-0 invisible translate-y-2 transition-all duration-300">
+    <div class="py-2">
+      <button data-value="Tanggal" class="dropdown-item w-full text-left px-3 py-1 hover:bg-cyan-50">Tanggal</button>
+      <button data-value="Bulan" class="dropdown-item w-full text-left px-3 py-1 hover:bg-cyan-50">Bulan</button>
+      <button data-value="Tahun" class="dropdown-item w-full text-left px-3 py-1 hover:bg-cyan-50">Tahun</button>
+    </div>
+  </div>
+</div>
+          <button class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white px-4 py-2 rounded-full hover:from-[#0097a7] hover:to-[#55c6ff] transition text-sm font-medium">
             📄 Ekspor ke PDF
           </button>
         </div>
@@ -36,7 +52,7 @@
       <!-- Table -->
       <div class="overflow-x-auto">
         <table class="w-full text-sm text-left border-collapse">
-          <thead class="bg-sky-600 text-white">
+          <thead class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white">
             <tr>
               <th class="py-3 px-4 rounded-l-lg">Tanggal Tes</th>
               <th class="py-3 px-4">Skor Tes</th>
@@ -95,6 +111,45 @@
 
 <x-footer />
 
+ <!-- Date Script -->
+<script>
+
+  const dropdown = document.getElementById("dropdown");
+  const btn = document.getElementById("dropdownBtn");
+  const menu = document.getElementById("dropdownMenu");
+  const label = document.getElementById("dropdownLabel");
+  const arrow = document.getElementById("dropdownArrow");
+
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("opacity-0");
+    menu.classList.toggle("invisible");
+    menu.classList.toggle("translate-y-2");
+    btn.classList.toggle("border-cyan-400");
+    arrow.classList.toggle("rotate-180");
+  });
+
+  // Klik item
+  dropdown.querySelectorAll(".dropdown-item").forEach(item => {
+    item.addEventListener("click", () => {
+      label.textContent = item.dataset.value;
+
+      // Tutup dropdown
+      menu.classList.add("opacity-0", "invisible", "translate-y-2");
+      arrow.classList.remove("rotate-180");
+      btn.classList.remove("border-cyan-400");
+    });
+  });
+
+  // Klik luar untuk menutup
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target)) {
+      menu.classList.add("opacity-0", "invisible", "translate-y-2");
+      arrow.classList.remove("rotate-180");
+      btn.classList.remove("border-cyan-400");
+    }
+  });
+  </script>
+  
   <!-- Chart Script -->
   <script>
     const ctx = document.getElementById('tesChart').getContext('2d');
