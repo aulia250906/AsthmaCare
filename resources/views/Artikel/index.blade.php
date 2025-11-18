@@ -23,24 +23,56 @@
     </div>
 
     <!-- Pencarian dan Filter -->
-    <form method="GET" action="{{ route('artikel.index') }}" class="mt-6 flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4">
-        <div class="w-full md:flex-1 flex items-center border border-gray-200 rounded-2xl px-5 py-3 bg-white shadow-sm">
-            <input 
-                type="text" 
-                name="search" 
-                value="{{ request('search') }}"
-                placeholder="Cari artikel berdasarkan judul..." 
-                class="flex-1 outline-none text-gray-700 text-base placeholder-gray-400">
-            <button type="submit" class="text-gray-400 text-xl ml-2"><i class="fas fa-search"></i></button>
+<div class="mt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+
+    <!-- Search Field -->
+    <div class="relative w-full md:flex-1">
+        <input
+            type="text"
+            name="search"
+            value="{{ request('search') }}"
+            placeholder="Cari artikel berdasarkan judul..."
+            class="bg-gray-100 rounded-full px-4 py-3 pr-10 text-base text-gray-700 w-full
+                   focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400
+                   transition-all duration-300"
+        />
+        <button type="submit"
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 text-lg">
+            🔍
+        </button>
+    </div>
+
+    <!-- Dropdown (Sort) -->
+    <div class="relative w-full md:w-44" id="dropdownSort">
+
+        <!-- Trigger -->
+        <button id="dropdownSortBtn"
+            class="bg-gray-100 rounded-full px-5 py-3 text-base text-gray-700 w-full flex items-center justify-between border border-transparent transition-all duration-300">
+            <span id="dropdownSortLabel">
+                {{ request('sort') === 'terlama' ? 'Terlama' : 'Terbaru' }}
+            </span>
+            <span id="dropdownSortArrow" class="transition-transform duration-300">▼</span>
+        </button>
+
+        <!-- Menu -->
+        <div id="dropdownSortMenu"
+            class="absolute left-0 mt-2 w-full bg-white rounded-xl shadow-lg border border-cyan-300
+                   opacity-0 invisible translate-y-2 transition-all duration-300 z-20">
+
+            <button data-value="terbaru"
+                class="dropdownSortItem w-full text-left px-4 py-2 hover:bg-cyan-50">
+                Terbaru
+            </button>
+
+            <button data-value="terlama"
+                class="dropdownSortItem w-full text-left px-4 py-2 hover:bg-cyan-50">
+                Terlama
+            </button>
+
         </div>
-        <select 
-            name="sort" 
-            onchange="this.form.submit()" 
-            class="w-full md:w-auto border border-gray-200 rounded-2xl px-5 py-3 bg-white shadow-sm text-gray-700 text-base min-w-[140px]">
-            <option value="terbaru" {{ request('sort') == 'terbaru' ? 'selected' : '' }}>Terbaru</option>
-            <option value="terlama" {{ request('sort') == 'terlama' ? 'selected' : '' }}>Terlama</option>
-        </select>
-    </form>
+    </div>
+</div>
+
 
     <!-- List Artikel -->
     <div class="mt-10 space-y-8 max-w-6xl mx-auto">
@@ -83,3 +115,44 @@
 
 <x-footer />
 @endsection
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const btn = document.getElementById("dropdownSortBtn");
+    const menu = document.getElementById("dropdownSortMenu");
+    const arrow = document.getElementById("dropdownSortArrow");
+    const label = document.getElementById("dropdownSortLabel");
+    const container = document.getElementById("dropdownSort");
+
+    btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        menu.classList.toggle("opacity-0");
+        menu.classList.toggle("invisible");
+        menu.classList.toggle("translate-y-2");
+        arrow.classList.toggle("rotate-180");
+    });
+
+    document.querySelectorAll(".dropdownSortItem").forEach(item => {
+        item.addEventListener("click", function() {
+            const value = this.dataset.value;
+
+            // update label
+            label.textContent = this.textContent.trim();
+
+            // update URL
+            const url = new URL(window.location.href);
+            url.searchParams.set("sort", value);
+            window.location.href = url.toString();
+        });
+    });
+
+    document.addEventListener("click", function(e) {
+        if (!container.contains(e.target)) {
+            menu.classList.add("opacity-0", "invisible", "translate-y-2");
+            arrow.classList.remove("rotate-180");
+        }
+    });
+
+});
+</script>
