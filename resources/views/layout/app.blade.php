@@ -33,6 +33,17 @@
   </style>
 </head>
 <body class="bg-white antialiased">
+
+<div id="pageloader"
+     class="fixed inset-0 bg-white z-[9999] flex items-center justify-center">
+
+    <div class="relative">
+        <div class="w-16 h-16 rounded-full border-4 border-cyan-400 animate-ping opacity-60"></div>
+        <div class="w-16 h-16 rounded-full border-4 border-cyan-500 animate-spin border-t-transparent absolute top-0"></div>
+    </div>
+
+</div>
+
   
   {{-- Konten utama --}}
   @yield('content')
@@ -42,6 +53,16 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
+
+    document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+        const loader = document.getElementById("pageloader");
+        loader.classList.add("opacity-0");
+
+        setTimeout(() => loader.style.display = "none", 500);
+    }, 250);
+});
+
   </script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 @include('components.navbar')
 
 <!-- Hero Section - IMPROVED -->
-<section id="beranda" class="relative max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between mt-32 md:mt-20 px-8 md:px-12 mb-20 overflow-hidden">
+<section id="beranda" class="relative max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between mt-32 md:mt-8 px-8 md:px-12 mb-20 overflow-hidden">
   
   <!-- Decorative Background Elements -->
   <div class="absolute top-0 left-0 w-72 h-72 bg-sky-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
