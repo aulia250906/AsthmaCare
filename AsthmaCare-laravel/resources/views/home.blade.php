@@ -62,221 +62,13 @@
 </section>
 
 <!-- Fitur Utama - IMPROVED -->
-<section id="fitur" class="bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] py-20">
-  <div class="max-w-7xl mx-auto px-8 md:px-12">
-    <div class="text-center mb-16">
-      <span class="inline-block bg-sky-100 text-sky-700 font-semibold px-4 py-2 rounded-full text-sm mb-4">LAYANAN KAMI</span>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Fitur Utama AsthmaCare</h2>
-      <p class="text-gray-600 text-lg max-w-2xl mx-auto">Solusi lengkap untuk membantu Anda mengelola asma dengan lebih baik</p>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-      
-      <!-- Card 1 -->
-      <a href="/pertanyaan" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-cyan-400">
-        <!-- Badge Number -->
-        <div class="absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
-          01
-        </div>
-        
-        <!-- Gradient background on hover -->
-        <div class="absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
-        
-        <!-- Content -->
-        <div class="relative z-10">
-          <div class="bg-sky-50 group-hover:bg-white/20 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
-            <img src="{{ asset('images/inhaler.png') }}" class="w-16 h-16 transition-transform duration-500 group-hover:rotate-12" alt="Tes Asma">
-          </div>
-          <h3 class="font-bold text-xl mb-3 text-gray-900 group-hover:text-white transition-colors duration-300">Tes Kontrol Asma</h3>
-          <p class="text-gray-600 group-hover:text-white/90 text-base leading-relaxed transition-colors duration-300 mb-4">Ukur tingkat kontrol asma Anda dengan kuesioner ACT (Asthma Control Test).</p>
-          
-          <!-- Features list -->
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center text-sm text-gray-600 group-hover:text-white/80 transition-colors">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Hanya 5 menit
-            </li>
-            <li class="flex items-center text-sm text-gray-600 group-hover:text-white/80 transition-colors">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Hasil instan
-            </li>
-            <li class="flex items-center text-sm text-gray-600 group-hover:text-white/80 transition-colors">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Gratis tanpa batas
-            </li>
-          </ul>
-          
-          <div class="flex items-center text-sky-600 group-hover:text-white font-semibold text-sm">
-            Mulai Tes <span class="ml-2 group-hover:ml-3 transition-all">→</span>
-          </div>
-        </div>
-        
-        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-sky-200 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-      </a>
-
-      <!-- Card 2 -->
-      <a href="/saran" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-cyan-400">
-        <div class="absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
-          02
-        </div>
-        
-        <div class="absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
-        
-        <div class="relative z-10">
-          <div class="bg-sky-50 group-hover:bg-white/20 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
-            <img src="{{ asset('images/perisai.png') }}" class="w-16 h-16 transition-transform duration-500 group-hover:rotate-12" alt="Saran Kesehatan">
-          </div>
-          <h3 class="font-bold text-xl mb-3 text-gray-900 group-hover:text-white transition-colors duration-300">Saran Kesehatan</h3>
-          <p class="text-gray-600 group-hover:text-white/90 text-base leading-relaxed transition-colors duration-300 mb-4">Dapatkan rekomendasi dan tips berdasarkan kondisi asma Anda untuk menjaga kesehatan paru-paru optimal.</p>
-          
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center text-sm text-gray-600 group-hover:text-white/80 transition-colors">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Tips harian
-            </li>
-            <li class="flex items-center text-sm text-gray-600 group-hover:text-white/80 transition-colors">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Panduan Gaya Hidup
-            </li>
-            <li class="flex items-center text-sm text-gray-600 group-hover:text-white/80 transition-colors">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Rekomendasi Makanan
-            </li>
-          </ul>
-          
-                  <div class="flex items-center text-sky-600 group-hover:text-white font-semibold text-sm">
-            Lihat Saran <span class="ml-2 group-hover:ml-3 transition-all">→</span>
-          </div>
-        </div>
-        
-        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-emerald-200 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-      </a>
-
-      <!-- Card 3 -->
-      <a href="/artikel" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-cyan-400">
-        <div class="absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
-          03
-        </div>
-        
-        <div class="absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
-            
-        <div class="relative z-10">
-          <div class="bg-sky-50 group-hover:bg-white/20 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
-            <img src="{{ asset('images/dokter.png') }}" class="w-16 h-16 transition-transform duration-500 group-hover:rotate-12" alt="Artikel Edukasi">
-          </div>
-          <h3 class="font-bold text-xl mb-3 text-gray-900 group-hover:text-white transition-colors duration-300">Artikel & Edukasi</h3>
-          <p class="text-gray-600 group-hover:text-white/90 text-base leading-relaxed transition-colors duration-300 mb-4">Akses perpustakaan artikel kesehatan dan informasi informasi mengenai Asma.</p>
-          
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center text-sm text-gray-600 group-hover:text-white/80 transition-colors">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Informasi Terpercaya
-            </li>
-            <li class="flex items-center text-sm text-gray-600 group-hover:text-white/80 transition-colors">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Artikel harian
-            </li>
-            <li class="flex items-center text-sm text-gray-600 group-hover:text-white/80 transition-colors">
-              <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Informasi Terbaru
-            </li>
-          </ul>
-          
-          <div class="flex items-center text-sky-600 group-hover:text-white font-semibold text-sm">
-            Baca Artikel <span class="ml-2 group-hover:ml-3 transition-all">→</span>
-          </div>
-        </div>
-        
-        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-violet-200 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-      </a>
-
-    </div>
-  </div>
-</section>
+  <x-home-fitur />
 
 <!-- Tentang Kami -->
-<section class="max-w-6xl mx-auto px-6 md:px-0 mt-16 flex flex-col md:flex-row items-center justify-between">
-  <div class="max-w-md md:mr-12" data-aos="zoom-in-up">
-    <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4">Tentang Kami</h2>
-    <p class="text-xl text-gray-700 mb-6">
-      AsthmaCare hadir untuk membantu Anda mengenali risiko asma lebih dini, mengambil keputusan tepat, dan hidup lebih sehat.
-    </p>
-    <p class="text-xl text-gray-700 mb-6">
-      Tujuan kami adalah menyediakan alat dan sumber daya yang mudah digunakan untuk meningkatkan kualitas hidup pengguna.
-    </p>
-    <a href="#" class="inline-block bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-6 py-3 rounded-lg shadow hover:from-[#0097a7] hover:to-[#55c6ff] transition">Pelajari Lebih Lanjut</a>
-  </div>
-  <div class="mt-10 md:mt-0 md:w-1/2 flex justify-center md:justify-end" data-aos="zoom-in-up">
-    <img src="{{ asset('images/asmaorang.png') }}" alt="Tentang Kami" class="w-72 md:w-80">
-  </div>
-</section>
-
+  <x-home-about />
 
 <!-- Kenapa Memilih Kami - IMPROVED -->
-<section class="bg-white py-20 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-8 md:px-12">
-    <div class="text-center mb-16">
-      <span class="inline-block bg-sky-100 text-sky-700 font-semibold px-4 py-2 rounded-full text-sm mb-4">KEUNGGULAN</span>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Kenapa Memilih AsthmaCare?</h2>
-      <p class="text-gray-600 text-lg max-w-2xl mx-auto">Platform terpercaya untuk pengelolaan asma modern</p>
-    </div>
-    
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      
-      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 transition-all duration-300 text-center border-2 border-transparent" data-aos="fade-right">
-        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300">
-          <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="UI Icon">
-        </div>
-        <h3 class="font-bold text-lg text-gray-800 mb-2">Antarmuka Ramah Pengguna</h3>
-        <p class="text-gray-600 text-sm">Desain intuitif dan mudah digunakan untuk semua usia</p>
-      </div>
-      
-      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 transition-all duration-300 text-center border-2 border-transparent" data-aos="fade-down-right">
-        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300">
-          <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="Medis Icon">
-        </div>
-        <h3 class="font-bold text-lg text-gray-800 mb-2">Tes yang Didukung Medis</h3>
-        <p class="text-gray-600 text-sm">Berbasis standar ACT yang diakui secara internasional</p>
-      </div>
-      
-      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 transition-all duration-300 text-center border-2 border-transparent" data-aos="fade-down-left">
-        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300">
-          <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="Akses Icon">
-        </div>
-        <h3 class="font-bold text-lg text-gray-800 mb-2">Akses Kapan Saja</h3>
-        <p class="text-gray-600 text-sm">Tersedia 24/7 di semua perangkat Anda</p>
-      </div>
-      
-      <div class="group bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] rounded-2xl p-8 transition-all duration-300 text-center border-2 border-transparent" data-aos="fade-left">
-        <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 transition-transform duration-300">
-          <img src="{{ asset('images/centang2.png') }}" class="w-8 h-8" alt="Privasi Icon">
-        </div>
-        <h3 class="font-bold text-lg text-gray-800 mb-2">Privasi Data Terjamin</h3>
-        <p class="text-gray-600 text-sm">Enkripsi end-to-end untuk keamanan maksimal</p>
-      </div>
-      
-    </div>
-  </div>
-</section>
-
+  <x-home-why />
 
 <!-- Testimonials - IMPROVED -->
 <section class="py-24">
@@ -323,49 +115,40 @@
     <!-- Additional Testimonials Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       
-      <!-- Testimonial 1 -->
+      @foreach ($reviews as $review)
       <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 font-bold text-lg">
-            AR
-          </div>
-          <div>
-            <p class="font-bold text-gray-900">Ahmad Rizki</p>
-            <div class="text-yellow-400 text-sm">★★★★★</div>
-          </div>
-        </div>
-        <p class="text-gray-600 text-sm leading-relaxed italic">"Interface-nya sangat user-friendly. Bahkan orangtua saya yang gaptek bisa menggunakannya dengan mudah!"</p>
-      </div>
+          
+          <div class="flex items-center gap-3 mb-4">
 
-      <!-- Testimonial 2 -->
-      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 font-bold text-lg">
-            DP
-          </div>
-          <div>
-            <p class="font-bold text-gray-900">Dewi Permata</p>
-            <div class="text-yellow-400 text-sm">★★★★★</div>
-          </div>
-        </div>
-        <p class="text-gray-600 text-sm leading-relaxed italic">"Fitur monitoring asma-nya membantu saya track kondisi harian. Sekarang lebih jarang kambuh!"</p>
-      </div>
+              <!-- Initial Avatar -->
+              @php
+                  $initial = strtoupper(substr($review->name, 0, 1));
+                  $colorClasses = ['sky', 'emerald', 'violet', 'rose', 'amber', 'cyan'];
+                  $color = $colorClasses[$loop->index % count($colorClasses)];
+              @endphp
 
-      <!-- Testimonial 3 -->
-      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 bg-violet-100 rounded-full flex items-center justify-center text-violet-600 font-bold text-lg">
-            BW
+              <div class="w-12 h-12 bg-{{ $color }}-100 rounded-full flex items-center justify-center text-{{ $color }}-600 font-bold text-lg">
+                  {{ $initial }}
+              </div>
+
+              <div>
+                  <p class="font-bold text-gray-900">{{ $review->name }}</p>
+
+                  <!-- Rating bintang -->
+                  <div class="text-yellow-400 text-sm">
+                      @for ($i = 1; $i <= 5; $i++)
+                          {!! $i <= $review->rating ? '★' : '☆' !!}
+                      @endfor
+                  </div>
+              </div>
           </div>
-          <div>
-            <p class="font-bold text-gray-900">Budi Wijaya</p>
-            <div class="text-yellow-400 text-sm">★★★★☆</div>
-          </div>
-        </div>
-        <p class="text-gray-600 text-sm leading-relaxed italic">"Artikel edukasinya sangat informatif. Saya jadi lebih paham cara mengelola asma dengan benar."</p>
+
+          <p class="text-gray-600 text-sm leading-relaxed italic">
+              "{{ $review->comment }}"
+          </p>
       </div>
-    </div>
-  </div>
+@endforeach
+
 </section>
 
 @include('components.footer')

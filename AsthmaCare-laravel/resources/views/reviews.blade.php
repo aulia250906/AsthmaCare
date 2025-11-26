@@ -77,38 +77,7 @@
       </form>
   </section>
 
-  {{-- DAFTAR ULASAN --}}
-  <section class="w-11/12 md:w-3/4 mx-auto space-y-6">
-      @forelse($reviews as $review)
-          <div class="bg-white border border-gray-100 rounded-2xl shadow-lg p-6 flex items-start space-x-4 animate-slide-up hover:shadow-xl transition">
-              
-              {{-- AVATAR --}}
-              <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold text-lg shadow-md"
-                   style="background-color: {{ ['#00bcd4','#26c6da','#80deea','#4dd0e1','#0097a7'][rand(0,4)] }}">
-                  {{ strtoupper(substr($review->name,0,1)) }}
-              </div>
-
-              {{-- DETAIL ULASAN --}}
-              <div class="flex-1">
-                  <div class="flex justify-between items-center">
-                      <h3 class="text-lg font-semibold text-gray-800">{{ $review->name }}</h3>
-                      <p class="text-sm text-gray-500">{{ $review->created_at->diffForHumans() }}</p>
-                  </div>
-
-                  {{-- BINTANG --}}
-                  <div class="flex text-cyan-400 text-lg mb-2">
-                      @for($i = 1; $i <= 5; $i++)
-                          <span class="{{ $i <= $review->rating ? 'text-cyan-400' : 'text-gray-300' }}">★</span>
-                      @endfor
-                  </div>
-
-                  <p class="text-gray-700 leading-relaxed">{{ $review->comment }}</p>
-              </div>
-          </div>
-      @empty
-          <p class="text-center text-gray-500">Belum ada ulasan. Jadilah yang pertama memberikan pendapatmu! 💬</p>
-      @endforelse
-  </section>
+  <x-footer />
 
   {{-- ANIMASI CSS --}}
   <style>

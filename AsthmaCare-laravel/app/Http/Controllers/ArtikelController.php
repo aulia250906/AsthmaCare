@@ -9,22 +9,17 @@ class ArtikelController extends Controller
 {
     public function index(Request $request)
     {
-        // Mulai query dasar
         $query = Artikel::query();
 
-        // 🔍 Pencarian berdasarkan judul
-        if ($request->has('search') && $request->search != '') {
+        // 🔍 Filter berdasarkan judul
+        if ($request->filled('search')) {
             $query->where('judul', 'like', '%' . $request->search . '%');
         }
 
-        // ⏳ Filter urutan (terbaru / terlama)
-        if ($request->has('sort') && $request->sort == 'terlama') {
-            $query->orderBy('created_at', 'asc');
-        } else {
-            $query->orderBy('created_at', 'desc'); // default: terbaru
-        }
+        // ⏳ Urutan artikel (default terbaru)
+        $query->orderBy('created_at', $request->sort === 'terlama' ? 'asc' : 'desc');
 
-        // Pagination dan simpan query agar tidak hilang saat berpindah halaman
+        // Pagination
         $artikels = $query->paginate(4)->withQueryString();
 
         return view('artikel.index', compact('artikels'));
@@ -34,5 +29,4 @@ class ArtikelController extends Controller
     {
         return view('artikel.show', compact('artikel'));
     }
-
 }
