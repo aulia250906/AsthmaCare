@@ -150,7 +150,7 @@
 @endforeach
 </section>
 
-@include('components.footer')
+@include('components.footer_index')
 
 <!-- Custom Animations -->
 <style>

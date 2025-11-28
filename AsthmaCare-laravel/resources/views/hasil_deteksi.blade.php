@@ -11,20 +11,23 @@
 @endauth
 
 @php
-    $riskLevel   = $hasil['risk_level'] ?? 'Tidak Diketahui';
-    $score       = $hasil['score'] ?? 0;               // 1–20
-    // $prob        = $hasil['probability'] ?? 0;      // sudah tidak dipakai di view
-    // $topsis      = $hasil['topsis'] ?? 0;           // sudah tidak dipakai di view
-    $narrative   = $hasil['narrative'] ?? 'Hasil narasi tidak tersedia.';
+    // Ambil dari model HasilTes
+    $riskLevel = $hasil->resiko ?? 'Tidak Diketahui';
+    $score     = $hasil->score ?? 0;                  // 0–20
+    $narrative = $hasil->narasi ?? 'Hasil narasi tidak tersedia.';
 
     // Lebar progress bar (min 5% supaya tetap kelihatan)
-    $width       = max(5, min(($score / 20) * 100, 100));
+    $width     = max(5, min(($score / 20) * 100, 100));
 
     // Warna bar berdasarkan risiko
-    $barColor    = $riskLevel === 'High' ? 'bg-red-500' : 'bg-green-500';
+    $barColor  = $riskLevel === 'High' ? 'bg-red-500' : 'bg-green-500';
 
     // Judul text untuk risiko
-    $riskTitle   = $riskLevel === 'High' ? 'Risiko Asma Tinggi' : ($riskLevel === 'Low' ? 'Risiko Asma Rendah' : 'Risiko Asma');
+    $riskTitle = $riskLevel === 'High'
+                    ? 'Risiko Asma Tinggi'
+                    : ($riskLevel === 'Low'
+                        ? 'Risiko Asma Rendah'
+                        : 'Risiko Asma');
 @endphp
 
 <main class="max-w-4xl mx-auto py-10 px-6 bg-gray-50 min-h-screen">
@@ -44,13 +47,17 @@
       <div class="bg-sky-100 text-gray-800 rounded-xl p-4 shadow">
         <p class="text-sm font-semibold">Nama Responden :</p>
         <p class="font-medium">
-            {{ auth()->user()->name ?? 'User' }}
+            {{ optional($hasil->user)->name ?? (auth()->user()->name ?? 'User') }}
         </p>
       </div>
       <div class="bg-sky-100 text-gray-800 rounded-xl p-4 shadow">
         <p class="text-sm font-semibold">Tanggal Tes :</p>
         <p class="font-medium">
-            {{ now()->format('d/m/Y') }}
+            @if($hasil->tanggal_tes)
+                {{ $hasil->tanggal_tes->format('d/m/Y') }}
+            @else
+                {{ now()->format('d/m/Y') }}
+            @endif
         </p>
       </div>
     </div>
@@ -80,7 +87,7 @@
       <div class="bg-sky-50 border-l-4 border-sky-400 p-4 rounded-md">
         <p class="text-gray-700 text-sm leading-relaxed">{!! $narrative !!}</p>
 
-        <p class="text-gray-500 text-xs">
+        <p class="text-gray-500 text-xs mt-2">
           Catatan: Hasil ini merupakan prediksi berbasis model dan bukan diagnosis medis pasti. 
           Untuk kepastian, silakan konsultasikan dengan tenaga kesehatan profesional.
         </p>
@@ -90,28 +97,32 @@
     <!-- Saran Artikel -->
     <section class="mb-8">
       <h4 class="font-semibold text-gray-800 mb-3">Saran Artikel</h4>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="bg-gray-100 rounded-xl p-3 text-center shadow">
-          <div class="bg-gray-200 h-24 rounded mb-3"></div>
-          <p class="font-medium text-sm text-gray-800">
-            Gejala Asma atau Flu Biasa? Begini Cara Membedakannya
-          </p>
-          <a href="#" class="text-sky-600 text-sm hover:underline">Baca Selengkapnya →</a>
-        </div>
-        <div class="bg-gray-100 rounded-xl p-3 text-center shadow">
-          <div class="bg-gray-200 h-24 rounded mb-3"></div>
-          <p class="font-medium text-sm text-gray-800">
-            Tips Mengendalikan Asma agar Tetap Aktif Sehari-hari
-          </p>
-          <a href="#" class="text-sky-600 text-sm hover:underline">Baca Selengkapnya →</a>
-        </div>
-        <div class="bg-gray-100 rounded-xl p-3 text-center shadow">
-          <div class="bg-gray-200 h-24 rounded mb-3"></div>
-          <p class="font-medium text-sm text-gray-800">
-            Lingkungan Sehat untuk Penderita Asma di Rumah
-          </p>
-          <a href="#" class="text-sky-600 text-sm hover:underline">Baca Selengkapnya →</a>
-        </div>
+
+        @forelse ($artikels as $artikel)
+          <div class="bg-gray-100 rounded-xl p-3 text-center shadow">
+
+            <!-- Gambar -->
+            <img src="{{ asset('storage/' . $artikel->gambar) }}"
+                class="h-24 w-full object-cover rounded mb-3">
+
+            <!-- Judul -->
+            <p class="font-medium text-sm text-gray-800">
+              {{ $artikel->judul }}
+            </p>
+
+            <!-- Link ke halaman detail artikel -->
+            <a href="{{ route('artikel.show', $artikel->slug) }}" 
+              class="text-sky-600 text-sm hover:underline">
+              Baca Selengkapnya →
+            </a>
+
+          </div>
+        @empty
+          <p class="text-gray-500 text-sm">Belum ada artikel.</p>
+        @endforelse
+
       </div>
     </section>
 
@@ -130,20 +141,26 @@
 
     <!-- Buttons -->
     <div class="flex justify-center gap-4 mt-8">
-      <a href="{{ route('pertanyaan.form') }}"
+      <a href="{{ route('pertanyaan.index') }}"
          class="bg-sky-500 text-white px-5 py-2 rounded-lg hover:bg-sky-600 transition text-sm md:text-base">
         Lihat Kembali Jawaban
       </a>
-      <button class="bg-sky-500 text-white px-5 py-2 rounded-lg hover:bg-sky-600 transition text-sm md:text-base">
+     <a href="{{ route('hasil.pdf', $hasil->id) }}"
+        class="bg-sky-500 text-white px-5 py-2 rounded-lg hover:bg-sky-600 transition text-sm md:text-base">
         Download PDF
-      </button>
-      <button class="bg-sky-500 text-white px-5 py-2 rounded-lg hover:bg-sky-600 transition text-sm md:text-base">
-        Lihat Riwayat Tes
-      </button>
+      </a>
+      <a href="{{ route('riwayat.index') }}"
+        class="bg-sky-500 text-white px-5 py-2 rounded-lg hover:bg-sky-600 transition text-sm md:text-base">
+          Lihat Riwayat Tes
+      </a>
     </div>
 
 </main>
 
-<x-footer />
+@auth
+    <x-footer />
+@else
+    <x-footer_index />
+@endauth
 
 @endsection
