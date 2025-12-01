@@ -21,7 +21,7 @@
                    focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 
                    transition-all duration-300"
           />
-          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">🔍</span>
+          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"><button>🔍</button></span>
         </div>
 
         <!-- Dropdown + Button -->

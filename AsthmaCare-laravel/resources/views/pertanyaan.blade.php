@@ -68,20 +68,21 @@
 
     {{-- STEP 1: Usia (Age) --}}
     <section data-step="1">
-        <h2 class="text-2xl font-semibold text-gray-900 mb-6">
-            Berapa usia Anda saat ini?
-        </h2>
+    <h2 class="text-2xl font-semibold text-gray-900 mb-6">
+        Berapa usia Anda saat ini?
+    </h2>
 
-        <div class="space-y-4 text-lg">
-            <input type="number" 
-                   name="Age" 
-                   min="1" max="120"
-                   value="{{ old('Age') }}"
-                   class="w-full border-gray-300 rounded-xl px-4 py-2 text-lg focus:ring-sky-400 focus:border-sky-400"
-                   placeholder="Masukkan usia Anda (dalam tahun)"
-                   required>
-        </div>
-    </section>
+    <div class="space-y-4 text-lg">
+        <input type="number" 
+               name="Age" 
+               min="1" max="120"
+               value="{{ old('Age') }}"
+               class="w-full border border-gray-300 rounded-xl px-4 py-2 text-lg focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300"
+                placeholder="Masukkan usia Anda (dalam tahun)"
+            required>
+    </div>
+</section>
+
 
     {{-- STEP 2: Gender --}}
     <section data-step="2" class="hidden">
@@ -91,23 +92,33 @@
 
         <div class="space-y-4 text-lg">
             <label class="flex items-center space-x-3">
-                <input type="radio" name="Gender" value="Male" 
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
-                       {{ old('Gender') == 'Male' ? 'checked' : '' }}
-                       required>
+                <input type="radio" name="Gender" value="Male"
+                    class="w-5 h-5 rounded-full border-2 border-gray-300 
+                    appearance-none cursor-pointer
+                    checked:border-white checked:bg-cyan-300
+                    focus:outline-none focus:ring-2 focus:ring-cyan-300"
+                    {{ old('Gender') == 'Male' ? 'checked' : '' }}
+                    required>
                 <span>Laki-laki</span>
             </label>
 
+
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Gender" value="Female"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Gender') == 'Female' ? 'checked' : '' }}>
                 <span>Perempuan</span>
             </label>
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Gender" value="Other"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Gender') == 'Other' ? 'checked' : '' }}>
                 <span>Lainnya</span>
             </label>
@@ -130,7 +141,7 @@
                    name="BMI" 
                    min="10" max="60"
                    value="{{ old('BMI') }}"
-                   class="w-full border-gray-300 rounded-xl px-4 py-2 text-lg focus:ring-sky-400 focus:border-sky-400"
+                   class="w-full border border-gray-300 rounded-xl px-4 py-2 text-lg focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-300"
                    placeholder="Masukkan nilai BMI Anda (contoh: 22.5)"
                    required>
         </div>
@@ -145,7 +156,10 @@
         <div class="space-y-4 text-lg">
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Smoking_Status" value="Never"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Smoking_Status') == 'Never' ? 'checked' : '' }}
                        required>
                 <span>Tidak pernah merokok</span>
@@ -153,14 +167,20 @@
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Smoking_Status" value="Former"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Smoking_Status') == 'Former' ? 'checked' : '' }}>
                 <span>Pernah merokok, sekarang berhenti</span>
             </label>
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Smoking_Status" value="Current"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Smoking_Status') == 'Current' ? 'checked' : '' }}>
                 <span>Saat ini masih merokok</span>
             </label>
@@ -176,7 +196,10 @@
         <div class="space-y-4 text-lg">
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Family_History" value="0"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Family_History') == '0' ? 'checked' : '' }}
                        required>
                 <span>Tidak ada</span>
@@ -184,7 +207,10 @@
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Family_History" value="1"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Family_History') == '1' ? 'checked' : '' }}>
                 <span>Ya, ada riwayat asma di keluarga</span>
             </label>
@@ -200,7 +226,10 @@
         <div class="space-y-4 text-lg">
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Allergies" value="None"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Allergies') == 'None' ? 'checked' : '' }}
                        required>
                 <span>Tidak ada alergi yang diketahui</span>
@@ -208,28 +237,40 @@
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Allergies" value="Dust"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Allergies') == 'Dust' ? 'checked' : '' }}>
                 <span>Alergi debu</span>
             </label>
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Allergies" value="Pollen"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Allergies') == 'Pollen' ? 'checked' : '' }}>
                 <span>Alergi serbuk sari/tanaman</span>
             </label>
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Allergies" value="Pets"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Allergies') == 'Pets' ? 'checked' : '' }}>
                 <span>Alergi hewan peliharaan (bulu, dll)</span>
             </label>
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Allergies" value="Multiple"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Allergies') == 'Multiple' ? 'checked' : '' }}>
                 <span>Beberapa alergi sekaligus</span>
             </label>
@@ -245,7 +286,10 @@
         <div class="space-y-4 text-lg">
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Air_Pollution_Level" value="Low"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Air_Pollution_Level') == 'Low' ? 'checked' : '' }}
                        required>
                 <span>Rendah (udara relatif bersih)</span>
@@ -253,14 +297,20 @@
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Air_Pollution_Level" value="Moderate"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Air_Pollution_Level') == 'Moderate' ? 'checked' : '' }}>
                 <span>Sedang</span>
             </label>
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Air_Pollution_Level" value="High"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Air_Pollution_Level') == 'High' ? 'checked' : '' }}>
                 <span>Tinggi (dekat jalan besar/pabrik, sering berasap)</span>
             </label>
@@ -276,7 +326,10 @@
         <div class="space-y-4 text-lg">
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Physical_Activity_Level" value="Sedentary"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Physical_Activity_Level') == 'Sedentary' ? 'checked' : '' }}
                        required>
                 <span>Sangat kurang aktif (banyak duduk, jarang bergerak)</span>
@@ -284,14 +337,20 @@
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Physical_Activity_Level" value="Moderate"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Physical_Activity_Level') == 'Moderate' ? 'checked' : '' }}>
                 <span>Aktivitas sedang (jalan kaki/olah raga ringan beberapa kali per minggu)</span>
             </label>
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Physical_Activity_Level" value="Active"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Physical_Activity_Level') == 'Active' ? 'checked' : '' }}>
                 <span>Sangat aktif (sering olahraga/pekerjaan fisik berat)</span>
             </label>
@@ -307,7 +366,10 @@
         <div class="space-y-4 text-lg">
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Occupation_Type" value="Indoor"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Occupation_Type') == 'Indoor' ? 'checked' : '' }}
                        required>
                 <span>Indoor (lebih banyak di dalam ruangan, misalnya kantor)</span>
@@ -315,14 +377,20 @@
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Occupation_Type" value="Outdoor"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Occupation_Type') == 'Outdoor' ? 'checked' : '' }}>
                 <span>Outdoor (lebih banyak di luar ruangan, misalnya lapangan/industri)</span>
             </label>
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Occupation_Type" value="Both"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Occupation_Type') == 'Both' ? 'checked' : '' }}>
                 <span>Kombinasi indoor dan outdoor</span>
             </label>
@@ -338,7 +406,10 @@
         <div class="space-y-4 text-lg">
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Comorbidities" value="0"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Comorbidities') == '0' ? 'checked' : '' }}
                        required>
                 <span>Tidak ada penyakit penyerta</span>
@@ -346,28 +417,40 @@
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Comorbidities" value="Diabetes"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Comorbidities') == 'Diabetes' ? 'checked' : '' }}>
                 <span>Diabetes</span>
             </label>
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Comorbidities" value="Hypertension"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Comorbidities') == 'Hypertension' ? 'checked' : '' }}>
                 <span>Hipertensi (tekanan darah tinggi)</span>
             </label>
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Comorbidities" value="COPD"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Comorbidities') == 'COPD' ? 'checked' : '' }}>
                 <span>Penyakit paru obstruktif kronis (PPOK/COPD)</span>
             </label>
 
             <label class="flex items-center space-x-3">
                 <input type="radio" name="Comorbidities" value="Multiple"
-                       class="w-5 h-5 text-sky-500 focus:ring-sky-400"
+                       class="w-5 h-5 rounded-full border-2 border-gray-300 
+                        appearance-none cursor-pointer
+                        checked:border-white checked:bg-cyan-300
+                        focus:outline-none focus:ring-2 focus:ring-cyan-300"
                        {{ old('Comorbidities') == 'Multiple' ? 'checked' : '' }}>
                 <span>Lebih dari satu komorbiditas</span>
             </label>
