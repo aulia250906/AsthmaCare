@@ -1,6 +1,9 @@
 @extends('layout.app')
 
 @section('title', 'Ulasan Pengguna')
+
+@section('content')
+
 {{-- Navbar tampil sesuai status login --}}
     @auth
         <x-navbar /> {{-- Navbar setelah login --}}
@@ -8,7 +11,6 @@
         <x-navbar_index /> {{-- Navbar sebelum login --}}
     @endauth
 
-@section('content')
 <body class="bg-gradient-to-b from-[#e0f7fa] via-white to-[#f5ffff] min-h-screen py-12">
 
   {{-- ALERT SUKSES --}}

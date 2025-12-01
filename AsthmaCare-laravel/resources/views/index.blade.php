@@ -2,6 +2,8 @@
 
 @section('title', 'Landing Page')
 
+@section('content')
+
 <!-- Navbar Index -->
 @include('components.navbar_index')
 
@@ -90,3 +92,5 @@
   animation: float 3s ease-in-out infinite;
 }
 </style>
+
+@endsection

@@ -371,4 +371,5 @@
 @else
     <x-footer_index />
 @endauth
+
 @endsection
