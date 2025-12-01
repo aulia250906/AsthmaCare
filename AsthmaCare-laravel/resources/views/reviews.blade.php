@@ -77,7 +77,11 @@
       </form>
   </section>
 
-  <x-footer />
+@auth
+    <x-footer />
+@else
+    <x-footer_index />
+@endauth
 
   {{-- ANIMASI CSS --}}
   <style>

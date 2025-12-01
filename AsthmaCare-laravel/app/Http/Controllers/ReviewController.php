@@ -23,7 +23,7 @@ class ReviewController extends Controller
         ]);
 
         Review::create([
-            'id_user' => Auth::id(), // otomatis ambil ID user yang login
+            'id_user' => Auth::check() ? Auth::id() : null, // kalau login isi id, kalau tidak null
             'name' => $request->name,
             'rating' => $request->rating,
             'comment' => $request->comment,

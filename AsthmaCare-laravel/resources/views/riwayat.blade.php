@@ -1,5 +1,7 @@
 @extends('layout.app')
 
+@section('title', 'Riwayat')
+
 @section('content')
 <body class="bg-gray-50 font-sans">
 
@@ -47,19 +49,17 @@
                 <button data-value="Tahun" class="dropdown-item w-full text-left px-3 py-1 hover:bg-cyan-50">Tahun</button>
               </div>
             </div>
-
           </div>
 
           <!-- Export Button -->
-          <button class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white px-4 py-2 rounded-full hover:from-[#0097a7] hover:to-[#55c6ff] transition text-sm font-medium">
+          <a href="{{ route('riwayat.pdf') }}"
+            class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white px-4 py-2 rounded-full hover:from-[#0097a7] hover:to-[#55c6ff] transition text-sm font-medium">
             📄 Ekspor ke PDF
-          </button>
-
+          </a>
         </div>
-
       </div>
 
-      <!-- Chart -->
+      <!-- Chart (masih dummy, nanti bisa diisi dari $riwayat kalau mau) -->
       <div class="mb-6">
         <canvas id="tesChart" height="100"></canvas>
       </div>
@@ -72,74 +72,48 @@
               <th class="py-3 px-4 rounded-l-lg">Tanggal Tes</th>
               <th class="py-3 px-4">Skor Tes</th>
               <th class="py-3 px-4">Keterangan Risiko</th>
-              <th class="py-3 px-4 rounded-r-lg">Tindakan</th>
+              <th class="py-3 px-4 rounded-r-lg">Tindakan</th> 
             </tr>
           </thead>
 
           <tbody class="text-gray-700">
             
-            <tr class="border-b hover:bg-sky-50">
-              <td class="py-3 px-4">01 Feb 2022</td>
-              <td class="py-3 px-4">28</td>
-              <td class="py-3 px-4">
-                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-medium">Risiko Tinggi</span>
-              </td>
-              <td class="py-3 px-4 text-sky-600 hover:underline cursor-pointer">🔍 Lihat Detail</td>
-            </tr>
+            @forelse($riwayat as $item)
+              @php
+                $badgeColor = $item->resiko === 'High'
+                    ? 'bg-red-100 text-red-700'
+                    : 'bg-green-100 text-green-700';
+              @endphp
 
-            <tr class="border-b hover:bg-sky-50">
-              <td class="py-3 px-4">08 Mar 2023</td>
-              <td class="py-3 px-4">18</td>
-              <td class="py-3 px-4">
-                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-medium">Risiko Tinggi</span>
-              </td>
-              <td class="py-3 px-4 text-sky-600 hover:underline cursor-pointer">🔍 Lihat Detail</td>
-            </tr>
+              <tr class="border-b hover:bg-sky-50 align-top">
+                <td class="py-3 px-4">
+                  {{ optional($item->tanggal_tes)->format('d M Y H:i') }}
+                </td>
 
-            <tr class="border-b hover:bg-sky-50">
-              <td class="py-3 px-4">03 Jan 2024</td>
-              <td class="py-3 px-4">14</td>
-              <td class="py-3 px-4">
-                <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-medium">Risiko Sedang</span>
-              </td>
-              <td class="py-3 px-4 text-sky-600 hover:underline cursor-pointer">🔍 Lihat Detail</td>
-            </tr>
+                <td class="py-3 px-4">
+                  {{ $item->score ?? '-' }}
+                </td>
 
-            <tr class="border-b hover:bg-sky-50">
-              <td class="py-3 px-4">06 Okt 2025</td>
-              <td class="py-3 px-4">9</td>
-              <td class="py-3 px-4">
-                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">Risiko Rendah</span>
-              </td>
-              <td class="py-3 px-4 text-sky-600 hover:underline cursor-pointer">🔍 Lihat Detail</td>
-            </tr>
+                <td class="py-3 px-4">
+                  <span class="px-3 py-1 rounded-full text-xs font-medium {{ $badgeColor }}">
+                    {{ $item->resiko ?? 'Tidak Diketahui' }}
+                  </span>
+                </td>
 
-            <tr class="border-b hover:bg-sky-50">
-              <td class="py-3 px-4">08 Mar 2023</td>
-              <td class="py-3 px-4">25</td>
-              <td class="py-3 px-4">
-                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-medium">Risiko Tinggi</span>
-              </td>
-              <td class="py-3 px-4 text-sky-600 hover:underline cursor-pointer">🔍 Lihat Detail</td>
-            </tr>
-
-            <tr class="border-b hover:bg-sky-50">
-              <td class="py-3 px-4">03 Jan 2024</td>
-              <td class="py-3 px-4">12</td>
-              <td class="py-3 px-4">
-                <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-medium">Risiko Sedang</span>
-              </td>
-              <td class="py-3 px-4 text-sky-600 hover:underline cursor-pointer">🔍 Lihat Detail</td>
-            </tr>
-
-            <tr>
-              <td class="py-3 px-4">06 Okt 2025</td>
-              <td class="py-3 px-4">10</td>
-              <td class="py-3 px-4">
-                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">Risiko Rendah</span>
-              </td>
-              <td class="py-3 px-4 text-sky-600 hover:underline cursor-pointer">🔍 Lihat Detail</td>
-            </tr>
+                <td class="py-3 px-4">
+                  {{-- Narasi full, tanpa dipotong --}}
+                  <div class="text-xs text-gray-700 whitespace-pre-line">
+                    {!! $item->narasi !!}
+                  </div>
+                </td>
+              </tr>
+            @empty
+              <tr>
+                <td colspan="4" class="py-4 px-4 text-center text-gray-500">
+                  Belum ada riwayat tes.
+                </td>
+              </tr>
+            @endforelse
 
           </tbody>
         </table>
@@ -184,7 +158,7 @@
     });
   </script>
 
-  <!-- Chart Script -->
+  <!-- Chart Script (masih dummy) -->
   <script>
     const ctx = document.getElementById('tesChart').getContext('2d');
     new Chart(ctx, {

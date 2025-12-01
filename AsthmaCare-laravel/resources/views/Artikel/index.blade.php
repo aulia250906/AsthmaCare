@@ -49,8 +49,14 @@
 
 </div>
 
-<x-footer />
+@auth
+    <x-footer />
+@else
+    <x-footer_index />
+@endauth
+
 @endsection
+
 
 {{-- SCRIPT DROPDOWN SORT --}}
 <script>

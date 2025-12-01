@@ -13,6 +13,9 @@ class HomeController extends Controller
         // Ambil semua ulasan terbaru
         $reviews = Review::latest()->get();
 
-        return view('home', compact('reviews'));
+        $featuredReview = $reviews->first();
+
+        return view('home', compact('reviews', 'featuredReview'));
+
     }
 }

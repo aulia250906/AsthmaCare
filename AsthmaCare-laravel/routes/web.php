@@ -9,6 +9,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\HasilController;
+use App\Http\Controllers\RiwayatController;
 
 //Route::get('/', function () { return view('welcome');});
 
@@ -37,21 +39,20 @@ Route::get('/saran', function () {
     return view('saran_kesehatan');
 });
 
-Route::get('/hasil', function () {
-    return view('hasil_deteksi');
-});
-
-Route::get('/riwayat', function () {
-    return view('riwayat');
-});
-
+Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat.index');
+Route::get('/riwayat/pdf', [RiwayatController::class, 'exportPdf'])->name('riwayat.pdf');
 
 Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel.index');
 Route::get('/artikel/{artikel:slug}', [ArtikelController::class, 'show'])->name('artikel.show');
 
 Route::get('/dokter', [DokterController::class, 'index'])->name('dokter.index');
-Route::get('/pertanyaan', [PertanyaanController::class, 'index'])->name('pertanyaan.form');
+Route::get('/pertanyaan', [PertanyaanController::class, 'index'])->name('pertanyaan.index');
 Route::post('/pertanyaan/kirim', [PertanyaanController::class, 'kirimFastAPI'])->name('pertanyaan.kirim');
+
+Route::get('/hasil', [HasilController::class, 'index'])->name('hasil.index');
+Route::get('/hasil/{id}', [HasilController::class, 'show'])->name('hasil.show');
+
+Route::get('/hasil/{id}/pdf', [HasilController::class, 'downloadPdf'])->name('hasil.pdf');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 

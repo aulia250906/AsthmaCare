@@ -17,7 +17,7 @@
     <div class="space-y-3">
       <h3 class="font-bold text-lg mb-2">Navigasi</h3>
       <ul class="space-y-2 text-sm">
-        <li><a href="/home" class="hover:text-[#00C9E1] transition">Beranda</a></li>
+        <li><a href="/" class="hover:text-[#00C9E1] transition">Beranda</a></li>
         <li><a href="/pertanyaan" class="hover:text-[#00C9E1] transition">Tes Asma</a></li>
         <li><a href="/artikel" class="hover:text-[#00C9E1] transition">Artikel</a></li>
         <li><a href="/ulasan" class="hover:text-[#00C9E1] transition">Ulasan</a></li>
