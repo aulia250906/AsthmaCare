@@ -480,7 +480,7 @@
     </div>
 </form>
 
-{{-- JS untuk handle slide pertanyaan --}}
+{{-- JS untuk handle slide pertanyaan + validasi per-step --}}
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const steps = document.querySelectorAll('[data-step]');
@@ -522,15 +522,79 @@
             updateProgress();
         }
 
+        // Tampilkan peringatan jika user belum menjawab
+        function showWarning(section) {
+            // Hapus warning lama kalau ada
+            const oldWarning = section.querySelector('.step-warning');
+            if (oldWarning) {
+                oldWarning.remove();
+            }
+
+            const warn = document.createElement('p');
+            warn.className = 'step-warning text-red-600 text-sm mt-3';
+            warn.textContent = 'Silakan jawab pertanyaan terlebih dahulu sebelum melanjutkan.';
+
+            section.appendChild(warn);
+
+            // Hilangkan otomatis setelah 3 detik
+            setTimeout(() => {
+                if (warn && warn.parentNode) {
+                    warn.parentNode.removeChild(warn);
+                }
+            }, 3000);
+        }
+
+        // Cek validasi input pada step saat ini
+        function isCurrentStepValid() {
+            const currentSection = document.querySelector(`[data-step="${currentStep}"]`);
+            const requiredInputs = currentSection.querySelectorAll('input[required]');
+
+            let valid = true;
+
+            requiredInputs.forEach((input) => {
+                if (input.type === 'radio') {
+                    // Cek minimal satu radio di group ini checked
+                    const group = currentSection.querySelectorAll(`input[name="${input.name}"]`);
+                    const anyChecked = Array.from(group).some(r => r.checked);
+                    if (!anyChecked) {
+                        valid = false;
+                    }
+                } else {
+                    // number / text dsb
+                    if (!input.value || input.value.toString().trim() === '') {
+                        valid = false;
+                    }
+                }
+            });
+
+            if (!valid) {
+                showWarning(currentSection);
+            }
+
+            return valid;
+        }
+
         btnNext.addEventListener('click', (e) => {
-            // kalau belum step terakhir -> jangan submit dulu
+            // Kalau belum step terakhir, cek validasi dulu
             if (currentStep < totalSteps) {
-                e.preventDefault(); // cegah submit
+                e.preventDefault();
+
+                if (!isCurrentStepValid()) {
+                    return; // stop di step ini
+                }
+
                 currentStep++;
                 showStep(currentStep);
                 return;
             }
-            // kalau sudah step terakhir, biarkan form submit normal (HTML5 validation jalan)
+
+            // Step terakhir -> cek validasi terakhir sekali lagi
+            if (!isCurrentStepValid()) {
+                e.preventDefault();
+                return;
+            }
+
+            // Kalau valid, biarkan form submit (HTML5 validation juga tetap jalan di sisi browser)
         });
 
         btnBack.addEventListener('click', () => {

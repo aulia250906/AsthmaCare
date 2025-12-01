@@ -43,7 +43,7 @@
       </div>
     </div>
     <div>
-    <a href="#" class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:from-[#0097a7] hover:to-[#55c6ff] hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 text-center">Mulai Tes Sekarang</a>
+    <a href="/pertanyaan" class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:from-[#0097a7] hover:to-[#55c6ff] hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 text-center">Mulai Tes Sekarang</a>
     <a href="#fitur" class="border-2 border-gray-300 text-gray-800 font-semibold px-8 py-4 rounded-xl hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 text-center">Lihat Fitur</a>
     </div>  
   </div>
