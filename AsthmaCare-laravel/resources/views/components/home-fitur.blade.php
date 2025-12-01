@@ -11,16 +11,16 @@
       <!-- Card 1 -->
       <a href="/pertanyaan" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-cyan-400">
         <!-- Badge Number -->
-        <div class="absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
+        <div class="z-20 absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-cyan-300 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
           01
         </div>
         
         <!-- Gradient background on hover -->
-        <div class="absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+        <div class="z-10 absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
         
         <!-- Content -->
         <div class="relative z-10">
-          <div class="bg-sky-50 group-hover:bg-white/20 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
+          <div class="bg-cyan-100 group-hover:bg-cyan-300 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
             <img src="{{ asset('images/inhaler.png') }}" class="w-16 h-16 transition-transform duration-500 group-hover:rotate-12" alt="Tes Asma">
           </div>
           <h3 class="font-bold text-xl mb-3 text-gray-900 group-hover:text-white transition-colors duration-300">Tes Kontrol Asma</h3>
@@ -58,14 +58,14 @@
 
       <!-- Card 2 -->
       <a href="/saran" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-cyan-400">
-        <div class="absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
+        <div class="z-20 absolute top-6 right-6 w-10 h-10 bg-cyan-100 group-hover:bg-cyan-300 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
           02
         </div>
         
-        <div class="absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+        <div class="z-10 absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
         
         <div class="relative z-10">
-          <div class="bg-sky-50 group-hover:bg-white/20 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
+          <div class="bg-cyan-100 group-hover:bg-cyan-300 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
             <img src="{{ asset('images/perisai.png') }}" class="w-16 h-16 transition-transform duration-500 group-hover:rotate-12" alt="Saran Kesehatan">
           </div>
           <h3 class="font-bold text-xl mb-3 text-gray-900 group-hover:text-white transition-colors duration-300">Saran Kesehatan</h3>
@@ -102,14 +102,14 @@
 
       <!-- Card 3 -->
       <a href="/artikel" class="group relative bg-white rounded-3xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-3 overflow-hidden border-2 border-transparent hover:border-cyan-400">
-        <div class="absolute top-6 right-6 w-10 h-10 bg-sky-100 group-hover:bg-white/90 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
+        <div class="z-20 absolute top-6 right-6 w-10 h-10 bg-cyan-100 group-hover:bg-cyan-300 rounded-full flex items-center justify-center font-bold text-sky-600 transition-all duration-300">
           03
         </div>
         
-        <div class="absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+        <div class="z-10 absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
             
         <div class="relative z-10">
-          <div class="bg-sky-50 group-hover:bg-white/20 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
+          <div class="bg-cyan-100 group-hover:bg-cyan-300 rounded-2xl p-6 mb-6 transition-all duration-500 transform group-hover:scale-110 inline-block">
             <img src="{{ asset('images/dokter.png') }}" class="w-16 h-16 transition-transform duration-500 group-hover:rotate-12" alt="Artikel Edukasi">
           </div>
           <h3 class="font-bold text-xl mb-3 text-gray-900 group-hover:text-white transition-colors duration-300">Artikel & Edukasi</h3>
