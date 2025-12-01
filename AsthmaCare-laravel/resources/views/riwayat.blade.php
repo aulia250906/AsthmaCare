@@ -161,31 +161,52 @@
   <!-- Chart Script (masih dummy) -->
   <script>
     const ctx = document.getElementById('tesChart').getContext('2d');
+
+    // Ambil label tanggal & score dari $riwayat dan urutkan dari terlama ke terbaru
+    const labels = [
+        @foreach ($riwayat->sortBy('tanggal_tes') as $item)
+            '{{ optional($item->tanggal_tes)->format("d M Y H:i") }}',
+        @endforeach
+    ];
+
+    const scores = [
+        @foreach ($riwayat->sortBy('tanggal_tes') as $item)
+            {{ $item->score ?? 0 }},
+        @endforeach
+    ];
+
     new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Feb 2022', 'Mar 2023', 'Jan 2024', 'Okt 2025', 'Mar 2023', 'Jan 2024', 'Okt 2025'],
-        datasets: [{
-          label: 'Skor Tes',
-          data: [28, 18, 14, 9, 25, 12, 10],
-          borderColor: '#0ea5e9',
-          backgroundColor: '#38bdf8',
-          tension: 0.4,
-          fill: false,
-          pointRadius: 6,
-          pointBackgroundColor: '#0ea5e9'
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: { legend: { display: false } },
-        scales: {
-          y: { beginAtZero: true, ticks: { stepSize: 5 } },
-          x: { grid: { display: false } }
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Skor Tes',
+                data: scores,
+                borderColor: '#0ea5e9',
+                backgroundColor: '#38bdf8',
+                tension: 0.4,
+                fill: false,
+                pointRadius: 6,
+                pointBackgroundColor: '#0ea5e9'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { 
+                legend: { display: false } 
+            },
+            scales: {
+                y: { 
+                    beginAtZero: true,
+                    ticks: { stepSize: 5 }
+                },
+                x: { 
+                    grid: { display: false }
+                }
+            }
         }
-      }
     });
-  </script>
+</script>
 
 </body>
 @endsection
