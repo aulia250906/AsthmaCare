@@ -2,6 +2,8 @@
 
 @section('title', 'Home')
 
+@section('content') 
+
 <!-- Navbar Index -->
 @include('components.navbar')
 
