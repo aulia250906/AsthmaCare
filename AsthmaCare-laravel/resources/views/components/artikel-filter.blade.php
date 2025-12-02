@@ -27,6 +27,7 @@
 
         <!-- Trigger -->
         <button id="dropdownSortBtn"
+            type="button"
             class="bg-gray-100 rounded-full px-5 py-3 text-base text-gray-700 w-full flex items-center justify-between border border-transparent transition-all duration-300">
             <span id="dropdownSortLabel">
                 {{ $sort === 'terlama' ? 'Terlama' : 'Terbaru' }}
@@ -38,13 +39,17 @@
         <div id="dropdownSortMenu"
             class="absolute left-0 mt-2 w-full bg-white rounded-xl shadow-lg border border-cyan-300
                    opacity-0 invisible translate-y-2 transition-all duration-300 z-20">
-
-            <button data-value="terbaru"
+            
+            <button 
+                type="button"
+                    data-value="terbaru"
                 class="dropdownSortItem w-full text-left px-4 py-2 hover:bg-cyan-50">
                 Terbaru
             </button>
 
-            <button data-value="terlama"
+            <button 
+                type="button"
+                    data-value="terlama"
                 class="dropdownSortItem w-full text-left px-4 py-2 hover:bg-cyan-50">
                 Terlama
             </button>
