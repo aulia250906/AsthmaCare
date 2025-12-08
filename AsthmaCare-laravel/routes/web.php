@@ -11,11 +11,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\HasilController;
 use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\GeminiChatController;
 
 //Route::get('/', function () { return view('welcome');});
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
-
+Route::post('/deep-chat', [GeminiChatController::class, 'handle'])->withoutMiddleware(['web']);
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
