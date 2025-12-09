@@ -60,61 +60,131 @@
     <div class="md:w-1/2 p-10 flex flex-col justify-center">
       <h3 class="text-2xl font-semibold mb-6 text-center text-[#01E1FF]">Buat Akun Baru</h3>
 
+       {{-- Notifikasi sukses --}}
+        @if (session('success'))
+            <div class="mb-4 p-3 rounded-lg border border-green-300 bg-green-100 text-green-800 text-sm">
+                {{ session('success') }}
+            </div>
+        @endif
+
       <form action="{{ route('register') }}" method="POST" class="space-y-4">
-        @csrf
+      @csrf
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-gray-700 mb-1">Nama Lengkap</label>
-            <input type="text" name="name" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none "oninvalid="this.setCustomValidity('Silakan isi nama lengkap Anda')" oninput="this.setCustomValidity('')">
+      {{-- Jika ada error umum --}}
+      @if ($errors->any())
+          <div class="mb-4 p-3 rounded-lg border border-red-300 bg-red-100 text-red-800 text-sm">
+              <ul class="list-disc pl-4">
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
           </div>
-          <div>
-            <label class="block text-gray-700 mb-1">Username</label>
-            <input type="text" name="username" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none" oninvalid="this.setCustomValidity('Silakan isi username Anda')"
-            oninput="this.setCustomValidity('')">
-          </div>
-        </div>
+      @endif
 
-        <div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {{-- NAMA --}}
+          <div>
+              <label class="block text-gray-700 mb-1">Nama Lengkap</label>
+              <input type="text" name="name" value="{{ old('name') }}" required
+                    class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none"
+                    oninvalid="this.setCustomValidity('Silakan isi nama lengkap Anda')"
+                    oninput="this.setCustomValidity('')">
+
+              @error('name')
+                  <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+              @enderror
+          </div>
+
+          {{-- USERNAME --}}
+          <div>
+              <label class="block text-gray-700 mb-1">Username</label>
+              <input type="text" name="username" value="{{ old('username') }}" required
+                    class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none"
+                    oninvalid="this.setCustomValidity('Silakan isi username Anda')"
+                    oninput="this.setCustomValidity('')">
+
+              @error('username')
+                  <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+              @enderror
+          </div>
+      </div>
+
+      {{-- EMAIL --}}
+      <div>
           <label class="block text-gray-700 mb-1">Email</label>
-          <input type="email" name="email" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none" oninvalid="this.setCustomValidity('Silakan isi email Anda')"
-            oninput="this.setCustomValidity('')">
-        </div>
+          <input type="email" name="email" value="{{ old('email') }}" required
+                class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none"
+                oninvalid="this.setCustomValidity('Silakan isi email yang valid')"
+                oninput="this.setCustomValidity('')">
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-gray-700 mb-1">Kata Sandi</label>
-            <input type="password" name="password" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none" oninvalid="this.setCustomValidity('Silakan isi kata sandi Anda')"
-            oninput="this.setCustomValidity('')">
-          </div>
-          <div>
-            <label class="block text-gray-700 mb-1">Konfirmasi Kata Sandi</label>
-            <input type="password" name="password_confirmation" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none" oninvalid="this.setCustomValidity('Silakan isi konfirmasi kata sandi Anda')"
-            oninput="this.setCustomValidity('')">
-          </div>
-        </div>
+          @error('email')
+              <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+          @enderror
+      </div>
 
-        <div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {{-- PASSWORD --}}
+          <div>
+              <label class="block text-gray-700 mb-1">Kata Sandi</label>
+              <input type="password" name="password" required minlength="6"
+                    class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none"
+                    oninvalid="this.setCustomValidity('Kata sandi minimal 6 karakter')"
+                    oninput="this.setCustomValidity('')">
+
+              @error('password')
+                  <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+              @enderror
+          </div>
+
+          {{-- PASSWORD CONFIRM --}}
+          <div>
+              <label class="block text-gray-700 mb-1">Konfirmasi Kata Sandi</label>
+              <input type="password" name="password_confirmation" required minlength="6"
+                    class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none"
+                    oninvalid="this.setCustomValidity('Konfirmasi kata sandi minimal 6 karakter')"
+                    oninput="this.setCustomValidity('')">
+
+              @error('password_confirmation')
+                  <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+              @enderror
+          </div>
+      </div>
+
+      {{-- NO TELEPON --}}
+      <div>
           <label class="block text-gray-700 mb-1">No. Telepon</label>
-          <input type="text" name="telpon" required class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none" oninvalid="this.setCustomValidity('Silakan isi no telepon Anda')"
-            oninput="this.setCustomValidity('')">
-        </div>
+          <input type="text" name="telpon" value="{{ old('telpon') }}" required
+                class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none"
+                oninvalid="this.setCustomValidity('Silakan isi nomor telepon Anda')"
+                oninput="this.setCustomValidity('')">
 
-        <!-- Checkbox -->
-        <div class="flex items-start space-x-2 mt-3">
-          <input type="checkbox" name="terms" required class="mt-1 border-gray-300 rounded focus:ring-[#01E1FF]" oninvalid="this.setCustomValidity('Silakan setujui ketentuan layanan dan kebijakan privasi terlebih dahulu')" oninput="this.setCustomValidity('')" >
+          @error('telpon')
+              <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+          @enderror
+      </div>
+
+      {{-- TERMS --}}
+      <div class="flex items-start space-x-2 mt-3">
+          <input type="checkbox" name="terms" required
+                class="mt-1 border-gray-300 rounded focus:ring-[#01E1FF]"
+                oninvalid="this.setCustomValidity('Silakan setujui Ketentuan Layanan dan Kebijakan Privasi')"
+                oninput="this.setCustomValidity('')">
+
           <label class="text-gray-700 text-sm">
-            Saya menyetujui
-            <a href="{{ route('terms') }}" class="text-[#01E1FF] font-semibold hover:underline" target="_blank">Ketentuan Layanan</a>
-            dan
-            <a href="{{ route('privacy') }}" class="text-[#01E1FF] font-semibold hover:underline" target="_blank">Kebijakan Privasi</a>
+              Saya menyetujui
+              <a href="{{ route('terms') }}" target="_blank" class="text-[#01E1FF] font-semibold hover:underline">Ketentuan Layanan</a>
+              dan
+              <a href="{{ route('privacy') }}" target="_blank" class="text-[#01E1FF] font-semibold hover:underline">Kebijakan Privasi</a>
           </label>
-        </div>
+      </div>
 
-        <button type="submit" class="w-full text-white py-2 rounded-lg font-semibold transition-transform hover:scale-105 shadow-md" style="background-color:#01E1FF;">
+      {{-- BUTTON --}}
+      <button type="submit"
+              class="w-full text-white py-2 rounded-lg font-semibold transition-transform hover:scale-105 shadow-md"
+              style="background-color:#01E1FF;">
           Daftar
-        </button>
-      </form>
+      </button>
+  </form>
 
       <div class="text-center mt-5 space-y-2">
         <p class="text-gray-600">

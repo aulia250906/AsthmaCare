@@ -54,6 +54,12 @@ class ProfileController extends Controller
             'old_password' => 'required',
             'new_password' => 'required|min:8',
             'confirm_password' => 'required|same:new_password',
+        ], [
+            'old_password.required' => 'Password lama wajib diisi.',
+            'new_password.required' => 'Password baru wajib diisi.',
+            'new_password.min' => 'Password baru minimal 8 karakter.',
+            'confirm_password.required' => 'Konfirmasi password wajib diisi.',
+            'confirm_password.same' => 'Konfirmasi password harus sama dengan password baru.',
         ]);
 
         $user = Auth::user();

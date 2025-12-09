@@ -72,6 +72,8 @@ class AuthController extends Controller
                 ->with('success', 'Selamat datang, Pengguna!');
         }
 
+        return back()->with('error', 'Email atau password salah.');
+
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ]);

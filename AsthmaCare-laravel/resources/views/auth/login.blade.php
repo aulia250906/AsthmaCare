@@ -3,6 +3,30 @@
 @section('title', 'Masuk')
 
 @section('content')
+
+{{-- Toast Notification --}}
+@if (session('success'))
+    <div id="toast-success"
+         class="fixed top-5 right-5 z-50 bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg opacity-0 transform translate-x-5 transition-all duration-500 flex items-center gap-2">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M5 13l4 4L19 7"/>
+        </svg>
+        <span>{{ session('success') }}</span>
+    </div>
+@endif
+
+@if (session('error'))
+    <div id="toast-error"
+         class="fixed top-5 right-5 z-50 bg-red-500 text-white px-4 py-3 rounded-lg shadow-lg opacity-0 transform translate-x-5 transition-all duration-500 flex items-center gap-2">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+        <span>{{ session('error') }}</span>
+    </div>
+@endif
+
 <div class="py-8 relative min-h-screen flex items-center justify-center bg-gradient-to-br from-cyan-400 via-sky-200 to-cyan-100 animate-[gradientMove_8s_ease_infinite] overflow-x-hidden overflow-y-auto font-['League_Spartan']">
 
   <!-- Efek bintang -->
@@ -30,6 +54,7 @@
     <!-- Kanan -->
     <div class="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center">
       <h3 class="text-xl md:text-2xl font-semibold mb-6 text-center text-[#01E1FF]">Masuk ke Akun Anda</h3>
+
       <form action="{{ route('login') }}" method="POST" class="space-y-4">
         @csrf
         <div>
@@ -94,4 +119,34 @@
   100% { transform: translateY(0px) scale(1); opacity: 0.6; }
 }
 </style>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+    const toasts = [
+        document.getElementById('toast-success'),
+        document.getElementById('toast-error'),
+    ];
+
+    toasts.forEach((toast) => {
+        if (!toast) return;
+
+        // Muncul
+        setTimeout(() => {
+            toast.classList.remove('opacity-0', 'translate-x-5');
+            toast.classList.add('opacity-100', 'translate-x-0');
+        }, 100);
+
+        // Hilang otomatis setelah 3 detik
+        setTimeout(() => {
+            toast.classList.add('opacity-0', 'translate-x-5');
+        }, 3000);
+
+        // Hapus dari DOM setelah animasi selesai
+        setTimeout(() => {
+            toast.remove();
+        }, 3700);
+    });
+});
+</script>
+
 @endsection

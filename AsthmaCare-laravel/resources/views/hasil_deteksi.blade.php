@@ -279,54 +279,99 @@
         </div>
     </a>
 
-    <!-- Action Buttons -->
+   <!-- Action Buttons -->
     <section class="space-y-4 lg:space-y-5 fade-in" style="animation-delay: 0.5s" aria-label="Aksi">
-        <!-- Grid 2 tombol pertama -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
-            <a href="{{ route('pertanyaan.index') }}"
-               class="w-full bg-[#01E1FF] text-white font-bold py-4 lg:py-5 rounded-2xl 
-                      hover:bg-[#00c9e6] transition-all duration-300 transform hover:scale-105 
-                      shadow-lg hover:shadow-xl flex items-center justify-center gap-2 sm:gap-3
-                      focus:outline-none focus:ring-4 focus:ring-cyan-300"
-               aria-label="Lihat kembali jawaban tes Anda">
-                <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <span class="text-sm sm:text-base lg:text-lg">Kembali Ke Halaman Pertanyaan</span>
-            </a>
 
-            <a href="{{ route('hasil.pdf', $hasil->id) }}"
-               class="w-full bg-[#01E1FF] text-white font-bold py-4 lg:py-5 rounded-2xl 
-                      hover:bg-[#00c9e6] transition-all duration-300 transform hover:scale-105 
-                      shadow-lg hover:shadow-xl flex items-center justify-center gap-2 sm:gap-3
-                      focus:outline-none focus:ring-4 focus:ring-cyan-300"
-               aria-label="Download hasil tes dalam format PDF">
-                <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                </svg>
-                <span class="text-sm sm:text-base lg:text-lg">Download PDF</span>
-            </a>
-        </div>
+        @auth
+            <!-- Kalau SUDAH login: tampilkan tombol asli -->
+            <!-- Grid 2 tombol pertama -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
+                <a href="{{ route('pertanyaan.index') }}"
+                class="w-full bg-[#01E1FF] text-white font-bold py-4 lg:py-5 rounded-2xl 
+                        hover:bg-[#00c9e6] transition-all duration-300 transform hover:scale-105 
+                        shadow-lg hover:shadow-xl flex items-center justify-center gap-2 sm:gap-3
+                        focus:outline-none focus:ring-4 focus:ring-cyan-300"
+                aria-label="Lihat kembali jawaban tes Anda">
+                    <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="text-sm sm:text-base lg:text-lg">Kembali Ke Halaman Pertanyaan</span>
+                </a>
 
-        <!-- Tombol ketiga di tengah -->
-        <div class="flex justify-center">
-            <a href="{{ route('riwayat.index') }}"
-               class="w-full sm:w-[calc(50%-0.625rem)] bg-[#01E1FF] text-white font-bold py-4 lg:py-5 
-                      rounded-2xl hover:bg-[#00c9e6] transition-all duration-300 transform hover:scale-105 
-                      shadow-lg hover:shadow-xl flex items-center justify-center gap-2 sm:gap-3
-                      focus:outline-none focus:ring-4 focus:ring-cyan-300"
-               aria-label="Lihat riwayat tes sebelumnya">
-                <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                </svg>
-                <span class="text-sm sm:text-base lg:text-lg">Lihat Riwayat Tes</span>
-            </a>
-        </div>
+                <a href="{{ route('hasil.pdf', $hasil->id) }}"
+                class="w-full bg-[#01E1FF] text-white font-bold py-4 lg:py-5 rounded-2xl 
+                        hover:bg-[#00c9e6] transition-all duration-300 transform hover:scale-105 
+                        shadow-lg hover:shadow-xl flex items-center justify-center gap-2 sm:gap-3
+                        focus:outline-none focus:ring-4 focus:ring-cyan-300"
+                aria-label="Download hasil tes dalam format PDF">
+                    <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                    <span class="text-sm sm:text-base lg:text-lg">Download PDF</span>
+                </a>
+            </div>
+
+            <!-- Tombol ketiga di tengah -->
+            <div class="flex justify-center">
+                <a href="{{ route('riwayat.index') }}"
+                class="w-full sm:w-[calc(50%-0.625rem)] bg-[#01E1FF] text-white font-bold py-4 lg:py-5 
+                        rounded-2xl hover:bg-[#00c9e6] transition-all duration-300 transform hover:scale-105 
+                        shadow-lg hover:shadow-xl flex items-center justify-center gap-2 sm:gap-3
+                        focus:outline-none focus:ring-4 focus:ring-cyan-300"
+                aria-label="Lihat riwayat tes sebelumnya">
+                    <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                    <span class="text-sm sm:text-base lg:text-lg">Lihat Riwayat Tes</span>
+                </a>
+            </div>
+
+        @else
+            <!-- Kalau BELUM login: arahkan ke login -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
+                <a href="{{ route('pertanyaan.index') }}"
+                class="w-full bg-[#01E1FF] text-white font-bold py-4 lg:py-5 rounded-2xl 
+                        hover:bg-[#00c9e6] transition-all duration-300 transform hover:scale-105 
+                        shadow-lg hover:shadow-xl flex items-center justify-center gap-2 sm:gap-3
+                        focus:outline-none focus:ring-4 focus:ring-cyan-300">
+                    <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="text-sm sm:text-base lg:text-lg">Kembali Ke Halaman Pertanyaan</span>
+                </a>
+
+                <a href="{{ route('login') }}"
+                class="w-full bg-gray-300 text-gray-700 font-bold py-4 lg:py-5 rounded-2xl 
+                        hover:bg-gray-400 transition-all duration-300 transform hover:scale-105 
+                        shadow-lg hover:shadow-xl flex items-center justify-center gap-2 sm:gap-3
+                        focus:outline-none focus:ring-4 focus:ring-cyan-300">
+                    <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                    <span class="text-sm sm:text-base lg:text-lg">Login untuk Download PDF</span>
+                </a>
+            </div>
+
+            <div class="flex justify-center">
+                <a href="{{ route('login') }}"
+                class="w-full sm:w-[calc(50%-0.625rem)] bg-gray-300 text-gray-700 font-bold py-4 lg:py-5 
+                        rounded-2xl hover:bg-gray-400 transition-all duration-300 transform hover:scale-105 
+                        shadow-lg hover:shadow-xl flex items-center justify-center gap-2 sm:gap-3
+                        focus:outline-none focus:ring-4 focus:ring-cyan-300">
+                    <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                    <span class="text-sm sm:text-base lg:text-lg">Login untuk Lihat Riwayat Tes</span>
+                </a>
+            </div>
+        @endauth
     </section>
-
 </main>
 
 <script>
