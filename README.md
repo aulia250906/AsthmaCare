@@ -13,7 +13,7 @@
 ---
 
 <p align="center">
-  <img src="AsthmaCare-laravel/public/images/logoasma.png" alt="App Logo">
+  <img src="AsthmaCare-laravel/public/images/landing.png" alt="App Logo">
 </p>
 
 <p align="center"><strong>Sistem Pendukung Keputusan untuk Deteksi Dini Penyakit Asma.</strong></p>
@@ -109,3 +109,42 @@ Aplikasi ini menyediakan analisis tingkat risiko (Rendah, Sedang, Tinggi) dan ed
 🔗 Access the application via your browser: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ---
+
+
+# FastAPI – Asthma Prediction API
+
+Proyek ini merupakan REST API berbasis **FastAPI** untuk melakukan prediksi atau analisis terkait asma menggunakan beberapa model machine learning yang disimpan dalam format `.pkl`.
+
+## Cara Setup & Menjalankan Aplikasi
+
+
+1. **Clone Repository**
+
+      ```bash
+       git clone https://github.com/aulia250906/AsthmaCare.git
+       cd fastapi
+      ```
+
+
+2. **Buat Virtual Environment**
+      ```bash
+      python -m venv venv
+      ```
+
+
+3. **Install Dependencies**
+      ```bash
+      pip install --upgrade pip
+      pip install -r requirements.txt
+      ```
+
+
+4. **Jalankan Server FastAPI**
+      ```bash
+      uvicorn app.main:app --host 127.0.0.1 --port 8080 --reload
+      ```
+      
+🔗 Access the application via your browser: [http://127.0.0.1:8080](http://127.0.0.1:8080)
+
+---
+      
