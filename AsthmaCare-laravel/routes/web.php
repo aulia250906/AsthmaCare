@@ -59,3 +59,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/ulasan', [ReviewController::class, 'index'])->name('reviews.index');
 Route::post('/ulasan', [ReviewController::class, 'store'])->name('reviews.store');
+
+Route::get('/home-about', function () {
+    return view('home-about');
+});
