@@ -7,7 +7,7 @@
     <p class="text-xl text-gray-700 mb-6">
       Tujuan kami adalah menyediakan alat dan sumber daya yang mudah digunakan untuk meningkatkan kualitas hidup pengguna.
     </p>
-    <a href="#" class="inline-block bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-6 py-3 rounded-lg shadow hover:from-[#0097a7] hover:to-[#55c6ff] transition">Pelajari Lebih Lanjut</a>
+    <a href="/home-about" class="inline-block bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-6 py-3 rounded-lg shadow hover:from-[#0097a7] hover:to-[#55c6ff] transition">Pelajari Lebih Lanjut</a>
   </div>
   <div class="mt-10 md:mt-0 md:w-1/2 flex justify-center md:justify-end" data-aos="zoom-in-up">
     <img src="{{ asset('images/asmaorang.png') }}" alt="Tentang Kami" class="w-72 md:w-80">

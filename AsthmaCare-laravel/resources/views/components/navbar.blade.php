@@ -14,6 +14,7 @@
     <li><a href="/artikel" class="hover:text-blue-700 transition-colors">Artikel</a></li>
     <li><a href="/ulasan" class="hover:text-blue-700 transition-colors">Ulasan</a></li>
     <li><a href="/riwayat" class="hover:text-blue-700 transition-colors">Riwayat</a></li>
+    <li><a href="/dokter" class="hover:text-blue-700 transition-colors">Dokter</a></li>
   </ul>
 
   <!-- Bagian kanan -->
@@ -84,6 +85,7 @@
     <li><a href="/artikel" class="hover:text-blue-500 transition-colors">Artikel</a></li>
     <li><a href="/ulasan" class="hover:text-blue-500 transition-colors">Ulasan</a></li>
     <li><a href="/riwayat" class="hover:text-blue-500 transition-colors">Riwayat</a></li>
+    <li><a href="/dokter" class="hover:text-blue-500 transition-colors">Dokter</a></li>
 
     @guest
     <div class="flex flex-col items-center gap-3 mt-2">

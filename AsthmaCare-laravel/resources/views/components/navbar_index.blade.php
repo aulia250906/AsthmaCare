@@ -12,6 +12,7 @@
     <li><a href="/#fitur" class="hover:text-blue-700 transition-colors">Fitur</a></li>
     <li><a href="/artikel" class="hover:text-blue-700 transition-colors">Artikel</a></li>
     <li><a href="/ulasan" class="hover:text-blue-700 transition-colors">Ulasan</a></li>
+    <li><a href="/dokter" class="hover:text-blue-700 transition-colors">Dokter</a></li>
   </ul>
 
   <!-- Tombol kanan -->
@@ -59,6 +60,7 @@
     <li><a href="/#fitur" class="hover:text-blue-500 transition-colors">Fitur</a></li>
     <li><a href="/artikel" class="hover:text-blue-500 transition-colors">Artikel</a></li>
     <li><a href="/ulasan" class="hover:text-blue-500 transition-colors">Ulasan</a></li>
+    <li><a href="/dokter" class="hover:text-blue-500 transition-colors">Dokter</a></li>
 
     <div class="flex flex-col items-center gap-3 mt-2">
       <a href="{{ route('register') }}" class="w-full sm:w-auto py-3 px-5 text-gray-900 border border-black rounded-full hover:bg-gray-100 transition text-center">Daftar</a>

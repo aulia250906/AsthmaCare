@@ -5,8 +5,12 @@
 @section('content')
 <body class="bg-gray-50">
 
-    <!-- Navbar -->
-    <x-navbar />
+    {{-- Navbar tampil sesuai status login --}}
+        @auth
+            <x-navbar />
+        @else
+            <x-navbar_index />
+        @endauth
 
     <div class="container mx-auto px-6 py-16">
         <h1 class="text-4xl font-bold text-center text-gray-800 mb-3">
@@ -32,6 +36,11 @@
         </div>
     </div>
 
-    <x-footer />
+    {{-- Footer --}}
+        @auth
+            <x-footer />
+        @else
+            <x-footer_index />
+        @endauth
 </body>
 @endsection

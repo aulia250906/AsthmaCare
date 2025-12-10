@@ -1,9 +1,15 @@
 @extends('layout.app') 
 
-@section('title', 'Landing Page')
+@section('title', 'Tentang Kami')
 
-<!-- Navbar Index -->
-@include('components.navbar_index')
+@section('content')
+
+{{-- Navbar tampil sesuai status login --}}
+        @auth
+            <x-navbar />
+        @else
+            <x-navbar_index />
+        @endauth
 
 <!-- Apa itu AsthmaCare -->
 
@@ -47,90 +53,7 @@
     </div>
 </section>
 
-<!-- Fitur Unggulan -->
-<section class="py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <span class="inline-block bg-sky-100 text-sky-700 font-semibold px-4 py-2 rounded-full text-sm mb-4">FITUR UNGGULAN</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Keunggulan AsthmaCare</h2>
-            <p class="text-gray-600 text-lg max-w-2xl mx-auto">Fitur-fitur yang membuat AsthmaCare menjadi pilihan terbaik</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="flex gap-4 bg-gradient-to-br from-white to-sky-50 rounded-2xl p-6 shadow-lg border border-sky-100 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
-                <div class="flex-shrink-0">
-                    <div class="bg-sky-100 rounded-xl w-14 h-14 flex items-center justify-center">
-                        <span class="text-2xl">✅</span>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Tes ACT Standar Medis</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">Menggunakan Asthma Control Test yang diakui oleh komunitas medis internasional untuk hasil yang akurat.</p>
-                </div>
-            </div>
-            
-            <div class="flex gap-4 bg-gradient-to-br from-white to-sky-50 rounded-2xl p-6 shadow-lg border border-sky-100 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
-                <div class="flex-shrink-0">
-                    <div class="bg-emerald-100 rounded-xl w-14 h-14 flex items-center justify-center">
-                        <span class="text-2xl">📱</span>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Responsive Design</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">Dapat diakses dari berbagai perangkat - smartphone, tablet, atau komputer dengan tampilan optimal.</p>
-                </div>
-            </div>
-            
-            <div class="flex gap-4 bg-gradient-to-br from-white to-sky-50 rounded-2xl p-6 shadow-lg border border-sky-100 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
-                <div class="flex-shrink-0">
-                    <div class="bg-violet-100 rounded-xl w-14 h-14 flex items-center justify-center">
-                        <span class="text-2xl">📊</span>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Riwayat Pemeriksaan</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">Simpan dan pantau riwayat tes Anda untuk melihat perkembangan kondisi asma dari waktu ke waktu.</p>
-                </div>
-            </div>
-            
-            <div class="flex gap-4 bg-gradient-to-br from-white to-sky-50 rounded-2xl p-6 shadow-lg border border-sky-100 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
-                <div class="flex-shrink-0">
-                    <div class="bg-pink-100 rounded-xl w-14 h-14 flex items-center justify-center">
-                        <span class="text-2xl">📄</span>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Export ke PDF</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">Unduh hasil pemeriksaan dalam format PDF untuk dibawa konsultasi ke dokter.</p>
-                </div>
-            </div>
-            
-            <div class="flex gap-4 bg-gradient-to-br from-white to-sky-50 rounded-2xl p-6 shadow-lg border border-sky-100 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
-                <div class="flex-shrink-0">
-                    <div class="bg-orange-100 rounded-xl w-14 h-14 flex items-center justify-center">
-                        <span class="text-2xl">📚</span>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Artikel Edukasi</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">Akses perpustakaan artikel kesehatan tentang asma, pencegahan, dan tips gaya hidup sehat.</p>
-                </div>
-            </div>
-            
-            <div class="flex gap-4 bg-gradient-to-br from-white to-sky-50 rounded-2xl p-6 shadow-lg border border-sky-100 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
-                <div class="flex-shrink-0">
-                    <div class="bg-teal-100 rounded-xl w-14 h-14 flex items-center justify-center">
-                        <span class="text-2xl">🔒</span>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Privasi Terjamin</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">Data kesehatan Anda dilindungi dengan enkripsi dan tidak dibagikan kepada pihak ketiga.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 <!-- Cara Menggunakan -->
 <section class="bg-gradient-to-br from-[#F3FDFF] to-[#E0F7FF] py-20">
@@ -379,4 +302,11 @@
 </body>
 </html>
 
-@include('components.footer')
+ {{-- Footer --}}
+        @auth
+            <x-footer />
+        @else
+            <x-footer_index />
+        @endauth
+
+@endsection

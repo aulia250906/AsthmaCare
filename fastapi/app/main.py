@@ -63,23 +63,107 @@ def generate_narrative(data_in, rf_prob, topsis_score, label):
             "agar risiko tidak meningkat di kemudian hari."
         )
 
-    # Langkah pencegahan
-    prevention_steps = [
-        "Menghindari paparan asap rokok dan berhenti merokok jika Anda perokok.",
-        "Mengurangi paparan polusi udara, misalnya dengan memakai masker di area berpolusi.",
-        "Menjaga berat badan ideal dengan pola makan seimbang dan olahraga teratur.",
-        "Menghindari pencetus alergi seperti debu, bulu hewan, atau serbuk sari.",
-        "Membersihkan rumah secara rutin untuk mengurangi debu dan jamur.",
-        "Berolahraga dengan intensitas ringan hingga sedang dengan pemanasan cukup.",
-        "Segera konsultasi ke tenaga medis jika muncul gejala seperti batuk lama, atau sesak."
-    ]
+    # ==========================
+    # Langkah pencegahan DINAMIS
+    # ==========================
+    prevention_steps = []
 
+    # 1. Kebiasaan merokok
+    smoking = str(data_in.get("Smoking_Status", "")).lower()
+    if any(k in smoking for k in ["current", "perokok", "smoker", "ya", "aktif"]):
+        prevention_steps.append(
+            "Segera berhenti merokok dan kurangi paparan asap rokok di rumah maupun di tempat kerja."
+        )
+    else:
+        prevention_steps.append(
+            "Tetap hindari paparan asap rokok, termasuk asap rokok orang lain (perokok pasif)."
+        )
+
+    # 2. Aktivitas fisik
+    activity = str(data_in.get("Physical_Activity_Level", "")).lower()
+    if any(k in activity for k in ["low", "rendah", "jarang"]):
+        prevention_steps.append(
+            "Mulai rutin berolahraga 3–5 kali per minggu dengan intensitas ringan hingga sedang, "
+            "misalnya jalan kaki, bersepeda ringan, atau senam pernapasan."
+        )
+    else:
+        prevention_steps.append(
+            "Pertahankan kebiasaan aktivitas fisik Anda dan tetap lakukan pemanasan sebelum berolahraga."
+        )
+
+    # 3. BMI / berat badan
+    try:
+        bmi = float(data_in.get("BMI", 0))
+    except Exception:
+        bmi = 0
+
+    if bmi >= 25:
+        prevention_steps.append(
+            "Upayakan menurunkan berat badan secara bertahap dengan pola makan sehat dan aktivitas fisik teratur "
+            "karena berat badan berlebih dapat memperberat kerja paru-paru."
+        )
+    elif 0 < bmi < 18.5:
+        prevention_steps.append(
+            "Pastikan asupan gizi seimbang agar berat badan tidak terlalu rendah dan daya tahan tubuh tetap baik."
+        )
+    else:
+        prevention_steps.append(
+            "Pertahankan berat badan ideal dengan pola makan seimbang dan gaya hidup aktif."
+        )
+
+    # 4. Alergi
+    allergies = str(data_in.get("Allergies", "")).lower()
+    if allergies not in ["", "0", "tidak", "none", "no", "tidak ada"]:
+        prevention_steps.append(
+            f"Menghindari pencetus alergi yang Anda miliki (misalnya: {data_in.get('Allergies')}) "
+            "dengan menjaga kebersihan rumah, mengganti sprei secara rutin, dan menghindari debu serta bulu hewan."
+        )
+    else:
+        prevention_steps.append(
+            "Tetap menjaga kebersihan lingkungan rumah untuk mengurangi debu, jamur, dan tungau."
+        )
+
+    # 5. Polusi udara
+    pollution = str(data_in.get("Air_Pollution_Level", "")).lower()
+    if any(k in pollution for k in ["high", "tinggi", "buruk"]):
+        prevention_steps.append(
+            "Batasi aktivitas di luar ruangan saat kualitas udara buruk dan gunakan masker bila harus keluar rumah."
+        )
+    else:
+        prevention_steps.append(
+            "Tetap perhatikan kualitas udara dan usahakan menghindari paparan polusi yang tidak perlu."
+        )
+
+    # 6. Pekerjaan
+    occupation = str(data_in.get("Occupation_Type", "")).lower()
+    if any(k in occupation for k in ["pabrik", "industri", "outdoor", "lapangan"]):
+        prevention_steps.append(
+            "Jika pekerjaan Anda berisiko terpapar debu, bahan kimia, atau asap, gunakan alat pelindung diri "
+            "seperti masker dan ikuti prosedur kesehatan dan keselamatan kerja."
+        )
+
+    # 7. Komorbiditas
+    comorb = str(data_in.get("Comorbidities", "")).lower()
+    if comorb not in ["", "0", "tidak", "none", "no"]:
+        prevention_steps.append(
+            f"Mengelola penyakit penyerta yang Anda miliki (misalnya: {data_in.get('Comorbidities')}) "
+            "dengan kontrol rutin dan mengikuti anjuran pengobatan dari dokter."
+        )
+
+    # 8. Saran umum tambahan (selalu bagus untuk semua orang)
+    prevention_steps.append(
+        "Segera konsultasi ke tenaga medis jika muncul gejala seperti batuk lama, mengi (napas berbunyi), "
+        "atau sesak napas, terutama bila sering kambuh."
+    )
+
+    # Ubah ke <li> ... </li>
     bullet_list = "".join([f"<li>{step}</li>" for step in prevention_steps])
 
+    # Penutup berdasarkan kategori risiko
     if label == "High":
         extra = (
             "Karena tingkat risiko Anda tinggi, <b>segera konsultasikan</b> dengan dokter "
-            "spesialis paru untuk evaluasi dan penanganan yang tepat."
+            "spesialis paru atau penyakit dalam untuk evaluasi lebih lanjut dan penanganan yang tepat."
         )
     elif label == "Moderate":
         extra = (
@@ -89,7 +173,7 @@ def generate_narrative(data_in, rf_prob, topsis_score, label):
     else:
         extra = (
             "Walaupun risiko rendah, tetap jaga pola hidup sehat dan lakukan pemeriksaan "
-            "bila muncul tanda seperti batuk lama, sesak, atau lainnya."
+            "bila muncul tanda seperti batuk lama, sesak, atau keluhan lain yang mengganggu."
         )
 
     return (
@@ -98,6 +182,7 @@ def generate_narrative(data_in, rf_prob, topsis_score, label):
         f"<ul>{bullet_list}</ul><br>"
         f"{extra}<br><br>"
     )
+
 
 # ==========================
 # 4. Fungsi prediksi utama
