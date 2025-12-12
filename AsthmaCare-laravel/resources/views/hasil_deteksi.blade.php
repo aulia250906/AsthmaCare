@@ -6,11 +6,11 @@
 @php
     // Ambil dari model HasilTes
     $riskLevel = $hasil->resiko ?? 'Tidak Diketahui';
-    $score     = $hasil->score ?? 0;                  // 0–20
+    $score     = $hasil->score ?? 0;                  // 0–100
     $narrative = $hasil->narasi ?? 'Hasil narasi tidak tersedia.';
 
     // Lebar progress bar (min 5% supaya tetap kelihatan)
-    $width     = max(5, min(($score / 20) * 100, 100));
+    $width     = max(5, min(($score / 100) * 100, 100));
 
     // Warna bar berdasarkan risiko
     $barColor  = $riskLevel === 'High' ? 'bg-red-500' : 'bg-green-500';
@@ -140,7 +140,7 @@
                 Berdasarkan jawaban yang telah Anda berikan
             </p>
             <p class="mt-2 text-xs sm:text-sm text-gray-500">
-                Skor Risiko: <span class="font-semibold text-gray-800">{{ $score }}</span> dari 20  
+                Skor Risiko: <span class="font-semibold text-gray-800">{{ $score }}</span> dari 100  
                 <span class="block mt-1">
                     Semakin tinggi skor, semakin besar indikasi risiko asma berdasarkan jawaban Anda.
                 </span>
@@ -170,10 +170,10 @@
             <div class="relative mb-6 lg:mb-8">
                 <div class="w-full bg-gray-200 rounded-2xl h-6 sm:h-7 lg:h-8 overflow-hidden shadow-inner" 
                      role="img" 
-                     aria-label="Grafik tingkat risiko asma {{ strtolower($riskTitle) }} dengan skor {{ $score }} dari 20">
+                     aria-label="Grafik tingkat risiko asma {{ strtolower($riskTitle) }} dengan skor {{ $score }} dari 100">
                     <div class="{{ $barColor }} h-full relative transition-all duration-500" style="width: {{ $width }}%;">
                         <span class="absolute right-2 top-0 text-white font-bold text-xs sm:text-sm lg:text-base leading-6 sm:leading-7 lg:leading-8">
-                            {{ $score }}/20
+                            {{ $score }}/100
                         </span>
                     </div>
                 </div>
@@ -307,7 +307,7 @@
                 aria-label="Download hasil tes dalam format PDF">
                     <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m4 4V4"/>
                     </svg>
                     <span class="text-sm sm:text-base lg:text-lg">Download PDF</span>
                 </a>
@@ -351,7 +351,7 @@
                         focus:outline-none focus:ring-4 focus:ring-cyan-300">
                     <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m4 4V4"/>
                     </svg>
                     <span class="text-sm sm:text-base lg:text-lg">Login untuk Download PDF</span>
                 </a>

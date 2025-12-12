@@ -245,13 +245,13 @@ def predict_endpoint(data: AsthmaInput):
     try:
         result = process_prediction(data)
 
-        # ubah combined (0–1) ke skala 1–20
+        # ubah combined (0–1) ke skala 1–100
         combined = result["combined"]
-        score_1_20 = max(1, min(int(round(combined * 20)), 20))
+        score_1_100 = max(1, min(int(round(combined * 100)), 100))
 
         return {
             "risk_level": result["risk_level"],   # "Low", "Moderate", "High"
-            "score": score_1_20,                  # 1–20
+            "score": score_1_100,                 # 1–100
             "probability": result["probability"],
             "topsis": result["topsis"],
             "narrative": result["narrative"]
