@@ -44,10 +44,22 @@
         <span class="text-sm text-gray-600 font-medium">24/7 Akses</span>
       </div>
     </div>
-    <div>
-    <a href="/pertanyaan" class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:from-[#0097a7] hover:to-[#55c6ff] hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 text-center">Mulai Tes Sekarang</a>
-    <a href="#fitur" class="border-2 border-gray-300 text-gray-800 font-semibold px-8 py-4 rounded-xl hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 text-center">Lihat Fitur</a>
-    </div>  
+    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto">
+    <a href="/pertanyaan"
+       class="w-full sm:w-auto bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] 
+              text-white font-semibold px-8 py-4 rounded-xl shadow-lg 
+              hover:from-[#0097a7] hover:to-[#55c6ff] hover:shadow-2xl 
+              transform hover:-translate-y-1 transition-all duration-300 text-center">
+        Mulai Tes Sekarang
+    </a>
+
+    <a href="#fitur"
+       class="w-full sm:w-auto border-2 border-gray-300 text-gray-800 
+              font-semibold px-8 py-4 rounded-xl hover:bg-gray-50 
+              hover:border-gray-400 transition-all duration-300 text-center">
+        Lihat Fitur
+    </a>
+</div>
   </div>
 
   <div class="relative z-10 mt-12 md:mt-0 md:w-1/2 flex justify-center">

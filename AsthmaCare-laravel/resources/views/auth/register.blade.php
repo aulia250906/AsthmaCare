@@ -152,16 +152,26 @@
 
       {{-- NO TELEPON --}}
       <div>
-          <label class="block text-gray-700 mb-1">No. Telepon</label>
-          <input type="text" name="telpon" value="{{ old('telpon') }}" required
-                class="w-full border border-[#01E1FF] rounded-lg p-2 focus:ring-2 focus:ring-[#01E1FF] focus:outline-none"
-                oninvalid="this.setCustomValidity('Silakan isi nomor telepon Anda')"
-                oninput="this.setCustomValidity('')">
+        <label class="block text-gray-700 mb-1">No. Telepon</label>
+        <input
+            type="tel"
+            name="telpon"
+            value="{{ old('telpon') }}"
+            required
+            inputmode="numeric"
+            pattern="[0-9]+"
+            placeholder="08xxxxxxxxxx"
+            class="w-full border border-[#01E1FF] rounded-lg p-2 
+                  focus:ring-2 focus:ring-[#01E1FF] focus:outline-none"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            oninvalid="this.setCustomValidity('Silakan isi nomor telepon (angka saja)')"
+            oninput="this.setCustomValidity('')"
+        >
 
-          @error('telpon')
-              <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
-          @enderror
-      </div>
+        @error('telpon')
+            <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+        @enderror
+    </div>
 
       {{-- TERMS --}}
       <div class="flex items-start space-x-2 mt-3">

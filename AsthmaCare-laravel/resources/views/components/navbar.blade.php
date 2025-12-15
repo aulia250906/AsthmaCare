@@ -3,10 +3,10 @@
 <!-- ✅ NAVBAR FIXED RESPONSIVE -->
 <nav class="fixed top-0 left-0 w-full bg-white shadow-md px-6 py-4 flex justify-between items-center z-50">
   <!-- Logo -->
-  <div class="flex items-center space-x-3">
+  <a href="/home" class="flex items-center space-x-3">
     <img src="{{ asset('images/logoasma.png') }}" class="h-10" alt="Logo" />
     <span class="font-bold text-2xl text-gray-800">AsthmaCare</span>
-  </div>
+  </a>
 
   <!-- Menu Desktop -->
   <ul class="hidden md:flex space-x-8 text-gray-900 font-medium">
