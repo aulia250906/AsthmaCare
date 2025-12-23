@@ -54,7 +54,10 @@
 
 <!-- ✅ Menu Mobile -->
 <div id="menu-mobile"
-     class="hidden fixed top-[64px] left-0 w-full bg-white shadow-md md:hidden transform scale-95 opacity-0 transition-all duration-300 ease-out z-40 border-t border-gray-200">
+     class="hidden fixed top-[64px] left-0 w-full bg-white shadow-md md:hidden 
+            transform scale-95 opacity-0 transition-all duration-300 ease-out 
+            z-40 border-t border-gray-200">
+
   <ul class="flex flex-col items-center gap-4 py-4 text-gray-700 font-medium">
     <li><a href="/#beranda" class="hover:text-blue-500 transition-colors">Beranda</a></li>
     <li><a href="/#fitur" class="hover:text-blue-500 transition-colors">Fitur</a></li>
@@ -62,12 +65,23 @@
     <li><a href="/ulasan" class="hover:text-blue-500 transition-colors">Ulasan</a></li>
     <li><a href="/dokter" class="hover:text-blue-500 transition-colors">Dokter</a></li>
 
-    <div class="flex flex-col items-center gap-3 mt-2">
-      <a href="{{ route('register') }}" class="w-full sm:w-auto py-3 px-5 text-gray-900 border border-black rounded-full hover:bg-gray-100 transition text-center">Daftar</a>
-      <a href="{{ route('login') }}" class="w-full sm:w-auto py-3 px-5 text-white bg-cyan-400 rounded-full hover:bg-cyan-500 transition text-center">Masuk</a>
+    <!-- 🔽 BUTTON AREA -->
+    <div class="w-full px-4 flex flex-col gap-3">
+      <a href="{{ route('register') }}"
+         class="w-full py-3 text-gray-900 border border-black rounded-full 
+                hover:bg-gray-100 transition text-center">
+        Daftar
+      </a>
+
+      <a href="{{ route('login') }}"
+         class="w-full py-3 text-white bg-cyan-400 rounded-full 
+                hover:bg-cyan-500 transition text-center">
+        Masuk
+      </a>
     </div>
   </ul>
 </div>
+
 
 <!-- ✅ Spacer biar konten ga ketutup navbar -->
 <div class="pt-20"></div>
