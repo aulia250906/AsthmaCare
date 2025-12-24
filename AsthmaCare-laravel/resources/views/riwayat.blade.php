@@ -70,7 +70,7 @@
                 <td class="py-3 px-4">
 
                   <!-- DESKTOP -->
-                  <div class="hidden md:block text-xs text-gray-700 whitespace-pre-line">
+                  <div class="hidden lg:block text-xs text-gray-700 whitespace-pre-line">
                     {!! $item->narasi !!}
                   </div>
 
