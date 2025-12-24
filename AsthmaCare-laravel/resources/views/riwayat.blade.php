@@ -7,31 +7,26 @@
 
   <x-navbar />
 
-  <!-- Main Section -->
+  <!-- ================= MAIN ================= -->
   <main class="max-w-5xl mx-auto py-10 px-6">
     <div class="bg-white rounded-3xl shadow-lg border-2 border-sky-200 p-6">
 
-      <!-- Search & Controls -->
-      <div class="flex justify-between items-center mb-6 flex-wrap gap-3">
-
-
-        <!-- Dropdown + Button -->
-        <div class="flex items-center gap-3">
-          
-          <!-- Export Button -->
-          <a href="{{ route('riwayat.pdf') }}"
-            class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white px-4 py-2 rounded-full hover:from-[#0097a7] hover:to-[#55c6ff] transition text-sm font-medium">
-            📄 Ekspor ke PDF
-          </a>
-        </div>
+      <!-- ===== HEADER ===== -->
+      <div class="flex justify-end mb-6">
+        <a href="{{ route('riwayat.pdf') }}"
+           class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff]
+                  text-white px-4 py-2 rounded-full text-sm font-medium
+                  hover:from-[#0097a7] hover:to-[#55c6ff] transition">
+          📄 Ekspor ke PDF
+        </a>
       </div>
 
-      <!-- Chart -->
+      <!-- ===== CHART ===== -->
       <div class="mb-6">
         <canvas id="tesChart" height="100"></canvas>
       </div>
 
-      <!-- Table -->
+      <!-- ===== TABLE ===== -->
       <div class="overflow-x-auto">
         <table class="w-full text-sm text-left border-collapse">
           <thead class="bg-gradient-to-r from-[#00bcd4] to-[#7fdbff] text-white">
@@ -44,11 +39,11 @@
           </thead>
 
           <tbody class="text-gray-700">
-            @forelse($riwayat as $item)
+            @forelse ($riwayat as $item)
               @php
                 $badgeColor = $item->resiko === 'High'
-                    ? 'bg-red-100 text-red-700'
-                    : 'bg-green-100 text-green-700';
+                  ? 'bg-red-100 text-red-700'
+                  : 'bg-green-100 text-green-700';
               @endphp
 
               <tr class="border-b hover:bg-sky-50 align-top">
@@ -66,31 +61,25 @@
                   </span>
                 </td>
 
-                <!-- TINDAKAN -->
                 <td class="py-3 px-4">
 
-                  <!-- DESKTOP -->
+                  <!-- DESKTOP (TIDAK DIUBAH) -->
                   <div class="hidden lg:block text-xs text-gray-700 whitespace-pre-line">
                     {!! $item->narasi !!}
                   </div>
 
-                  <!-- MOBILE BUTTON -->
-                  <button 
-                    class="md:hidden text-cyan-600 text-xs font-medium underline"
-                    onclick="toggleDetail(this)">
+                  <!-- MOBILE -->
+                  <button
+                    class="lg:hidden text-cyan-600 text-xs font-medium"
+                    onclick="openSheet(`{!! e($item->narasi) !!}`)">
                     Info Detail
                   </button>
-
-                  <!-- MOBILE DETAIL -->
-                  <div class="md:hidden mt-2 hidden text-xs text-gray-700 whitespace-pre-line bg-sky-50 p-3 rounded-lg">
-                    {!! $item->narasi !!}
-                  </div>
 
                 </td>
               </tr>
             @empty
               <tr>
-                <td colspan="4" class="py-4 px-4 text-center text-gray-500">
+                <td colspan="4" class="py-4 text-center text-gray-500">
                   Belum ada riwayat tes.
                 </td>
               </tr>
@@ -104,49 +93,82 @@
 
   <x-footer />
 
-  <!-- Dropdown Script -->
+  <!-- ================= MOBILE BOTTOM SHEET ================= -->
+  <div id="bottomSheet"
+       class="fixed inset-0 z-50 bg-black/40 opacity-0 invisible
+              transition-opacity duration-300 lg:hidden">
+
+    <div id="sheetBox"
+         class="absolute bottom-0 left-0 w-full bg-white rounded-t-3xl p-5
+                translate-y-full transition-transform duration-500
+                ease-[cubic-bezier(0.22,1,0.36,1)]">
+
+      <!-- Drag Handle -->
+      <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mb-4"></div>
+
+      <h3 class="text-center font-semibold mb-3">
+        Detail Tindakan
+      </h3>
+
+      <div id="sheetContent"
+           class="text-xs text-gray-700 whitespace-pre-line
+                  max-h-[60vh] overflow-y-auto">
+      </div>
+
+      <button onclick="closeSheet()"
+              class="mt-4 w-full py-3 bg-sky-500 text-white rounded-full">
+        Tutup
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= SCRIPTS ================= -->
+
+  <!-- Bottom Sheet Script -->
   <script>
-    const dropdown = document.getElementById("dropdown");
-    const btn = document.getElementById("dropdownBtn");
-    const menu = document.getElementById("dropdownMenu");
-    const label = document.getElementById("dropdownLabel");
-    const arrow = document.getElementById("dropdownArrow");
+    const sheet = document.getElementById('bottomSheet');
+    const sheetBox = document.getElementById('sheetBox');
+    const sheetContent = document.getElementById('sheetContent');
 
-    btn.addEventListener("click", () => {
-      menu.classList.toggle("opacity-0");
-      menu.classList.toggle("invisible");
-      menu.classList.toggle("translate-y-2");
-      btn.classList.toggle("border-cyan-400");
-      arrow.classList.toggle("rotate-180");
+    let startY = 0;
+    let currentY = 0;
+
+    function openSheet(content) {
+      sheetContent.innerHTML = content;
+      sheet.classList.remove('opacity-0', 'invisible');
+      sheetBox.classList.remove('translate-y-full');
+    }
+
+    function closeSheet() {
+      sheet.classList.add('opacity-0', 'invisible');
+      sheetBox.classList.add('translate-y-full');
+      sheetBox.style.transform = '';
+    }
+
+    sheet.addEventListener('click', e => {
+      if (e.target === sheet) closeSheet();
     });
 
-    dropdown.querySelectorAll(".dropdown-item").forEach(item => {
-      item.addEventListener("click", () => {
-        label.textContent = item.dataset.value;
-        menu.classList.add("opacity-0", "invisible", "translate-y-2");
-        arrow.classList.remove("rotate-180");
-        btn.classList.remove("border-cyan-400");
-      });
+    sheetBox.addEventListener('touchstart', e => {
+      startY = e.touches[0].clientY;
     });
 
-    document.addEventListener("click", (e) => {
-      if (!dropdown.contains(e.target)) {
-        menu.classList.add("opacity-0", "invisible", "translate-y-2");
-        arrow.classList.remove("rotate-180");
-        btn.classList.remove("border-cyan-400");
+    sheetBox.addEventListener('touchmove', e => {
+      currentY = e.touches[0].clientY;
+      const diff = currentY - startY;
+      if (diff > 0) {
+        sheetBox.style.transform = `translateY(${diff}px)`;
       }
     });
-  </script>
 
-  <!-- Toggle Detail Mobile -->
-  <script>
-    function toggleDetail(button) {
-      const detail = button.nextElementSibling;
-      detail.classList.toggle('hidden');
-      button.textContent = detail.classList.contains('hidden')
-        ? 'Info Detail'
-        : 'Tutup Detail';
-    }
+    sheetBox.addEventListener('touchend', () => {
+      const diff = currentY - startY;
+      if (diff > 120) {
+        closeSheet();
+      } else {
+        sheetBox.style.transform = '';
+      }
+    });
   </script>
 
   <!-- Chart Script -->
@@ -170,10 +192,8 @@
       data: {
         labels,
         datasets: [{
-          label: 'Skor Tes',
           data: scores,
           borderColor: '#0ea5e9',
-          backgroundColor: '#38bdf8',
           tension: 0.4,
           fill: false,
           pointRadius: 6,
