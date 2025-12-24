@@ -253,7 +253,7 @@
                     <!-- Foto Header -->
                     <div class="h-64 bg-gradient-to-br from-violet-400 to-purple-500 relative overflow-hidden">
                         <!-- Ganti src dengan path foto member -->
-                        <img src="images/leo-afif.jpg" alt="Leo Afif Eka Permana" class="w-full h-full object-cover">
+                        <img src="images/leo.jpg" alt="Leo Afif Eka Permana" class="w-full h-full object-cover">
                     </div>
                     
                     <div class="p-6 text-center">
