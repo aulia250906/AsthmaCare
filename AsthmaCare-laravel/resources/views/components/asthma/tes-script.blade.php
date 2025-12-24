@@ -88,21 +88,20 @@
         // Cek validasi input pada step saat ini
         function isCurrentStepValid() {
             const currentSection = document.querySelector(`[data-step="${currentStep}"]`);
-            const requiredInputs = currentSection.querySelectorAll('input[required]');
+            const requiredInputs = currentSection.querySelectorAll(
+                'input[required], textarea[required], select[required]'
+            );
 
             let valid = true;
 
             requiredInputs.forEach((input) => {
                 if (input.type === 'radio') {
-                    // Cek minimal satu radio di group ini checked
                     const group = currentSection.querySelectorAll(`input[name="${input.name}"]`);
                     const anyChecked = Array.from(group).some(r => r.checked);
-                    if (!anyChecked) {
-                        valid = false;
-                    }
-                } else {
-                    // number / text dsb
-                    if (!input.value || input.value.toString().trim() === '') {
+                    if (!anyChecked) valid = false;
+                } 
+                else {
+                    if (!input.value || input.value.trim() === '') {
                         valid = false;
                     }
                 }
@@ -114,6 +113,7 @@
 
             return valid;
         }
+
 
         btnNext.addEventListener('click', (e) => {
             // Kalau belum step terakhir, cek validasi dulu
