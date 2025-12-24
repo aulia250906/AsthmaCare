@@ -1,6 +1,6 @@
 <section data-step="8" class="hidden">
     <h2 class="text-2xl font-semibold text-gray-900 mb-6">
-        Bagaimana tingkat aktivitas fisik Anda dalam keseharian?
+        Bagaimana tingkat aktivitas fisik yang Anda lakukan dalam kehidupan sehari-hari?
     </h2>
 
     <div class="space-y-4 text-lg">

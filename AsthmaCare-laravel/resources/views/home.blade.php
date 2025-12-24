@@ -22,12 +22,17 @@
     </div>
     
     <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-      Kelola Asma <br> Lebih Mudah <br> dengan <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-[#12E4FF]">AsthmaCare</span>
-    </h1>
-    
-    <p class="text-gray-600 text-lg mt-6 leading-relaxed mb-4">
-      Dapatkan tes kontrol asma, pemantauan gejala, dan panduan perawatan dalam satu aplikasi.
-    </p>
+        Halo, {{ auth()->check() ? auth()->user()->name : 'Pengguna' }} 👋 <br>
+        Selamat Datang di <br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-[#12E4FF]">
+          AsthmaCare!
+        </span>
+      </h1>
+
+      <p class="text-gray-600 text-lg mt-6 leading-relaxed mb-4">
+        Kenali gejala lebih awal, dapatkan analisis cerdas, dan hidup lebih sehat.
+      </p>
+
     
     <!-- Key Benefits Icons -->
     <div class="flex flex-wrap gap-4 mb-8">
@@ -66,7 +71,7 @@
     <div class="relative">
       <!-- Floating animation -->
       <div class="animate-float">
-        <img src="{{ asset('images/dokterindex.png') }}" alt="Dokter AsthmaCare" class="w-96 md:w-[450px] drop-shadow-2xl">
+        <img src="{{ asset('images/asmaorang.png') }}" alt="Dokter AsthmaCare" class="w-96 md:w-[450px] drop-shadow-2xl">
       </div>
       <!-- Decorative elements around image -->
       <div class="absolute -top-6 -right-6 w-20 h-20 bg-sky-400 rounded-full opacity-20 animate-ping"></div>

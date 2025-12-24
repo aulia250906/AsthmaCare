@@ -1,6 +1,6 @@
 <section data-step="7" class="hidden">
     <h2 class="text-2xl font-semibold text-gray-900 mb-6">
-        Bagaimana tingkat paparan polusi udara di lingkungan tempat Anda tinggal/bekerja?
+        Bagaimana tingkat paparan polusi udara di lingkungan tempat Anda tinggal?
     </h2>
 
     <div class="space-y-4 text-lg">

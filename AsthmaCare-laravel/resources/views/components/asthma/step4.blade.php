@@ -1,6 +1,6 @@
 <section data-step="4" class="hidden">
     <h2 class="text-2xl font-semibold text-gray-900 mb-6">
-        Bagaimana status merokok Anda saat ini?
+        Apakah Anda memiliki riwayat kebiasaan merokok?
     </h2>
 
     <div class="space-y-4 text-lg">

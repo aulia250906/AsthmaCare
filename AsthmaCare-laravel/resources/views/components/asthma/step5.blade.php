@@ -1,6 +1,6 @@
 <section data-step="5" class="hidden">
     <h2 class="text-2xl font-semibold text-gray-900 mb-6">
-        Apakah ada riwayat asma pada keluarga dekat Anda?
+        Apakah terdapat riwayat asma pada keluarga kandung Anda?
     </h2>
 
     <div class="space-y-4 text-lg">

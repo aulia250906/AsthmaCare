@@ -77,7 +77,6 @@
           <label class="text-gray-600 flex items-center">
             <input type="checkbox" class="mr-1"> Ingat saya
           </label>
-          <a href="#" class="text-cyan-700 hover:underline">Lupa sandi?</a>
         </div>
 
         <button type="submit"

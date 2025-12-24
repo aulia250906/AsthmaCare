@@ -1,58 +1,23 @@
 <section data-step="10" class="hidden">
     <h2 class="text-2xl font-semibold text-gray-900 mb-6">
-        Apakah Anda memiliki penyakit penyerta (komorbiditas) berikut?
+        Apakah Anda memiliki riwayat penyakit lain yang sedang atau pernah diderita selain asma?
     </h2>
 
-    <div class="space-y-4 text-lg">
-        <label class="flex items-center space-x-3">
-            <input type="radio" name="Comorbidities" value="0"
-                   class="w-5 h-5 rounded-full border-2 border-gray-300 
-                    appearance-none cursor-pointer
-                    checked:border-white checked:bg-cyan-300
-                    focus:outline-none focus:ring-2 focus:ring-cyan-300"
-                   {{ old('Comorbidities') == '0' ? 'checked' : '' }}
-                   required>
-            <span>Tidak ada penyakit penyerta</span>
+    <div class="space-y-2 text-lg">
+        <label for="Comorbidities" class="block text-gray-700">
+            Silakan sebutkan penyakit lain (jika ada)
         </label>
 
-        <label class="flex items-center space-x-3">
-            <input type="radio" name="Comorbidities" value="Diabetes"
-                   class="w-5 h-5 rounded-full border-2 border-gray-300 
-                    appearance-none cursor-pointer
-                    checked:border-white checked:bg-cyan-300
-                    focus:outline-none focus:ring-2 focus:ring-cyan-300"
-                   {{ old('Comorbidities') == 'Diabetes' ? 'checked' : '' }}>
-            <span>Diabetes</span>
-        </label>
-
-        <label class="flex items-center space-x-3">
-            <input type="radio" name="Comorbidities" value="Hypertension"
-                   class="w-5 h-5 rounded-full border-2 border-gray-300 
-                    appearance-none cursor-pointer
-                    checked:border-white checked:bg-cyan-300
-                    focus:outline-none focus:ring-2 focus:ring-cyan-300"
-                   {{ old('Comorbidities') == 'Hypertension' ? 'checked' : '' }}>
-            <span>Hipertensi (tekanan darah tinggi)</span>
-        </label>
-
-        <label class="flex items-center space-x-3">
-            <input type="radio" name="Comorbidities" value="COPD"
-                   class="w-5 h-5 rounded-full border-2 border-gray-300 
-                    appearance-none cursor-pointer
-                    checked:border-white checked:bg-cyan-300
-                    focus:outline-none focus:ring-2 focus:ring-cyan-300"
-                   {{ old('Comorbidities') == 'COPD' ? 'checked' : '' }}>
-            <span>Penyakit paru obstruktif kronis (PPOK/COPD)</span>
-        </label>
-
-        <label class="flex items-center space-x-3">
-            <input type="radio" name="Comorbidities" value="Multiple"
-                   class="w-5 h-5 rounded-full border-2 border-gray-300 
-                    appearance-none cursor-pointer
-                    checked:border-white checked:bg-cyan-300
-                    focus:outline-none focus:ring-2 focus:ring-cyan-300"
-                   {{ old('Comorbidities') == 'Multiple' ? 'checked' : '' }}>
-            <span>Lebih dari satu komorbiditas</span>
-        </label>
+        <input
+            type="text"
+            name="Comorbidities"
+            id="Comorbidities"
+            value="{{ old('Comorbidities') }}"
+            placeholder="Contoh: Diabetes, hipertensi, alergi, atau isi 'Tidak ada'"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg
+                   focus:outline-none focus:ring-2 focus:ring-cyan-300
+                   focus:border-cyan-300"
+            required
+        >
     </div>
 </section>
