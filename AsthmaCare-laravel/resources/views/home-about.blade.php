@@ -208,7 +208,7 @@
                     <!-- Foto Header -->
                     <div class="h-64 bg-gradient-to-br from-sky-400 to-blue-500 relative overflow-hidden">
                         <!-- Ganti src dengan path foto member -->
-                        <img src="images/muhamad-aulia.jpg" alt="Muhamad Aulia" class="w-full h-full object-cover">
+                        <img src="images/Aulia.jpeg" alt="Muhamad Aulia" class="w-full h-full object-cover">
                         <div class="absolute top-4 right-4 bg-yellow-400 text-white font-bold px-3 py-1 rounded-full text-xs shadow-lg">
                             Ketua Tim
                         </div>
