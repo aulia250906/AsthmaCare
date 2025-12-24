@@ -41,86 +41,77 @@
       </div>
     </div>
 
-    <!-- Additional Testimonials: Auto Sliding -->
-    <div class="relative overflow-hidden group">
-      <div
-        class="flex gap-8 md:gap-10 animate-[slideReviews_35s_linear_infinite] group-hover:[animation-play-state:paused]">
+    <div class="relative overflow-hidden pb-16 group">
+  <div
+    class="flex w-max gap-8 md:gap-10 animate-marquee group-hover:[animation-play-state:paused]">
 
-        {{-- Loop pertama --}}
-        @foreach ($reviews as $review)
-          @php
-              $initial = strtoupper(substr($review->name, 0, 1));
-              $colorClasses = ['sky', 'emerald', 'violet', 'rose', 'amber', 'cyan'];
-              $color = $colorClasses[$loop->index % count($colorClasses)];
-          @endphp
+    {{-- Loop pertama --}}
+    @foreach ($reviews as $review)
+      @php
+          $initial = strtoupper(substr($review->name, 0, 1));
+          $colorClasses = ['sky', 'emerald', 'violet', 'rose', 'amber', 'cyan'];
+          $color = $colorClasses[$loop->index % count($colorClasses)];
+      @endphp
 
-          <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 min-w-[260px] md:min-w-[300px] max-w-sm">
-            <div class="flex items-center gap-3 mb-4">
-              <!-- Initial Avatar -->
-              <div class="w-12 h-12 bg-{{ $color }}-100 rounded-full flex items-center justify-center text-{{ $color }}-600 font-bold text-lg">
-                {{ $initial }}
-              </div>
-
-              <div>
-                <p class="font-bold text-gray-900">{{ $review->name }}</p>
-
-                <!-- Rating bintang -->
-                <div class="text-yellow-400 text-sm">
-                  @for ($i = 1; $i <= 5; $i++)
-                      {!! $i <= $review->rating ? '★' : '☆' !!}
-                  @endfor
-                </div>
-              </div>
-            </div>
-
-            <p class="text-gray-600 text-sm leading-relaxed italic">
-              "{{ $review->comment }}"
-            </p>
+      <div class="bg-white rounded-2xl shadow-lg p-8 min-w-[260px] md:min-w-[300px] max-w-sm">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 bg-{{ $color }}-100 rounded-full flex items-center justify-center text-{{ $color }}-600 font-bold text-lg">
+            {{ $initial }}
           </div>
-        @endforeach
-
-        {{-- Loop kedua (duplikat) untuk efek infinite scroll yang mulus --}}
-        @foreach ($reviews as $review)
-          @php
-              $initial = strtoupper(substr($review->name, 0, 1));
-              $colorClasses = ['sky', 'emerald', 'violet', 'rose', 'amber', 'cyan'];
-              $color = $colorClasses[$loop->index % count($colorClasses)];
-          @endphp
-
-          <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 min-w-[260px] md:min-w-[300px] max-w-sm">
-            <div class="flex items-center gap-3 mb-4">
-              <!-- Initial Avatar -->
-              <div class="w-12 h-12 bg-{{ $color }}-100 rounded-full flex items-center justify-center text-{{ $color }}-600 font-bold text-lg">
-                {{ $initial }}
-              </div>
-
-              <div>
-                <p class="font-bold text-gray-900">{{ $review->name }}</p>
-
-                <!-- Rating bintang -->
-                <div class="text-yellow-400 text-sm">
-                  @for ($i = 1; $i <= 5; $i++)
-                      {!! $i <= $review->rating ? '★' : '☆' !!}
-                  @endfor
-                </div>
-              </div>
+          <div>
+            <p class="font-bold text-gray-900">{{ $review->name }}</p>
+            <div class="text-yellow-400 text-sm">
+              @for ($i = 1; $i <= 5; $i++)
+                {!! $i <= $review->rating ? '★' : '☆' !!}
+              @endfor
             </div>
-
-            <p class="text-gray-600 text-sm leading-relaxed italic">
-              "{{ $review->comment }}"
-            </p>
           </div>
-        @endforeach
-
+        </div>
+        <p class="text-gray-600 text-sm italic">"{{ $review->comment }}"</p>
       </div>
-    </div>
-  </div>
+    @endforeach
 
-  {{-- Keyframes untuk animasi slide --}}
-  <style>
-    @keyframes slideReviews {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-  </style>
+    {{-- DUPLIKAT --}}
+    @foreach ($reviews as $review)
+      @php
+          $initial = strtoupper(substr($review->name, 0, 1));
+          $colorClasses = ['sky', 'emerald', 'violet', 'rose', 'amber', 'cyan'];
+          $color = $colorClasses[$loop->index % count($colorClasses)];
+      @endphp
+
+      <div class="bg-white rounded-2xl shadow-lg p-8 min-w-[260px] md:min-w-[300px] max-w-sm">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 bg-{{ $color }}-100 rounded-full flex items-center justify-center text-{{ $color }}-600 font-bold text-lg">
+            {{ $initial }}
+          </div>
+          <div>
+            <p class="font-bold text-gray-900">{{ $review->name }}</p>
+            <div class="text-yellow-400 text-sm">
+              @for ($i = 1; $i <= 5; $i++)
+                {!! $i <= $review->rating ? '★' : '☆' !!}
+              @endfor
+            </div>
+          </div>
+        </div>
+        <p class="text-gray-600 text-sm italic">"{{ $review->comment }}"</p>
+      </div>
+    @endforeach
+
+  </div>
+</div>
+<style>
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+</style>
+
 </section>
