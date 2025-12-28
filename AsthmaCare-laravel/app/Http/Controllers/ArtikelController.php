@@ -25,8 +25,16 @@ class ArtikelController extends Controller
         return view('artikel.index', compact('artikels'));
     }
 
-    public function show(Artikel $artikel)
+    public function show($slug)
     {
-        return view('artikel.show', compact('artikel'));
+        $artikel = Artikel::where('slug', $slug)->firstOrFail();
+
+        // Artikel lainnya (random) selain artikel yang sedang dibuka
+        $sidebarArtikel = Artikel::where('id', '!=', $artikel->id)
+                            ->inRandomOrder()
+                            ->take(6)
+                            ->get();
+
+        return view('artikel.show', compact('artikel', 'sidebarArtikel'));
     }
 }

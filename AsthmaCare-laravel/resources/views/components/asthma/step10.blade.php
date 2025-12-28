@@ -5,7 +5,6 @@
 
     <div class="space-y-2 text-lg">
         <label for="Comorbidities" class="block text-gray-700">
-            Silakan sebutkan penyakit lain (jika ada)
         </label>
 
         <input

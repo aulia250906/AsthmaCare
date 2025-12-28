@@ -3,56 +3,194 @@
 @section('title', $artikel->judul)
 
 @section('content')
-<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-    <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-md p-10">
-        <h1 class="text-3xl font-bold text-gray-900 mb-6">{{ $artikel->judul }}</h1>
-        
-        @if ($artikel->gambar)
-            <img src="{{ asset('storage/' . $artikel->gambar) }}" alt="{{ $artikel->judul }}" class="rounded-2xl mb-6 w-full object-cover">
-        @endif
+<div class="bg-gray-50 min-h-screen py-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div class="text-gray-700 leading-relaxed prose max-w-none">
-            {!! $artikel->isi !!}
+        {{-- Breadcrumb --}}
+        <nav class="text-sm text-gray-500 mb-6">
+            @php
+                $homeUrl = auth()->check() ? url('/home') : url('/');
+            @endphp
+
+            <a href="{{ $homeUrl }}" class="hover:text-blue-600">Home</a>
+            <span class="mx-2">/</span>
+            <a href="{{ route('artikel.index') }}" class="hover:text-blue-600">Artikel</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800 font-medium">{{ Str::limit($artikel->judul, 40) }}</span>
+        </nav>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+            {{-- ✅ Content Artikel --}}
+            <div class="lg:col-span-8">
+                <article class="bg-white rounded-3xl shadow-sm overflow-hidden">
+
+                    {{-- ✅ Cover Image FULL sesuai ukuran asli --}}
+                    @if ($artikel->gambar)
+                        <div class="w-full bg-gray-100 flex items-center justify-center p-6">
+                            <img src="{{ asset('storage/' . $artikel->gambar) }}"
+                                 alt="{{ $artikel->judul }}"
+                                 class="w-auto max-w-full h-auto max-h-[520px] object-contain rounded-2xl shadow-sm mx-auto">
+                        </div>
+                    @endif
+
+                    <div class="p-8 sm:p-10">
+                        {{-- Judul --}}
+                        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight mb-4">
+                            {{ $artikel->judul }}
+                        </h1>
+
+                        {{-- Meta Info --}}
+                        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-8">
+                            <span>🗓 {{ $artikel->created_at->format('d M Y') }}</span>
+                            <span>✍ {{ $artikel->penulis ?? 'Admin' }}</span>
+
+                            @if(!empty($artikel->kategori))
+                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">
+                                    {{ $artikel->kategori }}
+                                </span>
+                            @endif
+                        </div>
+
+                        {{-- Isi Artikel --}}
+                        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                            {!! $artikel->isi !!}
+                        </div>
+
+                        {{-- Share Button --}}
+                        <div class="border-t mt-10 pt-6 flex flex-wrap gap-3 items-center">
+                            <span class="text-gray-600 font-medium">Bagikan:</span>
+
+                            <a href="https://wa.me/?text={{ urlencode(url()->current()) }}"
+                               target="_blank"
+                               class="px-4 py-2 rounded-full bg-green-500 text-white text-sm hover:bg-green-600 transition">
+                                WhatsApp
+                            </a>
+
+                            <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($artikel->judul) }}"
+                               target="_blank"
+                               class="px-4 py-2 rounded-full bg-black text-white text-sm hover:bg-gray-800 transition">
+                                Twitter/X
+                            </a>
+
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
+                               target="_blank"
+                               class="px-4 py-2 rounded-full bg-blue-600 text-white text-sm hover:bg-blue-700 transition">
+                                Facebook
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            {{-- ✅ Sidebar --}}
+            <aside class="lg:col-span-4 space-y-8">
+
+                {{-- Artikel Terbaru --}}
+                @if(isset($latest) && $latest->count())
+                    <div class="bg-white rounded-3xl shadow-sm p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Artikel Terbaru</h3>
+
+                        <div class="space-y-4">
+                            @foreach($latest as $item)
+                                <a href="{{ route('artikel.show', $item->slug) }}"
+                                   class="block hover:text-blue-600 transition">
+                                    <p class="font-semibold text-gray-800 leading-snug">
+                                        {{ Str::limit($item->judul, 50) }}
+                                    </p>
+                                    <p class="text-xs text-gray-500 mt-1">
+                                        {{ $item->created_at->format('d M Y') }}
+                                    </p>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                {{-- Artikel Lainnya --}}
+    @if(isset($sidebarArtikel) && $sidebarArtikel->count())
+        <div class="bg-white rounded-3xl shadow-sm p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Artikel Lainnya</h3>
+
+            <div class="space-y-4">
+                @foreach($sidebarArtikel as $item)
+                    <a href="{{ route('artikel.show', $item->slug) }}"
+                    class="flex gap-3 items-start hover:bg-gray-50 p-2 rounded-xl transition">
+                    
+                        {{-- Jika ada gambar --}}
+                        @if($item->gambar)
+                            <img src="{{ asset('storage/' . $item->gambar) }}"
+                                alt="{{ $item->judul }}"
+                                class="w-16 h-16 object-cover rounded-xl flex-shrink-0">
+                        @else
+                            <div class="w-16 h-16 bg-gray-200 rounded-xl flex-shrink-0"></div>
+                        @endif
+
+                        <div>
+                            <p class="font-semibold text-gray-800 leading-snug">
+                                {{ Str::limit($item->judul, 45) }}
+                            </p>
+                            <p class="text-xs text-gray-500 mt-1">
+                                {{ $item->created_at->format('d M Y') }}
+                            </p>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         </div>
-    </div>
+    @endif
+
 </div>
 
+{{-- ✅ PROSE STYLE (rapih + link bold) --}}
 <style>
-/* Tambahkan spasi antar paragraf biar rapi */
-.prose p {
-    margin-bottom: 1rem; /* jarak antar paragraf */
+.prose p { margin-bottom: 1.2rem; }
+
+.prose h1, .prose h2, .prose h3 {
+    font-weight: 800;
+    color: #111827;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
-/* Jarak tambahan untuk baris <br> */
 .prose br {
     display: block;
     content: "";
     margin-bottom: 0.75rem;
 }
 
-/* Teks tebal (bold) biar lebih jelas */
 .prose strong {
     font-weight: 700;
     color: #111827;
 }
 
-/* Opsional: list (jika ada) lebih rapi */
 .prose ul, .prose ol {
     margin-left: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
 }
 
-/* 🌐 Styling untuk link di dalam isi artikel */
+.prose li {
+    margin-bottom: 0.5rem;
+}
+
+.prose blockquote {
+    border-left: 4px solid #2563eb;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #374151;
+}
+
 .prose a {
-    color: #2563eb; /* biru (Tailwind: blue-600) */
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease, text-decoration 0.2s ease;
+    color: #2563eb;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.2s ease;
 }
 
 .prose a:hover {
-    color: #1d4ed8; /* biru lebih gelap saat hover */
-    text-decoration: underline;
+    color: #1d4ed8;
 }
 </style>
 @endsection

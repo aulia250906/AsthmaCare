@@ -22,7 +22,7 @@
     </div>
     
     <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-      Kelola Asma <br> Lebih Mudah <br> dengan <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-[#12E4FF]">AsthmaCare</span>
+      Deteksi Dini Asma <br> Lebih Mudah <br> dengan <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-[#12E4FF]">AsthmaCare</span>
     </h1>
     
     <p class="text-gray-600 text-lg mt-6 leading-relaxed mb-4">
