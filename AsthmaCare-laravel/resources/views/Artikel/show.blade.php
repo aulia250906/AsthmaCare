@@ -59,7 +59,7 @@
 
                         {{-- Share Button --}}
                         <div class="border-t mt-10 pt-6 flex flex-wrap gap-3 items-center">
-                            <span class="text-gray-600 font-medium">Bagikan ke:</span>
+                            <span class="text-gray-600 font-medium">Bagikan:</span>
 
                             <a href="https://wa.me/?text={{ urlencode(url()->current()) }}"
                                target="_blank"
