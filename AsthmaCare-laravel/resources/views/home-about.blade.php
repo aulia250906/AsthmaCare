@@ -27,7 +27,7 @@
                     Asma merupakan penyakit kronis yang menyerang saluran pernapasan dan membutuhkan penanganan cepat agar tidak berkembang menjadi kondisi berat. Namun, masih banyak masyarakat yang kesulitan mengenali gejala awal asma.
                 </p>
                 <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                    AsthmaCare hadir sebagai solusi untuk membantu Anda melakukan deteksi dini terhadap risiko penyakit asma dengan mudah, cepat, dan gratis. Platform kami menggunakan metode Asthma Control Test (ACT) yang diakui secara medis.
+                    AsthmaCare hadir sebagai solusi untuk membantu Anda melakukan deteksi dini terhadap risiko penyakit asma dengan mudah, cepat, dan gratis. Platform kami menggunakan metode Asthma Control Test (ACT).
                 </p>
                 
                 <div class="grid grid-cols-2 gap-4">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="bg-white rounded-xl p-4 shadow-md">
                         <p class="text-3xl font-bold text-sky-600 mb-1">ACT</p>
-                        <p class="text-gray-600 text-sm">Standar Medis</p>
+                        <p class="text-gray-600 text-sm">Asthma Control Test</p>
                     </div>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-3">Isi Kuesioner</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
-                        Jawab 5 pertanyaan ACT tentang gejala dan kondisi asma yang Anda alami
+                        Jawab Beberapa pertanyaan ACT tentang gejala dan kondisi asma yang Anda alami
                     </p>
                 </div>
                 <div class="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">

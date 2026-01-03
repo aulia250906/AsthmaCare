@@ -82,7 +82,7 @@
     <!-- Title Section -->
     <header class="text-center mb-10 lg:mb-14 fade-in">
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 leading-tight">
-            <span class="gradient-text">Selamat!</span> Anda telah menyelesaikan
+            <span class="gradient-text">Terimakasih!</span> Anda telah menyelesaikan
         </h1>
         <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-700 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
             tes deteksi gejala Asma 

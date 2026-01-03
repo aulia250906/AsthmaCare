@@ -67,6 +67,6 @@
 
   <!-- Bagian bawah lurus -->
   <div class="bg-[#00C9E1] text-white text-center text-sm py-3">
-    ©2025 AsthmaCare, All Rights Reserved
+    ©2026 AsthmaCare, All Rights Reserved
   </div>
 </footer>
